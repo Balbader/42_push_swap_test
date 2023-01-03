@@ -21,4 +21,5 @@ Write a `C` program called `push_swap` which calculated and displays on the stan
 	- **sa** (swap a):<br>
 		. Swap the first 2 elements at the top of stack `a`<br>
 		. Do nothing if there is only one or no elements<br>
+
 	- **sb** (swap b):

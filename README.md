@@ -31,7 +31,7 @@ Write a `C` program called `push_swap` which calculated and displays on the stan
 	- **`ss`** : `sa` and `sb` are run at the same time
 
 	- **`pa`** (push a):<br>
-		. Take the first element at the top of `b` and put it at hte top of `a`<br>
+		. Take the first element at the top of `b` and put it at the top of `a`<br>
 		. Do nothing if `b` is empty<br>
 
 	- **`pb`** (push b):<br>

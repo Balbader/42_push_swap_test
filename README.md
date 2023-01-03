@@ -14,3 +14,6 @@ Write a `C` program called `push_swap` which calculated and displays on the stan
 ### The rules
 
 - You have 2 stacks named `a` and `b`
+- At the beginning:
+	- The stack `a` contains a random amount of negative and / or positive numbers which connot be duplicated
+	- The stack `b` is empty

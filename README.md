@@ -11,3 +11,6 @@ You have at your disposal a set of integers values, 2 stacks, and a set of instr
 
 Write a `C` program called `push_swap` which calculated and displays on the standard output the smallest program, made of ***Push Swap language*** instructuions, that sorts the integers received as arguments.
 
+### The rules
+
+- You have 2 stacks named `a` and `b`

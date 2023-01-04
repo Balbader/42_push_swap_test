@@ -15,6 +15,10 @@
 
 # include "printf.h"
 
+typedef struct s_list
+{
+	int				value;
+	struct s_list	*prev;
+}				t_list;
 
 #endif
-

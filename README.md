@@ -60,4 +60,4 @@ Write a `C` program called `push_swap` which calculated and displays on the stan
 
 ### Links
 
-	[Push Swap Guide](https://medium.com/@jamierobertdawson/push-swap-the-least-amount-of-moves-with-two-stacks-d1e76a71789a)
+[Push Swap Guide](https://medium.com/@jamierobertdawson/push-swap-the-least-amount-of-moves-with-two-stacks-d1e76a71789a)

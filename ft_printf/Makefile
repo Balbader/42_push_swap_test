@@ -51,8 +51,6 @@ all:				$(NAME)
 
 $(NAME):			$(OBJS)
 						$(AR) $(ARFLAGS) $(NAME) $(OBJS)
-						$(CC) $(IFLAGS) -c main.c
-						$(CC) $(IFLAGS) main.o -o test -L./ -lftprintf
 
 %.o:				%.c
 						$(CC) $(CFLAGS) $(IFLAGS) -c $< -o $@

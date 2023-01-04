@@ -1,6 +1,5 @@
 # 42 Push Swap
 
-
 ## Introduction
 
 The **push_swap**  project is a simple and a highly straightforward algorithm project: Data needs to be sorted!<br>

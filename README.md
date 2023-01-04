@@ -57,3 +57,7 @@ Write a `C` program called `push_swap` which calculated and displays on the stan
 		. The last element becomes the first one<br>
 
 	- **`rrr`** : `rra` and `rrb` are run at the same time
+
+### Links
+
+	[Push Swap Guide:](https://medium.com/@jamierobertdawson/push-swap-the-least-amount-of-moves-with-two-stacks-d1e76a71789a)

@@ -18,7 +18,6 @@
 # include <stddef.h>
 # include <limits.h>
 # include <stdarg.h>
-# include <stdio.h>
 
 // Test file
 int		main(void);

@@ -21,20 +21,20 @@ void	ft_swap(int *a, int *b)
 	*b = temp;
 }
 
-void	quicksort(int nbs[10], int first, int last)
+void	quicksort(int nbs[10], int low, int high)
 {
+	int	pivot;
 	int	i;
 	int	j;
-	int	pivot;
 
-	if (first < last)
+	if (low < high)
 	{
-		pivot = first;
-		i = first;
-		j = last;
+		pivot = low;
+		i = low;
+		j = high;
 		while (i < j)
 		{
-			while (nbs[i] <= nbs[pivot] && i < last)
+			while (nbs[i] <= nbs[pivot] && i < high)
 				i++;
 			while (nbs[j] > nbs[pivot])
 				j--;
@@ -42,16 +42,18 @@ void	quicksort(int nbs[10], int first, int last)
 				ft_swap(&nbs[i], &nbs[j]);
 		}
 		ft_swap(&nbs[pivot], &nbs[j]);
-		quicksort(nbs, first, j - 1);
-		quicksort(nbs, j + 1, last);
+		quicksort(nbs, low, j - 1);
+		quicksort(nbs, j + 1, high);
 	}
 }
 
 int	main(void)
 {
 	int	i;
+	int	arr_length;
 	int	nb[10] = {8, 9, 1, -433, 5, 2, -23, 7, 6, 0};
 
+	arr_length = sizeof(nb) / sizeof(nb[0]);
 	i = 0;
 	while (i < 10)
 	{
@@ -59,7 +61,7 @@ int	main(void)
 		++i;
 	}
 
-	quicksort(nb, 0, i - 1);
+	quicksort(nb, 0, arr_length);
 	printf("\n");
 
 	i = 0;

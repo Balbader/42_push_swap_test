@@ -19,9 +19,9 @@
 
 typedef struct s_list
 {
-	int				value;
-	struct s_list	*next;
 	struct s_list	*prev;
+	long int		value;
+	struct s_list	*next;
 }				t_list;
 
 // quicksort
@@ -32,5 +32,17 @@ void	ft_qs(int *arr, int lo, int hi);
 // operations
 void	ft_swap_a(t_list *list);
 void	ft_swap_b(t_list *list);
+void	ft_ss(t_list *list);
+void	ft_push_a(t_list *list);
+void	ft_push_b(t_list *list);
+void	ft_rotate_a(t_list *list);
+void	ft_rotate_b(t_list *list);
+void	ft_rr(t_list *list);
+void	ft_reverse_rotate_a(t_list *list);
+void	ft_reverse_rotate_b(t_list *list);
+void	ft_rrr(t_list *list);
+
+// doubly linked list
+t_list	*ft_dbl_lstnew(void *value);
 
 #endif

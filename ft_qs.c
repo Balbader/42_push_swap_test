@@ -10,6 +10,8 @@
 /*                                                                            */
 /* ************************************************************************** */
 
+#include "push_swap.h"
+
 void	ft_swap(int *a, int *b)
 {
 	int	temp;
@@ -43,13 +45,13 @@ int	ft_partition(int *arr, int lo, int hi)
 	return (idx);
 }
 
-void	ft_quicksort(int *arr, int lo, int hi)
+void	ft_qs(int *arr, int lo, int hi)
 {
 	int	pivot_idx;
 
 	if (lo >= hi)
 		return ;
 	pivot_idx = ft_partition(arr, lo, hi);
-	ft_quicksort(arr, lo, pivot_idx - 1);
-	ft_quicksort(arr, pivot_idx + 1, hi);
+	ft_qs(arr, lo, pivot_idx - 1);
+	ft_qs(arr, pivot_idx + 1, hi);
 }

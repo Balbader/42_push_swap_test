@@ -13,19 +13,12 @@
 #ifndef PUSH_SWAP_H
 # define PUSH_SWAP_H
 
-# include "libft.h"
-# include "ft_printf.h"
+# include "../libft/libft.h"
+# include "../ft_printf/includes/ft_printf.h"
 
 # include <unistd.h>
 # include <stdlib.h>
 # include <fcntl.h>
-
-typedef struct s_dlist
-{
-	void			*value;
-	struct s_list	*prev;
-	struct s_list	*next;
-}				t_dlist;
 
 // quicksort
 int		ft_partition(int *arr, int lo, int hi);

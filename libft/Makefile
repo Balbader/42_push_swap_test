@@ -59,8 +59,7 @@ SRC_NAME		=	ft_isalpha.c \
 					ft_putendl_fd.c \
 					ft_putnbr_fd.c \
 					ft_striteri.c \
-
-SRC_NAME_BONUS	= 	ft_lstnew.c \
+					ft_lstnew.c \
 					ft_lstlast.c \
 					ft_lstmap.c \
 					ft_lstsize.c \
@@ -69,15 +68,26 @@ SRC_NAME_BONUS	= 	ft_lstnew.c \
 					ft_lstdelone.c \
 					ft_lstclear.c \
 					ft_lstiter.c \
+					ft_dlist_add_back.c \
+					ft_dlist_add_front.c \
+					ft_dlist_clear.c \
+					ft_dlist_create.c \
+					ft_dlist_find.c \
+					ft_dlist_foreach.c \
+					ft_dlist_is_asc_sorted.c \
+					ft_dlist_pop_back.c \
+					ft_dlist_pop.c \
+					ft_dlist_push.c \
+					ft_dlist_rev_rotate.c \
+					ft_dlist_rotate.c \
+					ft_dlist_swap.c
 
 INC			=	$(addprefix $(INC_PATH)/, $(INC_NAME))
 SRC			=	$(addprefix $(SRC_PATH)/, $(SRC_NAME))
-SRC_BONUS	=	$(addprefix $(SRC_PATH)/, $(SRC_NAME_BONUS))
 
 .SUFFIXES:		.c .o .h
 
 OBJ			=	$(SRC:.c=.o)
-OBJ_BONUS	=	$(SRC_BONUS:.c=.o)
 
 all:		$(NAME)
 
@@ -86,9 +96,6 @@ $(NAME):	$(OBJ) $(INC)
 
 %.o:		%.c
 				$(CC) $(CFLAGS) $(IFLAGS) -c $< -o $@
-
-bonus:		$(OBJ_BONUS) $(OBJ) $(INC)
-				$(AR) $(ARFLAGS) $(NAME) $(OBJ) $(OBJ_BONUS)
 
 clean:
 				$(RM) $(OBJ) $(OBJ_BONUS)

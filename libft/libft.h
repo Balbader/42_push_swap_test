@@ -12,16 +12,25 @@
 
 #ifndef LIBFT_H
 # define LIBFT_H
-# include <string.h>
+
 # include <stdlib.h>
 # include <unistd.h>
 # include <stdint.h>
+# include "ft_printf.h"
+# include "get_next_line.h"
 
 typedef struct s_list
 {
 	void			*content;
 	struct s_list	*next;
 }				t_list;
+
+typedef struct s_dlist
+{
+	void			*data;
+	struct s_dlist	*prev;
+	struct s_dlist	*next;
+}				t_dlist;
 
 int		ft_isalpha(int c);
 int		ft_isdigit(int c);
@@ -57,6 +66,8 @@ void	ft_putchar_fd(char c, int fd);
 void	ft_putstr_fd(char *s, int fd);
 void	ft_putendl_fd(char *s, int fd);
 void	ft_putnbr_fd(int n, int fd);
+
+// linked list
 t_list	*ft_lstnew(void *content);
 t_list	*ft_lstlast(t_list *lst);
 t_list	*ft_lstmap(t_list *lst, void *(*f)(void *), void (*del)(void *));
@@ -66,5 +77,22 @@ int		ft_lstsize(t_list *lst);
 void	ft_lstdelone(t_list *lst, void (*del)(void *));
 void	ft_lstclear(t_list **lst, void (*del)(void *));
 void	ft_lstiter(t_list *lst, void (*f)(void *));
+
+// doubly linked list
+t_dlist	*ft_dlist_create(void *data);
+t_dlist	*ft_dlist_pop(t_dlist **dlist);
+t_dlist	*ft_dlist_pop_back(t_dlist **dlist);
+t_dlist	*ft_dlist_find(t_dlist *dlist, void *data, int (*f)(void *, void *));
+
+void	ft_dlist_swap(t_dlist **dlist);
+void	ft_dlist_rotate(t_dlist **dlist);
+void	ft_dlist_rev_rotate(t_dlist **dlist);
+void	ft_dlist_add_back(t_dlist **dlist, void *data);
+void	ft_dlist_add_front(t_dlist **dlist, void *data);
+void	ft_dlist_clear(t_dlist *dlist, void (*f)(void *));
+void	ft_dlist_push(t_dlist **pushed, t_dlist **popped);
+void	ft_dlist_foreach(t_dlist *dlist, void (*f)(t_dlist *));
+
+int		ft_dlist_is_asc_sorted(t_dlist *dlist, int (*f)(void *, void *));
 
 #endif

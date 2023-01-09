@@ -55,7 +55,7 @@ int	main(void)
 	i = 0;
 	while (i < 10)
 	{
-		printf("%d\n", nb[i]);
+		printf("   Arr[%d]: %d\n", i, nb[i]);
 		++i;
 	}
 
@@ -65,7 +65,7 @@ int	main(void)
 	i = 0;
 	while (i < 10)
 	{
-		printf("%d\n", nb[i]);
+		printf("   Arr[%d]: %d\n", i, nb[i]);
 		++i;
 	}
 	return (0);

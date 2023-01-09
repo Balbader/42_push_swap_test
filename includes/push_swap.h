@@ -14,6 +14,7 @@
 # define PUSH_SWAP_H
 
 # include "printf.h"
+# include "libft.h"
 
 typedef struct s_list
 {
@@ -22,8 +23,13 @@ typedef struct s_list
 	struct s_list	*prev;
 }				t_list;
 
+// quicksort
 int		ft_partition(int *arr, int lo, int hi);
 void	ft_swap(int *a, int *b);
 void	ft_qs(int *arr, int lo, int hi);
+
+// operations
+void	ft_swap_a(t_list *list);
+void	ft_swap_b(t_list *list);
 
 #endif

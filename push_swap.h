@@ -22,4 +22,8 @@ typedef struct s_list
 	struct s_list	*prev;
 }				t_list;
 
+void	ft_swap(int *a, int *b);
+int		ft_partition(int *arr, int lo, int hi);
+int		ft_qs(int *arr, int lo, int hi);
+
 #endif

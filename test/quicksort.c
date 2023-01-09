@@ -12,12 +12,20 @@
 
 #include <stdio.h>
 
+void	ft_swap(int *a, int *b)
+{
+	int	temp;
+
+	temp = *a;
+	*a = *b;
+	*b = temp;
+}
+
 void	quicksort(int nbs[10], int first, int last)
 {
 	int	i;
 	int	j;
 	int	pivot;
-	int	temp;
 
 	if (first < last)
 	{
@@ -31,15 +39,9 @@ void	quicksort(int nbs[10], int first, int last)
 			while (nbs[j] > nbs[pivot])
 				j--;
 			if (i < j)
-			{
-				temp = nbs[i];
-				nbs[i] = nbs[j];
-				nbs[j] = temp;
-			}
+				ft_swap(&nbs[i], &nbs[j]);
 		}
-		temp = nbs[pivot];
-		nbs[pivot] = nbs[j];
-		nbs[j] = temp;
+		ft_swap(&nbs[pivot], &nbs[j]);
 		quicksort(nbs, first, j - 1);
 		quicksort(nbs, j + 1, last);
 	}
@@ -48,7 +50,7 @@ void	quicksort(int nbs[10], int first, int last)
 int	main(void)
 {
 	int	i;
-	int	nb[10] = {8, 9, 1, 3, 5, 2, 4, 7, 6, 0};
+	int	nb[10] = {8, 9, 1, -433, 5, 2, -23, 7, 6, 0};
 
 	i = 0;
 	while (i < 10)

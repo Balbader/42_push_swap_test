@@ -12,15 +12,13 @@ void	ft_swap(int *a, int *b)
 int	ft_partition(int *arr, int lo, int hi)
 {
 	int	pivot;
-	int	temp;
 	int	idx;
 
 	pivot = arr[hi];
 	idx = lo - 1;
-	temp = 0;
 	for (int i = lo; i < hi; ++i)
 	{
-		if (arr[hi] <= pivot)
+		if (arr[i] <= pivot)
 		{
 			idx++;
 			ft_swap(&arr[i], &arr[idx]);

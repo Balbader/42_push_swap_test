@@ -17,6 +17,8 @@
 # include <stdlib.h>
 # include <fcntl.h>
 
+# include "libft.h"
+
 typedef struct s_dlist
 {
 	void			*value;
@@ -41,8 +43,5 @@ void	ft_rr(t_dlist *list);
 void	ft_reverse_rotate_a(t_dlist *list);
 void	ft_reverse_rotate_b(t_dlist *list);
 void	ft_rrr(t_dlist *list);
-
-// doubly linked list
-t_dlist	*ft_dlst_new(void *value);
 
 #endif

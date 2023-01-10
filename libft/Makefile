@@ -19,7 +19,6 @@ NAME			=	libft.a
 ##################################
 #    	    SRCS FILES			 #
 ##################################
-
 # ctype
 
 CTYPE_DIR		=	ctype/
@@ -134,7 +133,6 @@ STRING			=	$(addprefix $(STRING_DIR), $(STRING_FILES))
 ##################################
 #    	   	  SRCS 				 #
 ##################################
-
 SRCS_DIR		=	./srcs/
 SRCS_FILES		=	$(CTYPE) \
 					$(DLIST) \
@@ -157,7 +155,6 @@ INC_FILE		=	libft.h
 ##################################
 #         COMPILATION 		 	 #
 ##################################
-
 CC				=	gcc
 CFLAGS			=	-Wall -Wextra -Werror
 IFLAGS			=	-I$(INC_DIR)
@@ -166,13 +163,10 @@ IFLAGS			=	-I$(INC_DIR)
 ##################################
 #           LIBRARY 			 #
 ##################################
-
 # creating the library
 AR				=	ar
 # at the root of the repository
 ARFLAGS			=	rc
-
-
 # remove recursively with force ##
 RM				=	rm -rf
 
@@ -180,14 +174,12 @@ RM				=	rm -rf
 ##################################
 #              OBJS 			 #
 ##################################
-
 OBJS			=	$(SRCS:.c=.o)
 
 
 ##################################
 #             RULES 			 #
 ##################################
-
 all: $(NAME)
 
 $(NAME): $(OBJS)

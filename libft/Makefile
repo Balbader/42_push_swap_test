@@ -55,6 +55,19 @@ DLIST_FILES		=	ft_dlist_add_back.c \
 DLIST			=	$(addprefix $(DLIST_DIR), $(DLIST_FILES))
 
 
+# ft_printf
+FT_PRINTF_DIR	=	ft_printf/
+FT_PRINTF_FILES	=	ft_print_char.c \
+					ft_printf.c \
+					ft_print_hexa.c \
+					ft_print_nb.c \
+					ft_print_ptr.c \
+					ft_print_str.c \
+					ft_print_unsigned.c
+
+FT_PRINTF		=	$(addprefix $(FT_PRINTF_DIR), $(FT_PRINTF_FILES))
+
+
 # llist
 
 LLIST_DIR		=	llist/
@@ -136,6 +149,7 @@ STRING			=	$(addprefix $(STRING_DIR), $(STRING_FILES))
 SRCS_DIR		=	./srcs/
 SRCS_FILES		=	$(CTYPE) \
 					$(DLIST) \
+					$(FT_PRINTF) \
 					$(LLIST) \
 					$(MEMORY) \
 					$(OUTPUT) \

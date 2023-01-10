@@ -13,7 +13,7 @@
 #ifndef PUSH_SWAP_H
 # define PUSH_SWAP_H
 
-# include "libft.h"
+# include "../libft/includes/libft.h"
 
 # include <unistd.h>
 # include <stdlib.h>

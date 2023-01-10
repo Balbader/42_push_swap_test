@@ -17,6 +17,34 @@ NAME			=	push_swap
 
 
 ##################################
+#    	    SRCS FILES			 #
+##################################
+# qsort
+
+QSORT_DIR		=	qsort/
+QSORT_FILES		=	ft_qs.c
+
+QSORT			=	$(addprefix $(QSORT_DIR), $(QSORT_FILES))
+
+# operations
+
+OPER_DIR		=	operations/
+OPER_FILES		=	pa.c \
+					pb.c \
+					ra.c \
+					rb.c \
+					rra.c \
+					rrb.c \
+					rr.c \
+					rrr.c \
+					sa.c \
+					sb.c \
+					ss.c
+
+OPER			=	$(addprefix $(OPER_DIR), $(OPER_FILES))
+
+
+##################################
 #   	    INCLUDES 			 #
 ##################################
 INC_DIR			=	./includes/
@@ -27,7 +55,8 @@ INC_FILE		=	push_swap.h
 #    	   	  SRCS 				 #
 ##################################
 SRCS_DIR		=	./srcs/
-SRCS_FILES		=	
+SRCS_FILES		=	$(QSORT) \
+					$(OPER) \
 
 SRCS			=	$(addprefix $(SRCS_DIR), $(SRCS_FILES))
 
@@ -37,6 +66,7 @@ SRCS			=	$(addprefix $(SRCS_DIR), $(SRCS_FILES))
 ##################################
 LIBFT_PATH		=	./libft
 LIBFT_FILE		=	./libft/libft.a
+MAKE_LIBFT		=	make -C $(LIBFT_PATH)
 
 
 

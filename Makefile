@@ -39,11 +39,6 @@ LIBFT_PATH		=	./libft
 LIBFT_FILE		=	./libft/libft.a
 
 
-##################################
-#   	   	ft_printf 		 	 #
-##################################
-LIBFT_PATH		=	./ft_printf
-LIBFT_FILE		=	./libft/libft.a
 
 ##################################
 #         COMPILATION 		 	 #

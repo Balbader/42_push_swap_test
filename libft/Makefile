@@ -20,7 +20,6 @@ NAME			=	libft.a
 #    	    SRCS FILES			 #
 ##################################
 # ctype
-
 CTYPE_DIR		=	ctype/
 CTYPE_FILES		=	ft_isalnum.c \
 					ft_isalpha.c \
@@ -36,7 +35,6 @@ CTYPE			=	$(addprefix $(CTYPE_DIR), $(CTYPE_FILES))
 
 
 # dlist
-
 DLIST_DIR		=	dlist/
 DLIST_FILES		=	ft_dlist_add_back.c \
 					ft_dlist_add_front.c \
@@ -69,7 +67,6 @@ FT_PRINTF		=	$(addprefix $(FT_PRINTF_DIR), $(FT_PRINTF_FILES))
 
 
 # llist
-
 LLIST_DIR		=	llist/
 LLIST_FILES		=	ft_lstadd_back.c \
 					ft_lstadd_front.c \
@@ -85,7 +82,6 @@ LLIST			=	$(addprefix $(LLIST_DIR), $(LLIST_FILES))
 
 
 # memory
-
 MEMORY_DIR		=	memory/
 MEMORY_FILES	=	ft_bzero.c \
 					ft_memchr.c \
@@ -98,7 +94,6 @@ MEMORY			=	$(addprefix $(MEMORY_DIR), $(MEMORY_FILES))
 
 
 # output
-
 OUTPUT_DIR		=	output/
 OUTPUT_FILES	=	ft_putchar_fd.c \
 					ft_putendl_fd.c \
@@ -109,7 +104,6 @@ OUTPUT			=	$(addprefix $(OUTPUT_DIR), $(OUTPUT_FILES))
 
 
 # stdlib
-
 STDLIB_DIR		=	stdlib/
 STDLIB_FILES	=	ft_atoi.c \
 					ft_calloc.c \
@@ -119,7 +113,6 @@ STDLIB			=	$(addprefix $(STDLIB_DIR), $(STDLIB_FILES))
 
 
 # string
-
 STRING_DIR		=	string/
 STRING_FILES	=	ft_split.c \
 					ft_strchr.c \

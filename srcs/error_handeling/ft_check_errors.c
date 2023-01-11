@@ -12,7 +12,7 @@
 
 #include "push_swap.h"
 
-void	ft_check_duplicates(int *arr)
+static void	ft_check_duplicates(int *arr)
 {
 	int	i;
 

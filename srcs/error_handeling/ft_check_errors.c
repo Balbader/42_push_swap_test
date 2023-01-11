@@ -12,6 +12,22 @@
 
 #include "push_swap.h"
 
+void	ft_check_duplicates(int *arr)
+{
+	int	i;
+
+	i = 0;
+	while (arr[i])
+	{
+		if (arr[i] == arr[i + 1])
+		{
+			ft_printf("Error\n");
+			return ;
+		}
+		++i;
+	}
+}
+
 void	ft_check_errors(int *arr)
 {
 	int	i;
@@ -21,11 +37,12 @@ void	ft_check_errors(int *arr)
 		ft_printf("Error\n");
 		return ;
 	}
+	ft_check_duplicates(arr);
 	i = 0;
 	while (arr[i])
 	{
 		if (!(arr[i] >= INT_MIN && arr[i] <= INT_MAX))
 			ft_printf("Error\n");
-		i++;
+		++i;
 	}
 }

@@ -12,7 +12,7 @@
 
 #include "libft.h"
 
-int	ft_is_sign(char c)
+static int	ft_is_sign(char c)
 {
 	return (c == '-' || c == '+');
 }
@@ -35,7 +35,7 @@ int	ft_atoi(const char *str)
 	}
 	else if (str[i] == '+')
 		i++;
-	while (str[i] >= '0' && str[i] <= '9')
+	while (ft_isdigit(str[i]))
 	{
 		res = res * 10 + str[i] - '0';
 		i++;

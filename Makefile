@@ -20,20 +20,28 @@ NAME				=	push_swap
 #    	    SRCS FILES			 #
 ##################################
 # qsort
-
 QSORT_DIR			=	qsort/
 QSORT_FILES			=	ft_qs.c
 
 QSORT				=	$(addprefix $(QSORT_DIR), $(QSORT_FILES))
 
-# init_stack
 
+# check errors
+CHECK_ERR_DIR		=	error_handling/
+CHECK_ERR_FILES		=	ft_check_duplicates.c \
+						ft_check_errors.c
+
+CHECK_ERR			=	$(addprefix $(CHECK_ERR_DIR), $(CHECK_ERR_FILES))
+
+
+# init_stack
 INIT_STACK_DIR		=	init_stack/
 INIT_STACK_FILES	=
 
 INIT_STACK			=	$(addprefix $(INIT_STACK_DIR), $(INIT_STACK_FILES))
-# operations
 
+
+# operations
 OPER_DIR			=	operations/
 OPER_FILES			=	pa.c \
 						pb.c \

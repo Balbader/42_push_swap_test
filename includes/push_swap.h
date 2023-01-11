@@ -20,8 +20,8 @@
 # include <fcntl.h>
 
 // quicksort ==================================================================
-int			ft_partition(int *arr, int lo, int hi);
-void		ft_swap(int *a, int *b);
+static int	ft_partition(int *arr, int lo, int hi);
+static void	ft_swap(int *a, int *b);
 void		ft_qs(int *arr, int lo, int hi);
 
 // init stack =================================================================

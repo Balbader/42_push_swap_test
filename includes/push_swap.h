@@ -19,15 +19,19 @@
 # include <stdlib.h>
 # include <fcntl.h>
 
-// quicksort
+// **************** quicksort ********************
+
 static int	ft_partition(int *arr, int lo, int hi);
 static void	ft_swap(int *a, int *b);
 void		ft_qs(int *arr, int lo, int hi);
 
-// init stack
+// **************** init stack *******************
+
+// ft_convert_entry.c
 int			*ft_convert_entry(char *str);
 
-// check errors
+// **************** check errors *****************
+
 // ft_check_main_arg.c
 static int	ft_is_minus(int c);
 static int	ft_check_str(char *str);
@@ -36,7 +40,8 @@ void		ft_check_main_arg(int ac, char **av);
 static void	ft_check_duplicates(int *arr);
 void		ft_check_errors(int *arr);
 
-// operations
+// **************** operations ******************
+
 void		ft_swap_a(t_dlist *list);
 void		ft_swap_b(t_dlist *list);
 void		ft_ss(t_dlist *list);

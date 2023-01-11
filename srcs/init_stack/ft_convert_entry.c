@@ -12,7 +12,6 @@
 
 // #include "push_swap.h"
 #include <stdlib.h>
-#include <stdio.h>
 
 static int	ft_isdigit(int c)
 {
@@ -63,28 +62,10 @@ int	*ft_convert_entry(int ac, char **av)
 	i = 0;
 	while (j < ac)
 	{
-		arr[i]= ft_atoi(av[j]);
+		arr[i] = ft_atoi(av[j]);
 		++j;
 		++i;
 	}
 	arr[i] = 0;
 	return (arr);
-}
-
-int	main(int ac, char **av)
-{
-	int	i;
-	int	j;
-	int	*arr;
-
-	arr = ft_convert_entry(ac, av);
-	j = 1;
-	i = 0;
-	while (j < ac)
-	{
-		printf("arr[%d]: %d\n", i, arr[i]);
-		++i;
-		++j;
-	}
-	return (0);
 }

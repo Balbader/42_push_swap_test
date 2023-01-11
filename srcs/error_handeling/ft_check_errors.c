@@ -10,4 +10,22 @@
 /*                                                                            */
 /* ************************************************************************** */
 
+#include "push_swap.h"
 
+void	ft_check_errors(int *arr)
+{
+	int	i;
+
+	if (!arr)
+	{
+		ft_printf("Error\n");
+		return ;
+	}
+	i = 0;
+	while (arr[i])
+	{
+		if (!(arr[i] >= INT_MIN && arr[i] <= INT_MAX))
+			ft_printf("Error\n");
+		i++;
+	}
+}

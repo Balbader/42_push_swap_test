@@ -26,6 +26,10 @@ void	ft_qs(int *arr, int lo, int hi);
 
 // init stack
 
+// check errors
+void	ft_check_duplicates(int *arr);
+void	ft_check_errors(int *arr);
+
 // operations
 void	ft_swap_a(t_dlist *list);
 void	ft_swap_b(t_dlist *list);

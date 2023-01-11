@@ -33,8 +33,8 @@ t_dlist	*ft_dlist_create(void *data)
 	new = (t_dlist *)calloc(1, sizeof(t_dlist));
 	if (!new)
 		return (NULL);
-	new->prev = NULL;
 	new->data = data;
+	new->prev = NULL;
 	new->next = NULL;
 	return (new);
 }

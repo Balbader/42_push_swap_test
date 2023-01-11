@@ -20,27 +20,30 @@
 # include <fcntl.h>
 
 // quicksort
-int		ft_partition(int *arr, int lo, int hi);
-void	ft_swap(int *a, int *b);
-void	ft_qs(int *arr, int lo, int hi);
+int			ft_partition(int *arr, int lo, int hi);
+void		ft_swap(int *a, int *b);
+void		ft_qs(int *arr, int lo, int hi);
 
 // init stack
 
 // check errors
-void	ft_check_duplicates(int *arr);
-void	ft_check_errors(int *arr);
+static int	ft_is_minus(int c);
+static int	ft_check_str(char *str);
+void		ft_check_main_arg(int ac, char **av);
+void		ft_check_duplicates(int *arr);
+void		ft_check_errors(int *arr);
 
 // operations
-void	ft_swap_a(t_dlist *list);
-void	ft_swap_b(t_dlist *list);
-void	ft_ss(t_dlist *list);
-void	ft_push_a(t_dlist *list);
-void	ft_push_b(t_dlist *list);
-void	ft_rotate_a(t_dlist *list);
-void	ft_rotate_b(t_dlist *list);
-void	ft_rr(t_dlist *list);
-void	ft_reverse_rotate_a(t_dlist *list);
-void	ft_reverse_rotate_b(t_dlist *list);
-void	ft_rrr(t_dlist *list);
+void		ft_swap_a(t_dlist *list);
+void		ft_swap_b(t_dlist *list);
+void		ft_ss(t_dlist *list);
+void		ft_push_a(t_dlist *list);
+void		ft_push_b(t_dlist *list);
+void		ft_rotate_a(t_dlist *list);
+void		ft_rotate_b(t_dlist *list);
+void		ft_rr(t_dlist *list);
+void		ft_reverse_rotate_a(t_dlist *list);
+void		ft_reverse_rotate_b(t_dlist *list);
+void		ft_rrr(t_dlist *list);
 
 #endif

@@ -62,9 +62,13 @@ t_dlist	*ft_init_stack(int *arr)
 		return (NULL);
 	arr_size = ft_arr_size(arr);
 	i = 0;
+	ptr = &i;
+	ft_dlist_create(ptr);
+	++i;
 	while (i < arr_size)
 	{
-
+		ptr = &i;
+		++i;
 	}
 	return (head_a);
 }

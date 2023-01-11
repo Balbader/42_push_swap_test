@@ -98,6 +98,7 @@ all: $(NAME)
 
 $(NAME): $(LIBFT) $(OBJS)
 	$(AR) $(ARFLAGS) $(NAME) $(OBJS)
+	$(CC) $(CFLAGS) -c push_swap.c -o push_swap
 
 %.o: %.c
 	$(CC) $(CFLAGS) $(IFLAGS) -c $< -o $@

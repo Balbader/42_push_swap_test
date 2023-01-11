@@ -12,7 +12,7 @@
 
 #include "push_swap.h"
 
-void	ft_swap(int *a, int *b)
+static void	ft_swap(int *a, int *b)
 {
 	int	temp;
 
@@ -21,7 +21,7 @@ void	ft_swap(int *a, int *b)
 	*b = temp;
 }
 
-int	ft_partition(int *arr, int lo, int hi)
+static int	ft_partition(int *arr, int lo, int hi)
 {
 	int	pivot;
 	int	idx;

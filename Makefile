@@ -26,10 +26,10 @@ QSORT_FILES			=	ft_qs.c
 QSORT				=	$(addprefix $(QSORT_DIR), $(QSORT_FILES))
 
 
-# check errors
+# error_handling
 CHECK_ERR_DIR		=	error_handling/
-CHECK_ERR_FILES		=	ft_check_duplicates.c \
-						ft_check_errors.c
+CHECK_ERR_FILES		=	ft_check_errors.c \
+						ft_check_main_arg.c
 
 CHECK_ERR			=	$(addprefix $(CHECK_ERR_DIR), $(CHECK_ERR_FILES))
 
@@ -70,6 +70,8 @@ INC_FILE			=	push_swap.h
 ##################################
 SRCS_DIR			=	./srcs/
 SRCS_FILES			=	$(QSORT) \
+						$(CHECK_ERR) \
+						$(INIT_STACK) \
 						$(OPER) \
 
 SRCS				=	$(addprefix $(SRCS_DIR), $(SRCS_FILES))

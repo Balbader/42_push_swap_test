@@ -75,35 +75,30 @@ t_dlist	*ft_find_node(t_dlist *dlist, int data)
 			return (to_find);
 		to_find = to_find->next;
 	}
-	return (to_find);
+	return (NULL);
 }
 
-t_dlist	*ft_insert_node(t_dlist *dlist, int data, t_dlist *node_to_insert)
+void	ft_insert_node(t_dlist *stack_a, int data, t_dlist *to_find)
 {
-	t_dlist	*new_dlist;
-	t_dlist	*current;
-	t_dlist	*to_find;
+	t_dlist	*node_to_insert;
 
-	to_find = ft_find_node(dlist, data);
-	current = dlist;
-	new_dlist = current;
-	while (current != NULL)
-	{
-		if (current == to_find)
-		{
-			current->next = node_to_insert;
-			node_to_insert->prev = current;
-			node_to_insert->next = current->next;
-			current->next->prev = node_to_insert;
-		}
-	}
-	return (new_dlist);
+	if (!stack_a)
+		return ;
+	while (stack_a->data != to_find->data)
+		stack_a = stack_a->next;
+	node_to_insert = ft_create_node(data);
+	node_to_insert->next = stack_a->next;
+	stack_a->next = node_to_insert;
+	node_to_insert->prev = stack_a;
+	if(node_to_insert->next != NULL)
+		node_to_insert->next->prev = node_to_insert;
 }
 
 int	main(void)
 {
 	t_dlist *stack_a;
 	t_dlist	*to_find;
+	t_dlist	*node_to_insert;
 	int		*arr = NULL;
 	int		arr_size;
 	int		i;
@@ -112,7 +107,8 @@ int	main(void)
 	arr = ft_init_arr(arr, arr_size);
 	stack_a = ft_init_stack_a(arr, arr_size);
 	to_find = ft_find_node(stack_a, 5);
-	printf("to_find->data: %d\n", to_find->data);
+	node_to_insert = ft_create_node(9999);
+	ft_insert_node(stack_a, node_to_insert->data, to_find);
 	i = 1;
 	while (stack_a != NULL)
 	{

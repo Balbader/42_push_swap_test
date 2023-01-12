@@ -48,9 +48,9 @@ void		ft_check_errors(int *arr);
 
 // ***************** dbl_list *******************
 t_dlist		*ft_create_node(int data);
-t_dlist		*ft_find_node(t_dlist *dblist, int data);
+t_dlist		*ft_find_node(t_dlist *dlist, int data);
 t_dlist		*ft_init_stack_a(int *arr, int arr_size);
-void		ft_insert_dnode(t_dlist *stack_a, int data, t_dlist *to_find);
+void		ft_insert_node(t_dlist *dlist, int data, t_dlist *to_find);
 
 // **************** operations ******************
 void		ft_swap_a(t_dlist *list);

@@ -32,7 +32,7 @@ t_dlist	*ft_init_stack(int *arr, int arr_size)
 	t_dlist	*stack_a;
 	t_dlist	*head_a;
 	int		i;
-	
+
 	if ((!arr) || (!arr_size))
 		return (NULL);
 	stack_a = ft_create_node(arr[i]);
@@ -42,9 +42,8 @@ t_dlist	*ft_init_stack(int *arr, int arr_size)
 	{
 		stack_a->next = ft_create_node(arr[i]);
 		stack_a->prev = stack_a;
-		stack_a =  stack_a->next;
+		stack_a = stack_a->next;
 		++i;
-
 	}
 	return (head_a);
 }

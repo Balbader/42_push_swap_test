@@ -10,44 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-// #include "push_swap.h"
-#include <stdlib.h>
-
-static int	ft_isdigit(int c)
-{
-	return (c >= '0' && c <= '9');
-}
-
-static int	ft_is_sign(int c)
-{
-	return ((c == '-') || (c == '+'));
-}
-
-static int	ft_atoi(const char *str)
-{
-	int	sign;
-	int	res;
-	int	i;
-
-	sign = 1;
-	res = 0;
-	i = 0;
-	if (ft_is_sign(str[i]) && ft_is_sign(str[i + 1]))
-		return (0);
-	if (str[i] == '-')
-	{
-		sign *= -1;
-		++i;
-	}
-	else if (str[i] == '+')
-		++i;
-	while (str[i] && ft_isdigit(str[i]))
-	{
-		res = res * 10 + str[i] - '0';
-		++i;
-	}
-	return (res * sign);
-}
+#include "../../includes/push_swap.h"
 
 int	*ft_convert_entry(int ac, char **av)
 {

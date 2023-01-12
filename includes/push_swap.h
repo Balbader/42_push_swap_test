@@ -36,7 +36,7 @@ void		ft_qs(int *arr, int lo, int hi);
 int			*ft_convert_entry(int ac, char **av);
 // ft_init_stack
 static int	ft_arr_size(int *arr);
-t_dlist		*ft_init_stack(int *arr);
+t_dlist		*ft_init_stack(int *arr, int arr_size);
 
 // **************** check errors *****************
 // ft_check_main_arg.c

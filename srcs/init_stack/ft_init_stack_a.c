@@ -10,11 +10,6 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-/*
-	The first argument should be at the top of the
-	stack (be careful about the order).
-*/
-
 #include "../../includes/push_swap.h"
 
 static int	ft_arr_size(int *arr)

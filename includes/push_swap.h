@@ -14,6 +14,7 @@
 # define PUSH_SWAP_H
 
 # include "../libft/includes/libft.h"
+# include "../srcs/dbl_list/ft_dlist.h"
 
 # include <unistd.h>
 # include <stdlib.h>
@@ -39,6 +40,12 @@ void		ft_check_main_arg(int ac, char **av);
 // ft_check_errors.c
 static void	ft_check_duplicates(int *arr);
 void		ft_check_errors(int *arr);
+
+// ***************** dbl_list *******************
+t_dlist		*ft_create_node(int data);
+t_dlist		*ft_find_node(t_dlist *dlist, int data);
+t_dlist		*ft_init_stack_a(int *arr, int arr_size);
+void		ft_insert_node(t_dlist *stack_a, int data, t_dlist *to_find);
 
 // **************** operations ******************
 void		ft_swap_a(t_dlist *list);

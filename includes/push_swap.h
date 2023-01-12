@@ -14,11 +14,17 @@
 # define PUSH_SWAP_H
 
 # include "../libft/includes/libft.h"
-# include "../srcs/dbl_list/ft_dlist.h"
 
 # include <unistd.h>
 # include <stdlib.h>
 # include <fcntl.h>
+
+typedef struct s_dlist
+{
+	int				data;
+	struct s_dlist	*next;
+	struct s_dlist	*prev;
+}				t_dlist;
 
 // **************** quicksort ********************
 static int	ft_partition(int *arr, int lo, int hi);
@@ -36,9 +42,8 @@ t_dlist		*ft_init_stack(int *arr);
 // ft_check_main_arg.c
 static int	ft_is_minus(int c);
 static int	ft_check_str(char *str);
-void		ft_check_main_arg(int ac, char **av);
-// ft_check_errors.c
 static void	ft_check_duplicates(int *arr);
+void		ft_check_main_arg(int ac, char **av);
 void		ft_check_errors(int *arr);
 
 // ***************** dbl_list *******************

@@ -27,7 +27,7 @@ static int	ft_arr_size(int *arr)
 	return (i);
 }
 
-t_dlist	*ft_init_stack(int *arr, int arr_size)
+t_dlist	*ft_init_stack_a(int *arr, int arr_size)
 {
 	t_dlist	*stack_a;
 	t_dlist	*head_a;
@@ -41,7 +41,7 @@ t_dlist	*ft_init_stack(int *arr, int arr_size)
 	while (i < arr_size)
 	{
 		stack_a->next = ft_create_node(arr[i]);
-		stack_a->prev = stack_a;
+		stack_a->next->prev = stack_a;
 		stack_a = stack_a->next;
 		++i;
 	}

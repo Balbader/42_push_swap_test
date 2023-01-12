@@ -19,12 +19,12 @@
 # include <stdlib.h>
 # include <fcntl.h>
 
-typedef struct s_dblist
+typedef struct s_dlist
 {
 	int				data;
 	struct s_dlist	*next;
 	struct s_dlist	*prev;
-}				t_dblist;
+}				t_dlist;
 
 // **************** quicksort ********************
 static int	ft_partition(int *arr, int lo, int hi);
@@ -47,22 +47,22 @@ void		ft_check_main_arg(int ac, char **av);
 void		ft_check_errors(int *arr);
 
 // ***************** dbl_list *******************
-t_dblist	*ft_create_dnode(int data);
-t_dblist	*ft_find_node(t_dlist *dblist, int data);
-t_dblist	*ft_init_stack_a(int *arr, int arr_size);
-void		ft_insert_node(t_dlist *stack_a, int data, t_dlist *to_find);
+t_dlist	*ft_create_dnode(int data);
+t_dlist	*ft_find_dnode(t_dlist *dblist, int data);
+t_dlist	*ft_init_stack_a(int *arr, int arr_size);
+void		ft_insert_dnode(t_dlist *stack_a, int data, t_dlist *to_find);
 
 // **************** operations ******************
-void		ft_swap_a(t_dblist *list);
-void		ft_swap_b(t_dblist *list);
-void		ft_ss(t_dblist *list);
-void		ft_push_a(t_dblist *list);
-void		ft_push_b(t_dblist *list);
-void		ft_rotate_a(t_dblist *list);
-void		ft_rotate_b(t_dblist *list);
-void		ft_rr(t_dblist *list);
-void		ft_reverse_rotate_a(t_dblist *list);
-void		ft_reverse_rotate_b(t_dblist *list);
-void		ft_rrr(t_dblist *list);
+void		ft_swap_a(t_dlist *list);
+void		ft_swap_b(t_dlist *list);
+void		ft_ss(t_dlist *list);
+void		ft_push_a(t_dlist *list);
+void		ft_push_b(t_dlist *list);
+void		ft_rotate_a(t_dlist *list);
+void		ft_rotate_b(t_dlist *list);
+void		ft_rr(t_dlist *list);
+void		ft_reverse_rotate_a(t_dlist *list);
+void		ft_reverse_rotate_b(t_dlist *list);
+void		ft_rrr(t_dlist *list);
 
 #endif

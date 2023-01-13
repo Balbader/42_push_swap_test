@@ -120,7 +120,7 @@ $(NAME): $(LIBFT) $(OBJS)
 clean:
 	$(RM) $(OBJS)
 
-fclean:		clean
+fclean: clean
 	$(RM) $(NAME)
 
 re: fclean all

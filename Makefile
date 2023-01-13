@@ -96,7 +96,7 @@ MAKE_LIBFT			=	make -C $(LIBFT_PATH)
 
 CC					=	gcc
 CFLAGS				=	-Wall -Wextra -Werror
-IFLAGS				=	-I$(INC_DIR)
+IFLAGS				=	-I $(INC_DIR)
 
 
 ##################################

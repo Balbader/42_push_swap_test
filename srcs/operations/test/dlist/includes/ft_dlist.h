@@ -27,6 +27,7 @@ t_dlist	*ft_dlist_find(t_dlist *dlist, int data, int (*f)(int, int));
 t_dlist	*ft_dlist_find_node(t_dlist *dlist, int data);
 t_dlist	*ft_dlist_pop(t_dlist **dlist);
 t_dlist	*ft_dlist_pop_back(t_dlist **dlist);
+t_dlist	*ft_dlist_insert_node(t_dlist *dlist, int pos, int new_data);
 t_dlist	*ft_dlist_return_last_node(t_dlist *dlist);
 
 int		ft_dlist_is_asc_sorted(t_dlist *dlist, int (*f)(int, int));

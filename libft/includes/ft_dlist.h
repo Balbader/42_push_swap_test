@@ -31,6 +31,7 @@ void	ft_dlist_swap(t_dlist **dlist);
 
 t_dlist	*ft_dlist_create(void *data);
 t_dlist	*ft_dlist_find(t_dlist *dlist, void *data, int (*f)(void *, void *));
+t_dlist	*ft_dlist_find_node(t_dlist *dlist, void *data);
 t_dlist	*ft_dlist_pop(t_dlist **dlist);
 t_dlist	*ft_dlist_pop_back(t_dlist **dlist);
 

@@ -32,12 +32,11 @@ static void	ft_swap(int *a, int *b);
 void		ft_qs(int *arr, int lo, int hi);
 
 // **************** init stack *******************
-int			*ft_convert_entry(int ac, char **av);
+int			*ft_get_entry(int ac, char **av);
 static int	ft_arr_size(int *arr);
 t_dlist		*ft_init_stack_a(int *arr, int arr_size);
 
 // **************** check errors *****************
-// ft_check_main_arg.c
 static int	ft_is_minus(int c);
 static int	ft_check_str(char *str);
 static void	ft_check_duplicates(int *arr);

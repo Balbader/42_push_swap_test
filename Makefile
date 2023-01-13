@@ -36,7 +36,8 @@ CHECK_ERR			=	$(addprefix $(CHECK_ERR_DIR), $(CHECK_ERR_FILES))
 
 # init_stack
 INIT_STACK_DIR		=	init_stack/
-INIT_STACK_FILES	=
+INIT_STACK_FILES	=	ft_get_entry.c \
+						ft_init_stack_a.c 
 
 INIT_STACK			=	$(addprefix $(INIT_STACK_DIR), $(INIT_STACK_FILES))
 
@@ -56,6 +57,9 @@ OPER_FILES			=	pa.c \
 						ss.c
 
 OPER				=	$(addprefix $(OPER_DIR), $(OPER_FILES))
+
+
+# dbl_list : add or not???
 
 
 ##################################

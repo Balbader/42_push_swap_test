@@ -32,9 +32,7 @@ static void	ft_swap(int *a, int *b);
 void		ft_qs(int *arr, int lo, int hi);
 
 // **************** init stack *******************
-// ft_convert_entry.c
 int			*ft_convert_entry(int ac, char **av);
-// ft_init_stack
 static int	ft_arr_size(int *arr);
 t_dlist		*ft_init_stack_a(int *arr, int arr_size);
 

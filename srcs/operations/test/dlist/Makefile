@@ -11,6 +11,7 @@ SRCS_FILES	=	ft_dlist_add_back.c \
 				ft_dlist_find.c \
 				ft_dlist_find_node.c \
 				ft_dlist_foreach.c \
+				ft_dlist_insert_node.c \
 				ft_dlist_pop_back.c \
 				ft_dlist_pop.c \
 				ft_dlist_print.c \

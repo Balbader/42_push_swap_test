@@ -41,11 +41,14 @@ DLIST_FILES		=	ft_dlist_add_back.c \
 					ft_dlist_clear.c \
 					ft_dlist_create.c \
 					ft_dlist_find.c \
+					ft_dlist_find_node.c \
 					ft_dlist_foreach.c \
 					ft_dlist_is_asc_sorted.c \
 					ft_dlist_pop_back.c \
 					ft_dlist_pop.c \
+					ft_dlist_print_reverse.c \
 					ft_dlist_push.c \
+					ft_dlist_return_last_node.c \
 					ft_dlist_rev_rotate.c \
 					ft_dlist_rotate.c \
 					ft_dlist_swap.c

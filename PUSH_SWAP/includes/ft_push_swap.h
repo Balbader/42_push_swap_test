@@ -21,13 +21,6 @@
 # include <fcntl.h>
 #include <stdio.h>
 
-typedef struct s_dlist
-{
-	int				data;
-	struct s_dlist	*next;
-	struct s_dlist	*prev;
-}				t_dlist;
-
 // **************** check errors *****************
 int			ft_check_entry(char *str);
 int			ft_convert_entry(char *str);

@@ -17,14 +17,6 @@ NAME				=	push_swap
 
 
 ##################################
-#   	   	  LIBFT 			 #
-##################################
-LIBFT_DIR			=	./libft
-LIBFT				=	./libft/libft.a
-MAKE_LIBFT			=	make -C $(LIBFT_DIR)
-
-
-##################################
 #    	    SRCS FILES			 #
 ##################################
 # Check Entry
@@ -45,7 +37,7 @@ CONVERT_ENTRY		=	$(addprefix $(CONVERT_ENTRY_DIR), $(CONVERT_ENTRY_FILES))
 #   	    INCLUDES 			 #
 ##################################
 INC_DIR				=	./includes/
-INC_FILE			=	ft_push_swap.h
+INC_FILE			=	push_swap.h
 
 
 ##################################
@@ -61,18 +53,39 @@ SRCS				=	$(addprefix $(SRCS_DIR), $(SRCS_FILES))
 
 
 ##################################
+#   	   	  LIBFT 			 #
+##################################
+LIBFT_DIR			=	./libft
+LIBFT_INC			=	./libft/includes/libft.h
+LIBFT				=	./libft/libft.a
+MAKE_LIBFT			=	make -C $(LIBFT_DIR)
+
+
+##################################
 #         COMPILATION 		 	 #
 ##################################
 
 CC					=	gcc
 CFLAGS				=	-Wall -Wextra -Werror
 IFLAGS				=	-I $(INC_DIR)
+ILIBFT				=	-I $(LIBFT_INC)
 
 
 ##################################
 #              OBJS 			 #
 ##################################
-OBJS			=	$(SRCS:.c=.o)
+OBJS				=	$(SRCS:.c=.o)
+
+
+#################
+#### DISPLAY ####
+#################
+
+RED='\033[0;31m'
+GREEN='\033[1;32m'
+ORANGE='\033[0;33m'
+YELLOW='\033[1;33m'
+NC='\033[0m' # No Color
 
 
 ##################################
@@ -81,13 +94,14 @@ OBJS			=	$(SRCS:.c=.o)
 all: $(NAME)
 
 $(NAME): $(LIBFT) $(OBJS)
-	$(CC) $(CFLAGS) -o $(NAME) $(OBJS)
+	@echo $(GREEN) "--> $(NAME) COMPILED !"$(NC)"\n"
+	$(CC) $(CFLAGS) $(IFLAGS) $(ILIBFT) -o $(NAME) $(OBJS)
 
 $(LIBFT):
 	$(MAKE_LIBFT)
 
 %.o: %.c
-	$(CC) $(CFLAGS) $(IFLAGS) -c $< -o $@
+	$(CC) $(CFLAGS) $(IFLAGS) $(ILIBFT) -c $< -o $@
 
 clean:
 	$(MAKE_LIBFT) clean

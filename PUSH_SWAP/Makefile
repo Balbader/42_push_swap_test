@@ -53,22 +53,12 @@ SRCS				=	$(addprefix $(SRCS_DIR), $(SRCS_FILES))
 
 
 ##################################
-#   	   	  LIBFT 			 #
-##################################
-LIBFT_DIR			=	./libft
-LIBFT_INC			=	./libft/includes/libft.h
-LIBFT				=	./libft/libft.a
-MAKE_LIBFT			=	make -C $(LIBFT_DIR)
-
-
-##################################
 #         COMPILATION 		 	 #
 ##################################
 
 CC					=	gcc
 CFLAGS				=	-Wall -Wextra -Werror
 IFLAGS				=	-I $(INC_DIR)
-ILIBFT				=	-I $(LIBFT_INC)
 
 
 ##################################
@@ -95,20 +85,15 @@ all: $(NAME)
 
 $(NAME): $(LIBFT) $(OBJS)
 	@echo $(GREEN) "--> $(NAME) COMPILED !"$(NC)"\n"
-	$(CC) $(CFLAGS) $(IFLAGS) $(ILIBFT) -o $(NAME) $(OBJS)
-
-$(LIBFT):
-	$(MAKE_LIBFT)
+	$(CC) $(CFLAGS) $(IFLAGS) -o $(NAME) $(OBJS)
 
 %.o: %.c
 	$(CC) $(CFLAGS) $(IFLAGS) $(ILIBFT) -c $< -o $@
 
 clean:
-	$(MAKE_LIBFT) clean
 	$(RM) $(OBJS)
 
-fclean:
-	$(MAKE_LIBFT) fclean
+fclean: clean
 	$(RM) $(NAME)
 
 re: fclean all

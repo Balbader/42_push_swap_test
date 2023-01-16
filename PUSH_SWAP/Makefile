@@ -13,25 +13,25 @@
 ##################################
 #   	      NAME 				 #
 ##################################
-NAME				=	ft_push_swap
+NAME				=	push_swap
 
 
 ##################################
 #   	   	  LIBFT 			 #
 ##################################
-LIBFT_PATH			=	./libft
-LIBFT_FILE			=	./libft/libft.a
-MAKE_LIBFT			=	make -C $(LIBFT_PATH)
+LIBFT_DIR			=	./libft
+LIBFT				=	./libft/libft.a
+MAKE_LIBFT			=	make -C $(LIBFT_DIR)
 
 
 ##################################
 #    	    SRCS FILES			 #
 ##################################
 # Check Entry
-CHECK_ENTRY_DIR		=	1_check_cntry/
+CHECK_ENTRY_DIR		=	1_check_entry/
 CHECK_ENTRY_FILES	=	ft_check_entry.c
 
-CHECK_ENTRY			=	$(addprefix $(CHECK_ENTRY_DIR), $(CHECK_ERR_FILES))
+CHECK_ENTRY			=	$(addprefix $(CHECK_ENTRY_DIR), $(CHECK_ENTRY_FILES))
 
 
 # Convert Entry
@@ -54,7 +54,8 @@ INC_FILE			=	ft_push_swap.h
 SRCS_DIR			=	./srcs/
 SRCS_FILES			=	$(CHECK_ENTRY) \
 						$(CONVERT_ENTRY) \
-						ft_push_swap.c
+						ft_push_swap.c \
+						main.c
 
 SRCS				=	$(addprefix $(SRCS_DIR), $(SRCS_FILES))
 
@@ -80,16 +81,20 @@ OBJS			=	$(SRCS:.c=.o)
 all: $(NAME)
 
 $(NAME): $(LIBFT) $(OBJS)
-	$(AR) $(ARFLAGS) $(NAME) $(OBJS)
-	$(CC) $(CFLAGS) -c push_swap.c -o push_swap
+	$(CC) $(CFLAGS) -o $(NAME) $(OBJS)
+
+$(LIBFT):
+	$(MAKE_LIBFT)
 
 %.o: %.c
 	$(CC) $(CFLAGS) $(IFLAGS) -c $< -o $@
 
 clean:
+	$(MAKE_LIBFT) clean
 	$(RM) $(OBJS)
 
-fclean: clean
+fclean:
+	$(MAKE_LIBFT) fclean
 	$(RM) $(NAME)
 
 re: fclean all

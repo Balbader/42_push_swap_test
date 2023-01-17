@@ -100,6 +100,7 @@ OBJS        		:=	$(SRCS:$(SRC_DIR)/%.c=$(OBJ_DIR)/%.o)
 # CC        compiler
 # CFLAGS    compiler flags
 # IFLAGS 	preprocessor flags
+
 RM					:=	rm -rf
 MAKEFLAGS   		+=	--no-print-directory
 DIR_DUP     		= 	mkdir -p $(@D)

@@ -228,19 +228,18 @@ $(BUILD_DIR)/%.o: $(SRC_DIR)/%.c
 
 clean:
 	@$(RM) $(OBJS)
-	@echo $(GREEN) "Successfully removed:" $(NC) "*.o files" $(GREEN)":)" $(NC) "\n"
+	@echo $(GREEN) "Successfully removed:" $(NC) "*.o files" $(NC) "\n"
 
 fclean:
-	@echo $(RED) "clean: Removing:" $(NC) "*.o files"
+	@echo $(RED) "---> clean: Removing:" $(NC) "*.o files"
 	@$(MAKE) clean
-	@echo $(RED) "fclean: Removing:" $(NC) $(NAME)
+	@echo $(RED) "--> fclean: Removing:" $(NC) $(NAME)
 	@$(RM) $(NAME)
-	@echo $(GREEN) "Successfully removed:" $(NC) $(NAME) $(GREEN)":)" $(NC) "\n"
+	@echo $(GREEN) "Successfully removed:" $(NC) $(NAME) $(NC) "\n"
 
 re: 
-	@echo $(RED) "!!! make re launched !!!" $(NC) "\n"
-	$(MAKE) fclean
-	$(MAKE) all
+	@$(MAKE) fclean
+	@$(MAKE) all
 
 #------------------------------------------------#
 #   SPEC                                         #

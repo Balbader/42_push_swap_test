@@ -13,99 +13,101 @@
 ##################################
 #   	      NAME 				 #
 ##################################
-NAME				=	push_swap
+NAME				:=	push_swap
 
 
 ##################################
 #    	    SRCS FILES			 #
 ##################################
 # Check Entry
-CHECK_ENTRY_DIR		=	1_check_entry/
-CHECK_ENTRY_FILES	=	ft_check_entry.c
+CHECK_ENTRY_DIR		:=	1_check_entry/
+CHECK_ENTRY_FILES	:=	ft_check_entry.c
 
-CHECK_ENTRY			=	$(addprefix $(CHECK_ENTRY_DIR), $(CHECK_ENTRY_FILES))
+CHECK_ENTRY			:=	$(addprefix $(CHECK_ENTRY_DIR), $(CHECK_ENTRY_FILES))
 
 
 # Convert Entry
-CONVERT_ENTRY_DIR	=	2_convert_entry/
-CONVERT_ENTRY_FILES	=	ft_convert_entry.c
+CONVERT_ENTRY_DIR	:=	2_convert_entry/
+CONVERT_ENTRY_FILES	:=	ft_convert_entry.c
 
-CONVERT_ENTRY		=	$(addprefix $(CONVERT_ENTRY_DIR), $(CONVERT_ENTRY_FILES))
+CONVERT_ENTRY		:=	$(addprefix $(CONVERT_ENTRY_DIR), $(CONVERT_ENTRY_FILES))
 
 
 # Store Entry
-STORE_ENTRY_DIR		=	3_store_entry/
-STORE_ENTRY_FILES	=	ft_store_entry.c
+STORE_ENTRY_DIR		:=	3_store_entry/
+STORE_ENTRY_FILES	:=	ft_store_entry.c
 
-STORE_ENTRY			=	$(addprefix $(STORE_ENTRY_DIR), $(STORE_ENTRY_FILES))
+STORE_ENTRY			:=	$(addprefix $(STORE_ENTRY_DIR), $(STORE_ENTRY_FILES))
 
 
 # dbl_list
-DLIST_DIR			=	dbl_list/
-DLIST_FILES			=	ft_create_node.c \
+DLIST_DIR			:=	dbl_list/
+DLIST_FILES			:=	ft_create_node.c \
 						ft_find_node.c \
 						ft_insert_node.c
 
-DLIST				=	$(addprefix $(DLIST_DIR), $(DLIST_FILES))
+DLIST				:=	$(addprefix $(DLIST_DIR), $(DLIST_FILES))
 
 
 ##################################
 #   	    INCLUDES 			 #
 ##################################
-INC_DIR				=	./includes/
-INC_FILE			=	push_swap.h
+INC_DIR				:=	./includes/
+INC_FILE			:=	push_swap.h
 
 
 ##################################
 #    	   	  SRCS 				 #
 ##################################
-SRCS_DIR			=	./srcs/
-SRCS_FILES			=	$(CHECK_ENTRY) \
+SRCS_DIR			:=	./srcs/
+SRCS_FILES			:=	$(CHECK_ENTRY) \
 						$(CONVERT_ENTRY) \
 						$(STORE_ENTRY) \
 						$(DLIST) \
 						ft_push_swap.c \
 						main.c
 
-SRCS				=	$(addprefix $(SRCS_DIR), $(SRCS_FILES))
+SRCS				:=	$(addprefix $(SRCS_DIR), $(SRCS_FILES))
 
 
 ##################################
 #         COMPILATION 		 	 #
 ##################################
-CC					=	gcc
-CFLAGS				=	-Wall -Wextra -Werror
-IFLAGS				=	-I $(INC_DIR)
 
-
-##################################
-#         		OBJS 			 #
-##################################
-OBJS				=	$(SRCS:.c=.o)
+CC					:=	gcc
+CFLAGS				:=	-Wall -Wextra -Werror
+IFLAGS				:=	-I $(INC_DIR)
 
 
 ##################################
 #           LIBRARY 			 #
 ##################################
-AR				=	ar
-ARFLAGS			=	rc
+AR					:=	ar
+ARFLAGS				:=	rc
 
 
 ##################################
 #           REMOVE 				 #
 ##################################
-RM				=	rm -rf
+RM					:=	rm -rf
+MFLAGS   			+= --no-print-directory
+
+
+##################################
+#              OBJS 			 #
+##################################
+OBJS				:=	$(SRCS:.c=.o)
 
 
 #################
 #### DISPLAY ####
 #################
 
-RED='\033[0;31m'
-GREEN='\033[1;32m'
-ORANGE='\033[0;33m'
-YELLOW='\033[1;33m'
-NC='\033[0m' # No Color
+RED					:=	'\033[0;31m'
+GREEN				:=	'\033[1;32m'
+ORANGE				:=	'\033[0;33m'
+YELLOW				:=	'\033[1;33m'
+NC					:=	'\033[0m' # No Color
 
 
 ##################################
@@ -118,10 +120,10 @@ all: $(NAME) #header
 
 $(NAME): $(OBJS)
 	@echo $(GREEN) "--> $(NAME) COMPILED !"$(NC)"\n"
-	$(CC) $(CFLAGS) -o $(NAME) $(OBJS)
+	$(CC) $(CFLAGS) $(OBJS) -o $(NAME)
 
 %.o: %.c
-	$(CC) $(CFLAGS) $(IFLAGS) -c $< -o $@
+	$(CC) $(CFLAGS) $(IFLAGS) -c -o $@ $<
 
 clean:
 	$(RM) $(OBJS)
@@ -129,6 +131,8 @@ clean:
 fclean: clean
 	$(RM) $(NAME)
 
-re: fclean all
+re: #fclean all
+	$(MAKE) $(MFLAGS) fclean
+	$(MAKE) $(MFLAGS) all
 
 .PHONY: all clean fclean re

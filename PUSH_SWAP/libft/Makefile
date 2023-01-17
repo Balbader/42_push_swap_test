@@ -142,6 +142,8 @@ STRING				:=	$(addprefix $(STRING_DIR), $(STRING_FILES))
 #------------------------------------------------#
 #   INCLUDES	 	                             #
 #------------------------------------------------#
+# INCS		= Header files locations
+
 INC_DIR				:=	include
 INC_FILE			:=	libft.h
 
@@ -149,6 +151,13 @@ INC_FILE			:=	libft.h
 #------------------------------------------------#
 #   INGREDIENTS	 	                             #
 #------------------------------------------------#
+# SRC_DIR	= source directory
+# SRCS		= source files
+
+# BUILD_DIR	= object directory
+# OBJS		= object files
+# DEPS		= dependency files
+
 SRC_DIR				:=	src
 SRCS				:=	\
 						$(CTYPE) \
@@ -169,9 +178,16 @@ DEPS        		:=	$(OBJS:.o=.d)
 #------------------------------------------------#
 #   UTENSILS	                                 #
 #------------------------------------------------#
-# AR				creating the library
-# ARFLAGS			at the root of the repository
-# DIR_DUP			duplicate directory tree
+# RM        = force remove
+# MAKEFLAGS = make flags
+# DIR_DUP   = duplicate directory tree
+
+# CC        = compiler
+# CFLAGS    = compiler flags
+# IFLAGS 	= preprocessor flags
+
+# AR		= creating the library
+# ARFLAGS	= at the root of the repository
 
 RM					:=	rm -rf
 MAKEFLAGS   		+=	--no-print-directory

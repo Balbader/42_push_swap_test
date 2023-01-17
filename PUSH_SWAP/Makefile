@@ -142,9 +142,12 @@ $(OBJ_DIR)/%.o: $(SRC_DIR)/%.c
 	@echo $(GREEN) "CREATED:" $(NC) $@ $(NC) "\n"
 
 clean:
+	@echo $(RED) "!!! make clean: Removing *.o !!!" $(NC) "\n"
 	$(RM) $(OBJS)
 
-fclean: clean
+fclean:
+	@echo $(RED) "!!! make fclean: Removing *.o && $(NAME) !!!" $(NC) "\n"
+	$(MAKE) clean
 	$(RM) $(NAME)
 
 re: 

@@ -17,7 +17,17 @@ NAME				:=	push_swap
 
 
 #------------------------------------------------#
-#   SRCS_FILES	 	                             #
+#   LIBS	 	                                 #
+#------------------------------------------------#
+# LIBS        libraries to be used
+# LIBS_TARGET libraries to be built
+
+LIBS				:=	libft
+LIBS_TARGET			:=	./libft/libft.a
+
+
+#------------------------------------------------#
+#   srcs_files	 	                             #
 #------------------------------------------------#
 # Check Entry
 CHECK_ENTRY_DIR		:=	1_check_entry/
@@ -50,11 +60,20 @@ DLIST				:=	$(addprefix $(DLIST_DIR), $(DLIST_FILES))
 
 
 #------------------------------------------------#
+#   INCLUDES	 	                             #
+#------------------------------------------------#
+INCS				:=	./include \
+						./libft/includes
+INC_DIR				:=	./include/
+INC_FILE			:=	push_swap.h
+
+
+#------------------------------------------------#
 #   INGREDIENTS	 	                             #
 #------------------------------------------------#
 # SRC_DIR   source directory
-# OBJ_DIR   object directory
 # SRCS      source files
+# OBJ_DIR   object directory
 # OBJS      object files
 #
 SRC_DIR				:=	src
@@ -65,26 +84,10 @@ SRCS				:=	\
 						$(DLIST) \
 						ft_push_swap.c \
 						main.c
-
 SRCS        		:=	$(SRCS:%=$(SRC_DIR)/%)
-
 
 OBJ_DIR				:=	obj
 OBJS        		:=	$(SRCS:$(SRC_DIR)/%.c=$(OBJ_DIR)/%.o)
-
-
-#------------------------------------------------#
-#   INCLUDES	 	                             #
-#------------------------------------------------#
-INC_DIR				:=	./include/
-INC_FILE			:=	push_swap.h
-
-
-#------------------------------------------------#
-#   LIB	 	                                     #
-#------------------------------------------------#
-AR					:=	ar
-ARFLAGS				:=	rc
 
 
 #------------------------------------------------#
@@ -98,7 +101,7 @@ ARFLAGS				:=	rc
 # CFLAGS    compiler flags
 # IFLAGS 	preprocessor flags
 RM					:=	rm -rf
-MFLAGS   			+=	--no-print-directory
+MAKEFLAGS   		+=	--no-print-directory
 DIR_DUP     		= 	mkdir -p $(@D)
 
 CC					:=	gcc
@@ -145,8 +148,8 @@ fclean: clean
 
 re: 
 	@echo $(RED) "!!! make re launched !!!" $(NC) "\n"
-	$(MAKE) $(MFLAGS) fclean
-	$(MAKE) $(MFLAGS) all
+	$(MAKE) fclean
+	$(MAKE) all
 
 
 #------------------------------------------------#

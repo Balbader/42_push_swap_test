@@ -222,4 +222,9 @@ re:
 	@echo $(RED) "!!! make re launched !!!" $(NC) "\n"
 	$(MAKE) fclean
 	$(MAKE) all
+
+#------------------------------------------------#
+#   SPEC                                         #
+#------------------------------------------------#
 .PHONY: all clean fclean re
+# .SILENT:

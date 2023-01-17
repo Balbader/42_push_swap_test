@@ -36,4 +36,5 @@ t_dlist		*ft_create_node(int data);
 t_dlist		*ft_find_node(t_dlist *dlist, int data);
 t_dlist		*ft_init_stack_a(int *arr, int arr_size);
 void		ft_insert_node(t_dlist *dlist, int data, t_dlist *to_find);
+
 #endif

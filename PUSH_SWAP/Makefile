@@ -35,7 +35,7 @@ CONVERT_ENTRY		=	$(addprefix $(CONVERT_ENTRY_DIR), $(CONVERT_ENTRY_FILES))
 
 # Store Entry
 STORE_ENTRY_DIR		=	3_store_entry/
-STORE_ENTRY_FILES	=	ft_store_entry.c 
+STORE_ENTRY_FILES	=	ft_store_entry.c
 
 STORE_ENTRY			=	$(addprefix $(STORE_ENTRY_DIR), $(STORE_ENTRY_FILES))
 
@@ -73,7 +73,6 @@ SRCS				=	$(addprefix $(SRCS_DIR), $(SRCS_FILES))
 ##################################
 #         COMPILATION 		 	 #
 ##################################
-
 CC					=	gcc
 CFLAGS				=	-Wall -Wextra -Werror
 IFLAGS				=	-I $(INC_DIR)
@@ -99,14 +98,17 @@ NC='\033[0m' # No Color
 ##################################
 #             RULES 			 #
 ##################################
-all: $(NAME)
+all: $(NAME) #header
 
-$(NAME): $(LIBFT) $(OBJS)
+# header:
+# 	@Headermaker srcs includes/push_swap.h -includes structs define
+
+$(NAME): $(OBJS)
 	@echo $(GREEN) "--> $(NAME) COMPILED !"$(NC)"\n"
 	$(CC) $(CFLAGS) -o $(NAME) $(OBJS)
 
 %.o: %.c
-	$(CC) $(CFLAGS) $(IFLAGS) $(ILIBFT) -c $< -o $@
+	$(CC) $(CFLAGS) $(IFLAGS) -c $< -o $@
 
 clean:
 	$(RM) $(OBJS)

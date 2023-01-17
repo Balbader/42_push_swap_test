@@ -33,6 +33,22 @@ CONVERT_ENTRY_FILES	=	ft_convert_entry.c
 CONVERT_ENTRY		=	$(addprefix $(CONVERT_ENTRY_DIR), $(CONVERT_ENTRY_FILES))
 
 
+# Store Entry
+STORE_ENTRY_DIR		=	3_store_entry/
+STORE_ENTRY_FILES	=	ft_store_entry.c 
+
+STORE_ENTRY			=	$(addprefix $(STORE_ENTRY_DIR), $(STORE_ENTRY_FILES))
+
+
+# dbl_list
+DLIST_DIR			=	dbl_list/
+DLIST_FILES			=	ft_create_node.c \
+						ft_find_node.c \
+						ft_insert_node.c
+
+DLIST				=	$(addprefix $(DLIST_DIR), $(DLIST_FILES))
+
+
 ##################################
 #   	    INCLUDES 			 #
 ##################################
@@ -46,6 +62,8 @@ INC_FILE			=	push_swap.h
 SRCS_DIR			=	./srcs/
 SRCS_FILES			=	$(CHECK_ENTRY) \
 						$(CONVERT_ENTRY) \
+						$(STORE_ENTRY) \
+						$(DLIST) \
 						ft_push_swap.c \
 						main.c
 
@@ -85,7 +103,7 @@ all: $(NAME)
 
 $(NAME): $(LIBFT) $(OBJS)
 	@echo $(GREEN) "--> $(NAME) COMPILED !"$(NC)"\n"
-	$(CC) $(CFLAGS) $(IFLAGS) -o $(NAME) $(OBJS)
+	$(CC) $(CFLAGS) -o $(NAME) $(OBJS)
 
 %.o: %.c
 	$(CC) $(CFLAGS) $(IFLAGS) $(ILIBFT) -c $< -o $@

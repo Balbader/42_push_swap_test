@@ -228,11 +228,11 @@ $(BUILD_DIR)/%.o: $(SRC_DIR)/%.c
 
 clean:
 	@$(RM) $(OBJS)
-	@echo $(GREEN) "Successfully removed:" $(NC) "*.o files" $(NC) "\n"
 
 fclean:
-	@echo $(RED) "---> clean: Removing:" $(NC) "*.o files"
+	@echo $(RED) "---> clean: Removing:" $(NC) "libft.o"
 	@$(MAKE) clean
+	@echo $(GREEN) "Successfully removed:" $(NC) "libft.o" $(NC) "\n"
 	@echo $(RED) "--> fclean: Removing:" $(NC) $(NAME)
 	@$(RM) $(NAME)
 	@echo $(GREEN) "Successfully removed:" $(NC) $(NAME) $(NC) "\n"

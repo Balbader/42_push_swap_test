@@ -161,8 +161,9 @@ SRCS				:=	\
 						$(STRING)
 SRCS				:=	$(SRCS:%=$(SRC_DIR)/%)
 
-OBJ_DIR				:=	obj
-OBJS        		:=	$(SRCS:$(SRC_DIR)/%.c=$(OBJ_DIR)/%.o)
+BUILD_DIR			:=	.build
+OBJS        		:=	$(SRCS:$(SRC_DIR)/%.c=$(BUILD_DIR)/%.o)
+DEPS        		:=	$(OBJS:.o=.d)
 
 
 #------------------------------------------------#
@@ -203,7 +204,7 @@ $(NAME): $(OBJS)
 	@echo $(GREEN) "--> $(NAME) COMPILED !"$(NC)"\n"
 	$(AR) $(ARFLAGS) $(NAME) $(OBJS)
 
-$(OBJ_DIR)/%.o: $(SRC_DIR)/%.c
+$(BUILD_DIR)/%.o: $(SRC_DIR)/%.c
 	@echo $(YELLOW) "COMPILING:" $(NC) $<
 	$(DIR_DUP)
 	$(CC) $(CFLAGS) $(IFLAGS) -c -o $@ $<

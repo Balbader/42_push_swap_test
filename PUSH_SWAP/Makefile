@@ -149,23 +149,18 @@ $(BUILD_DIR)/%.o: $(SRC_DIR)/%.c
 -include $(DEPS)
 
 clean:
-	@echo $(RED) "!!! make clean: Removing *.o !!!" $(NC) "\n"
-	for f in $(dir $(LIB_TARGET)); do $(MAKE) -C $$f clean; done
-	$(RM) $(OBJS) $(DEPS)
+	@for f in $(dir $(LIB_TARGET)); do $(MAKE) -C $$f clean; done
+	@$(RM) $(OBJS) $(DEPS)
 
 fclean:
-	@echo $(RED) "!!! make fclean: Removing *.o && $(NAME) !!!" $(NC) "\n"
-	$(MAKE) clean
-	for f in $(dir $(LIB_TARGET)); do $(MAKE) -C $$f fclean; done
-	$(RM) $(NAME) 
+	@$(MAKE) clean
+	@for f in $(dir $(LIB_TARGET)); do $(MAKE) -C $$f fclean; done
+	@$(RM) $(NAME) 
+	@echo $(GREEN) "Successfully removed LIB_TARGET:" $(NC) $(LIB_TARGET) $(NC) "\n"
 
 re: 
-	@echo $(RED) "!!! make re: fclean all !!!" $(NC) "\n"
-	$(MAKE) fclean
-	$(MAKE) all
-
-info-%:
-	$(MAKE) --dry-run --always-make $* | grep -v "info"
+	@$(MAKE) fclean
+	@$(MAKE) all
 
 run:
 	$(MAKE) re

@@ -52,7 +52,7 @@ DLIST				:=	$(addprefix $(DLIST_DIR), $(DLIST_FILES))
 # LIBS_TARGET = libraries to be built
 
 LIB				:=	libft
-LIB_TARGET			:=	./libft/libft.a
+LIB_TARGET		:=	./libft/libft.a
 
 
 #------------------------------------------------#
@@ -164,8 +164,8 @@ re:
 	$(MAKE) fclean
 	$(MAKE) all
 
-# info-%:
-# 	$(MAKE) --dry-run --always-make $* | grep -v "info"
+info-%:
+	$(MAKE) --dry-run --always-make $* | grep -v "info"
 
 run:
 	$(MAKE) re

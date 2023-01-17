@@ -142,7 +142,7 @@ STRING				:=	$(addprefix $(STRING_DIR), $(STRING_FILES))
 #------------------------------------------------#
 #   INCLUDES	 	                             #
 #------------------------------------------------#
-INC_DIR				:=	./includes/
+INC_DIR				:=	include
 INC_FILE			:=	libft.h
 
 
@@ -210,11 +210,16 @@ $(OBJ_DIR)/%.o: $(SRC_DIR)/%.c
 	@echo $(GREEN) "CREATED:" $(NC) $@ $(NC) "\n"
 
 clean:
+	@echo $(RED) "!!! make clean: Removing *.o !!!" $(NC) "\n"
 	$(RM) $(OBJS)
 
-fclean:		clean
+fclean:
+	@echo $(RED) "!!! make fclean: Removing *.o && $(NAME) !!!" $(NC) "\n"
+	$(MAKE) clean
 	$(RM) $(NAME)
 
-re: fclean all
-
+re: 
+	@echo $(RED) "!!! make re launched !!!" $(NC) "\n"
+	$(MAKE) fclean
+	$(MAKE) all
 .PHONY: all clean fclean re

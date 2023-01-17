@@ -10,15 +10,15 @@
 #                                                                              #
 # **************************************************************************** #
 
-##################################
-#   	      NAME 				 #
-##################################
+#------------------------------------------------#
+#   NAME		 	                             #
+#------------------------------------------------#
 NAME				:=	push_swap
 
 
-##################################
-#    	    SRCS FILES			 #
-##################################
+#------------------------------------------------#
+#   SRCS_FILES	 	                             #
+#------------------------------------------------#
 # Check Entry
 CHECK_ENTRY_DIR		:=	1_check_entry/
 CHECK_ENTRY_FILES	:=	ft_check_entry.c
@@ -49,60 +49,65 @@ DLIST_FILES			:=	ft_create_node.c \
 DLIST				:=	$(addprefix $(DLIST_DIR), $(DLIST_FILES))
 
 
-##################################
-#   	    INCLUDES 			 #
-##################################
-INC_DIR				:=	./includes/
-INC_FILE			:=	push_swap.h
-
-
-##################################
-#    	   	  SRCS 				 #
-##################################
-SRCS_DIR			:=	./srcs/
-SRCS_FILES			:=	$(CHECK_ENTRY) \
+#------------------------------------------------#
+#   INGREDIENTS	 	                             #
+#------------------------------------------------#
+# SRC_DIR   source directory
+# OBJ_DIR   object directory
+# SRCS      source files
+# OBJS      object files
+#
+SRC_DIR				:=	src
+SRCS				:=	\
+						$(CHECK_ENTRY) \
 						$(CONVERT_ENTRY) \
 						$(STORE_ENTRY) \
 						$(DLIST) \
 						ft_push_swap.c \
 						main.c
 
-SRCS				:=	$(addprefix $(SRCS_DIR), $(SRCS_FILES))
+SRCS        		:=	$(SRCS:%=$(SRC_DIR)/%)
 
 
-##################################
-#         COMPILATION 		 	 #
-##################################
+OBJ_DIR				:=	obj
+OBJS        		:=	$(SRCS:$(SRC_DIR)/%.c=$(OBJ_DIR)/%.o)
+
+
+#------------------------------------------------#
+#   INCLUDES	 	                             #
+#------------------------------------------------#
+INC_DIR				:=	./include/
+INC_FILE			:=	push_swap.h
+
+
+#------------------------------------------------#
+#   LIB	 	                                     #
+#------------------------------------------------#
+AR					:=	ar
+ARFLAGS				:=	rc
+
+
+#------------------------------------------------#
+#   UTENSILS	                                 #
+#------------------------------------------------#
+# RM        force remove
+# MAKEFLAGS make flags
+# DIR_DUP   duplicate directory tree
+#
+# CC        compiler
+# CFLAGS    compiler flags
+# IFLAGS 	preprocessor flags
+RM					:=	rm -rf
+MFLAGS   			+=	--no-print-directory
+DIR_DUP     		= 	mkdir -p $(@D)
 
 CC					:=	gcc
 CFLAGS				:=	-Wall -Wextra -Werror
 IFLAGS				:=	-I $(INC_DIR)
 
-
-##################################
-#           LIBRARY 			 #
-##################################
-AR					:=	ar
-ARFLAGS				:=	rc
-
-
-##################################
-#           REMOVE 				 #
-##################################
-RM					:=	rm -rf
-MFLAGS   			+= --no-print-directory
-
-
-##################################
-#              OBJS 			 #
-##################################
-OBJS				:=	$(SRCS:.c=.o)
-
-
-#################
-#### DISPLAY ####
-#################
-
+#------------------------------------------------#
+#   COLORS DISPLAY                               #
+#------------------------------------------------#
 RED					:=	'\033[0;31m'
 GREEN				:=	'\033[1;32m'
 ORANGE				:=	'\033[0;33m'
@@ -110,20 +115,27 @@ YELLOW				:=	'\033[1;33m'
 NC					:=	'\033[0m' # No Color
 
 
-##################################
-#             RULES 			 #
-##################################
-all: $(NAME) #header
+#------------------------------------------------#
+#   RECIPES                                      #
+#------------------------------------------------#
+# all       default goal
+# $(NAME)   linking .o -> binary
+# %.o       compilation .c -> .o
+# clean     remove .o
+# fclean    remove .o + binary
+# re        remake default goal
 
-# header:
-# 	@Headermaker srcs includes/push_swap.h -includes structs define
+all: $(NAME)
 
 $(NAME): $(OBJS)
-	@echo $(GREEN) "--> $(NAME) COMPILED !"$(NC)"\n"
+	@echo $(GREEN) "--> $(NAME) COMPILED !" $(NC)" \n"
 	$(CC) $(CFLAGS) $(OBJS) -o $(NAME)
 
-%.o: %.c
+$(OBJ_DIR)/%.o: $(SRC_DIR)/%.c
+	@echo $(YELLOW) "COMPILING:" $(NC) $<
+	$(DIR_DUP)
 	$(CC) $(CFLAGS) $(IFLAGS) -c -o $@ $<
+	@echo $(GREEN) "CREATED:" $(NC) $@ $(NC) "\n"
 
 clean:
 	$(RM) $(OBJS)
@@ -131,8 +143,14 @@ clean:
 fclean: clean
 	$(RM) $(NAME)
 
-re: #fclean all
+re: 
+	@echo $(RED) "!!! make re launched !!!" $(NC) "\n"
 	$(MAKE) $(MFLAGS) fclean
 	$(MAKE) $(MFLAGS) all
 
+
+#------------------------------------------------#
+#   SPEC                                         #
+#------------------------------------------------#
 .PHONY: all clean fclean re
+# .SILENT:

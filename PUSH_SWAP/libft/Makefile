@@ -218,22 +218,24 @@ all: $(NAME)
 
 $(NAME): $(OBJS)
 	@echo $(GREEN) "--> $(NAME) COMPILED !"$(NC)"\n"
-	$(AR) $(ARFLAGS) $(NAME) $(OBJS)
+	@$(AR) $(ARFLAGS) $(NAME) $(OBJS)
 
 $(BUILD_DIR)/%.o: $(SRC_DIR)/%.c
 	@echo $(YELLOW) "COMPILING:" $(NC) $<
-	$(DIR_DUP)
-	$(CC) $(CFLAGS) $(IFLAGS) -c -o $@ $<
+	@$(DIR_DUP)
+	@$(CC) $(CFLAGS) $(IFLAGS) -c -o $@ $<
 	@echo $(GREEN) "CREATED:" $(NC) $@ $(NC) "\n"
 
 clean:
-	@echo $(RED) "!!! make clean: Removing *.o !!!" $(NC) "\n"
-	$(RM) $(OBJS)
+	@$(RM) $(OBJS)
+	@echo $(GREEN) "Successfully removed:" $(NC) "*.o files" $(GREEN)":)" $(NC) "\n"
 
 fclean:
-	@echo $(RED) "!!! make fclean: Removing *.o && $(NAME) !!!" $(NC) "\n"
-	$(MAKE) clean
-	$(RM) $(NAME)
+	@echo $(RED) "clean: Removing:" $(NC) "*.o files"
+	@$(MAKE) clean
+	@echo $(RED) "fclean: Removing:" $(NC) $(NAME)
+	@$(RM) $(NAME)
+	@echo $(GREEN) "Successfully removed:" $(NC) $(NAME) $(GREEN)":)" $(NC) "\n"
 
 re: 
 	@echo $(RED) "!!! make re launched !!!" $(NC) "\n"

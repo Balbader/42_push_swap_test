@@ -74,10 +74,6 @@ INCS				:=	./include \
 # OBJS		= object files
 # DEPS		= dependency files
 
-# CC        = compiler
-# CFLAGS    = compiler flags
-# IFLAGS 	= preprocessor flags
-
 SRC_DIR				:=	src
 SRCS				:=	\
 						$(CHECK_ENTRY) \
@@ -92,11 +88,6 @@ BUILD_DIR			:=	.build
 OBJS        		:=	$(SRCS:$(SRC_DIR)/%.c=$(BUILD_DIR)/%.o)
 DEPS        		:=	$(OBJS:.o=.d)
 
-CC					:=	gcc
-CFLAGS				:=	-Wall -Wextra -Werror
-IFLAGS				:=	$(addprefix -I, $(INCS))
-LFLAGS				:=	$(addprefix -L, $(dir $(LIB_TARGET)))
-
 
 #------------------------------------------------#
 #   UTENSILS	                                 #
@@ -105,9 +96,18 @@ LFLAGS				:=	$(addprefix -L, $(dir $(LIB_TARGET)))
 # MAKEFLAGS = make flags
 # DIR_DUP   = duplicate directory tree
 
+# CC        = compiler
+# CFLAGS    = compiler flags
+# IFLAGS 	= preprocessor flags
+
 RM					:=	rm -rf
 MAKEFLAGS   		+=	--no-print-directory
 DIR_DUP     		= 	mkdir -p $(@D)
+
+CC					:=	gcc
+CFLAGS				:=	-Wall -Wextra -Werror
+IFLAGS				:=	$(addprefix -I, $(INCS))
+LFLAGS				:=	$(addprefix -L, $(dir $(LIB_TARGET)))
 
 
 #------------------------------------------------#

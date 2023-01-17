@@ -89,7 +89,6 @@ LIBFT_FILE			=	./libft/libft.a
 MAKE_LIBFT			=	make -C $(LIBFT_PATH)
 
 
-
 ##################################
 #         COMPILATION 		 	 #
 ##################################

@@ -40,7 +40,9 @@ TEST_STORE			:=	$(addprefix $(TEST_STORE_DIR), $(TEST_STORE_FILES))
 #------------------------------------------------#
 #   INGREDIENTS	 	                             #
 #------------------------------------------------#
-LIBS				:=	libpush_swap liblibft
+LIBS				:=	../ \
+						../libft/
+
 LIBS_TARGET			:=	\
 						../libpush_swap.a \
 						../libft/liblibft.a
@@ -64,7 +66,7 @@ CC					:=	gcc
 CFLAGS				:=	-Wall -Wextra -Werror
 IFLAGS				:=	$(addprefix -I, $(INCS))
 LDFLAGS				:=	$(addprefix -L, $(dir $(LIBS_TARGET)))
-LDLIBS 				:=	$(addprefix -l, $(LIBS))
+LDLIBS 				:=	$(addprefix -l:, $(LIBS))
 
 
 #------------------------------------------------#

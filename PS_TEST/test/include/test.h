@@ -13,7 +13,8 @@
 #ifndef TEST_H
 # define TEST_H
 
-# include "../../include/push_swap.h"
+# include "push_swap.h"
+# include "libft.h"
 
 // **************** test ceck errors *****************
 void	ft_test_check_entry(char *str);

@@ -10,10 +10,8 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../ft_check_entry.c"
-#include <stdio.h>
+#include "ft_push_swap"
 
-int	ft_check_entry(char *str);
 
 void	ft_test_check_entry(char *str)
 {

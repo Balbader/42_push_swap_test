@@ -14,7 +14,7 @@
 
 void	ft_test_store_entry(int data)
 {
-	t_dlist	*test;
+	t_dblist	*test;
 
 	test = ft_store_entry(data);
 	if (data == test->data)

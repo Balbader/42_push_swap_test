@@ -13,7 +13,7 @@
 #------------------------------------------------#
 #   NAME		 	                             #
 #------------------------------------------------#
-NAME				:=	push_swap.a
+NAME				:=	libpush_swap.a
 
 
 #------------------------------------------------#
@@ -85,7 +85,7 @@ DLIST				:=	$(addprefix $(DLIST_DIR), $(DLIST_FILES))
 # ARFLAGS	= at the root of the repository
 
 LIBS				:=	./libft/
-LIBS_TARGET			:=	./libft/libft.a
+LIBS_TARGET			:=	./libft/liblibft.a
 
 INCS				:=	./include/ \
 						./libft/include/
@@ -153,28 +153,30 @@ all: $(NAME)
 
 $(NAME): $(OBJS) $(LIBS_TARGET)
 	@echo $(GREEN) "--> $(NAME) COMPILED !" $(NC)" \n"
-	$(AR) $(ARFLAGS) $(LDFLAGS) $(OBJS) $(LDLIBS) -o $(NAME)
-	$(CC) $(IFLAGS) main.o -o exec -L./ -lftpush_swap.a
+	@$(AR) $(ARFLAGS) $(NAME) $(OBJS)
 
 $(LIBS_TARGET):
 	@echo $(YELLOW) "Building LIbrary: $(NAME)" $(NC) "\n"
-	$(MAKE) -C $(@D)
+	@$(MAKE) -C $(@D)
 
 $(BUILD_DIR)/%.o: $(SRC_DIR)/%.c
 	@echo $(YELLOW) "COMPILING:" $(NC) $<
-	$(DIR_DUP)
-	$(CC) $(CFLAGS) $(IFLAGS) -c -o $@ $<
+	@$(DIR_DUP)
+	@$(CC) $(CFLAGS) $(IFLAGS) -c -o $@ $<
 	@echo $(GREEN) "CREATED:" $(NC) $@ $(NC) "\n"
 
 -include $(DEPS)
 
 clean:
 	@for f in $(dir $(LIBS_TARGET)); do $(MAKE) -C $$f clean; done
+	@echo $(RED) "---> clean: Removing:" $(NC) "$(NAME) / *.o files"
 	@$(RM) $(BUILD_DIR) $(DEPS)
+	@echo $(GREEN) "Successfully removed:" $(NC) "$(NAME) / *.o files" $(NC) "\n"
 
 fclean:
 	@$(MAKE) clean
 	@for f in $(dir $(LIBS_TARGET)); do $(MAKE) -C $$f fclean; done
+	@echo $(RED) "--> fclean: Removing:" $(NC) $(NAME)
 	@$(RM) $(NAME) 
 	@echo $(GREEN) "Successfully removed:" $(NC) $(NAME) $(NC) "\n"
 

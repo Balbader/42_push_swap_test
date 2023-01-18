@@ -40,16 +40,15 @@ TEST_STORE			:=	$(addprefix $(TEST_STORE_DIR), $(TEST_STORE_FILES))
 #------------------------------------------------#
 #   INGREDIENTS	 	                             #
 #------------------------------------------------#
-LIBS				:=	./../ \
-						./../libft/
+LIBS				:=	./lib/push_swap \
+						./lib/libft
 
-LIBS_TARGET			:=	\
-						../libpush_swap.a \
-						../libft/liblibft.a
+LIBS_TARGET			:=	./lib/push_swap/libpush_swap.a \
+						./lib/libft/liblibft.a
 
 INCS				:=	./include/ \
-						../include/ \
-						../libft/include/
+						./lib/push_swap/include/ \
+						./lib/libft/include/
 
 SRC_DIR				:=	./src/
 SRCS				:=	\
@@ -58,7 +57,7 @@ SRCS				:=	\
 						$(TEST_STORE)
 SRCS        		:=	$(SRCS:%=$(SRC_DIR)/%)
 
-BUILD_DIR			:=	./.test/
+BUILD_DIR			:=	./.build/
 OBJS        		:=	$(SRCS:$(SRC_DIR)/%.c=$(BUILD_DIR)/%.o)
 DEPS				:=	$(OBJS:.o=.d)
 

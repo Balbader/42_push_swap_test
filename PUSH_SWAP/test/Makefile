@@ -16,22 +16,15 @@
 NAME				:=	test
 
 
-#------------------------------------------------#
-#   PUSHSWAP	 	                         	 #
-#------------------------------------------------#
-# PUSH =  file to make first
-# LIBS_TARGET = libraries to be built
-
-PUSH				:=	../
-PUSH_TARGET			:=	../Makefile
-
 
 #------------------------------------------------#
 #   INCLUDES	 	                             #
 #------------------------------------------------#
 # INCS		= Header files locations
 
-INCS				:=	include
+INCS				:=	include \
+						../include \
+						../libft/include
 
 
 #------------------------------------------------#
@@ -73,7 +66,6 @@ DIR_DUP     		= 	mkdir -p $(@D)
 CC					:=	gcc
 CFLAGS				:=	-Wall -Wextra -Werror
 IFLAGS				:=	$(addprefix -I, $(INCS))
-PFLAGS				:=	$(addprefix -L, $(dir $(PUSH_TARGET)))
 
 
 #------------------------------------------------#
@@ -98,19 +90,19 @@ NC					:=	'\033[0m' # No Color
 
 all: $(NAME)
 
-$(NAME): $(OBJS) $(PUSH_TARGET)
+$(NAME): $(OBJS) $(PUSH)
 	@echo $(GREEN) "--> $(NAME) COMPILED !" $(NC)" \n"
-	$(CC) $(PFLAGS) $(OBJS) -o $(NAME)
+	$(CC) $(OBJS) -o $(NAME)
 
-$(PUSH_TARGET):
+$(PUSH):
 	@echo $(YELLOW) "Making Push Swap: $(PUSH_TARGET)" $(NC) "\n"
-	$(MAKE) $(PUSH_TARGET)
+	$(MAKE) $(PUSH)
 	$(MAKE) -C $(@D)
 
 $(BUILD_DIR)/%.o: $(SRC_DIR)/%.c
 	@echo $(YELLOW) "COMPILING:" $(NC) $<
 	$(DIR_DUP)
-	$(CC) $(PFLAGS) $(IFLAGS) -c -o $@ $<
+	$(CC) $(IFLAGS) -c -o $@ $<
 	@echo $(GREEN) "CREATED:" $(NC) $@ $(NC) "\n"
 
 -include $(DEPS)

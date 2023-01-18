@@ -1,4 +1,4 @@
-# **************************************************************************** #
+#**************************************************************************** #
 #                                                                              #
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
@@ -13,7 +13,7 @@
 #------------------------------------------------#
 #   NAME		 	                             #
 #------------------------------------------------#
-NAME				:=	push_swap
+NAME				:=	push_swap.a
 
 
 #------------------------------------------------#
@@ -63,48 +63,58 @@ DLIST				:=	$(addprefix $(DLIST_DIR), $(DLIST_FILES))
 
 
 #------------------------------------------------#
-#   LIBS	 	                                 #
-#------------------------------------------------#
-# LIBS = libraries to be used
-# LIBS_TARGET = libraries to be built
-
-LIB					:=	libft
-LIB_TARGET			:=	./libft/libft.a
-
-
-#------------------------------------------------#
-#   INCLUDES	 	                             #
-#------------------------------------------------#
-# INCS		= Header files locations
-
-INCS				:=	include \
-						libft/include
-
-
-#------------------------------------------------#
 #   INGREDIENTS	 	                             #
 #------------------------------------------------#
-# SRC_DIR	= source directory
-# SRCS		= source files
+# LIBS 		  	= libraries to be used
+# LIBS_TARGET 	= libraries to be built
+#
+# INCS		  	= Header files locations
+#
+# SRC_DIR		= source directory
+# SRCS			= source files
 
-# BUILD_DIR	= object directory
-# OBJS		= object files
-# DEPS		= dependency files
+# BUILD_DIR		= object directory
+# OBJS			= object files
+# DEPS			= dependency files
 
-SRC_DIR				:=	src
+# CC        = compiler
+# CFLAGS    = compiler flags
+# IFLAGS 	= preprocessor flags
+
+# AR		= creating the library
+# ARFLAGS	= at the root of the repository
+
+LIBS				:=	./libft/
+LIBS_TARGET			:=	./libft/libft.a
+
+INCS				:=	./include/ \
+						./libft/include/
+
+SRC_DIR				:=	./src/
 SRCS				:=	\
 						$(CHECK_ENTRY) \
 						$(CONVERT_ENTRY) \
 						$(STORE_ENTRY) \
+						$(OPER) \
 						$(DLIST) \
 						ft_push_swap.c \
 						main.c
 
 SRCS        		:=	$(SRCS:%=$(SRC_DIR)/%)
 
-BUILD_DIR			:=	.build
+BUILD_DIR			:=	./.build/
 OBJS        		:=	$(SRCS:$(SRC_DIR)/%.c=$(BUILD_DIR)/%.o)
 DEPS        		:=	$(OBJS:.o=.d)
+
+CC					:=	gcc
+CFLAGS				:=	-Wall -Wextra -Werror
+
+IFLAGS				:=	$(addprefix -I, $(INCS))
+LDFLAGS				:=	$(addprefix -L, $(dir $(LIBS_TARGET)))
+LDLIBS				:=	$(addprefix -l, $(LIBS))
+
+AR					:=	ar
+ARFLAGS				:=	rc
 
 
 #------------------------------------------------#
@@ -114,18 +124,9 @@ DEPS        		:=	$(OBJS:.o=.d)
 # MAKEFLAGS = make flags
 # DIR_DUP   = duplicate directory tree
 
-# CC        = compiler
-# CFLAGS    = compiler flags
-# IFLAGS 	= preprocessor flags
-
 RM					:=	rm -rf
 MAKEFLAGS   		+=	--no-print-directory
 DIR_DUP     		= 	mkdir -p $(@D)
-
-CC					:=	gcc
-CFLAGS				:=	-Wall -Wextra -Werror
-IFLAGS				:=	$(addprefix -I, $(INCS))
-LFLAGS				:=	$(addprefix -L, $(dir $(LIB_TARGET)))
 
 
 #------------------------------------------------#
@@ -150,12 +151,13 @@ NC					:=	'\033[0m' # No Color
 
 all: $(NAME)
 
-$(NAME): $(OBJS) $(LIB_TARGET)
+$(NAME): $(OBJS) $(LIBS_TARGET)
 	@echo $(GREEN) "--> $(NAME) COMPILED !" $(NC)" \n"
-	$(CC) $(LFLAGS) $(OBJS) -o $(NAME)
+	$(AR) $(ARFLAGS) $(LDFLAGS) $(OBJS) $(LDLIBS) -o $(NAME)
+	$(CC) $(IFLAGS) main.o -o exec -L./ -lftpush_swap.a
 
-$(LIB_TARGET):
-	@echo $(YELLOW) "Building LIbrary: $(LIBS_TARGET)" $(NC) "\n"
+$(LIBS_TARGET):
+	@echo $(YELLOW) "Building LIbrary: $(NAME)" $(NC) "\n"
 	$(MAKE) -C $(@D)
 
 $(BUILD_DIR)/%.o: $(SRC_DIR)/%.c
@@ -167,24 +169,21 @@ $(BUILD_DIR)/%.o: $(SRC_DIR)/%.c
 -include $(DEPS)
 
 clean:
-	@for f in $(dir $(LIB_TARGET)); do $(MAKE) -C $$f clean; done
+	@for f in $(dir $(LIBS_TARGET)); do $(MAKE) -C $$f clean; done
 	@$(RM) $(BUILD_DIR) $(DEPS)
 
 fclean:
 	@$(MAKE) clean
-	@for f in $(dir $(LIB_TARGET)); do $(MAKE) -C $$f fclean; done
+	@for f in $(dir $(LIBS_TARGET)); do $(MAKE) -C $$f fclean; done
 	@$(RM) $(NAME) 
-	@echo $(GREEN) "Successfully removed LIB_TARGET:" $(NC) $(LIB_TARGET) $(NC) "\n"
+	@echo $(GREEN) "Successfully removed:" $(NC) $(NAME) $(NC) "\n"
 
 re: 
 	@$(MAKE) fclean
 	@$(MAKE) all
 
-run:
-	$(MAKE) re
-	~./$(NAME)
 
 #------------------------------------------------#
 #   SPEC                                         #
 #------------------------------------------------#
-.PHONY: run
+.PHONY: all clean fclean re

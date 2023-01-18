@@ -16,9 +16,9 @@
 # include "../../include/push_swap.h"
 
 // **************** test ceck errors *****************
-void		ft_test_check_entry(char *str);
-void		ft_test_convert_entry(char *str);
-t_dblist	*ft_test_store_entry(int data);
+void	ft_test_check_entry(char *str);
+void	ft_test_convert_entry(char *str);
+void	ft_test_store_entry(int data);
 
 // **************** test dbl_list ********************
 

@@ -17,54 +17,62 @@ NAME				:=	test
 
 
 #------------------------------------------------#
-#   INCLUDES	 	                             #
+#   srcs_files	 	                             #
 #------------------------------------------------#
-# INCS		= Header files locations
+# Test Check Entry
+TEST_ENTRY_DIR		:=	1_test_check_entry/
+TEST_ENTRY_FILES	:=	ft_test_check_entry.c
+TEST_ENTRY			:=	$(addprefix $(TEST_ENTRY_DIR), $(TEST_ENTRY_FILES))
 
-INCS				:=	include \
-						../include \
-						../libft/include
+
+# Convert Entry
+TEST_CONVERT_DIR	:=	2_test_convert_entry/
+TEST_CONVERT_FILES	:=	ft_test_convert_entry.c
+TEST_CONVERT		:=	$(addprefix $(TEST_CONVERT_DIR), $(TEST_CONVERT_FILES))
+
+
+# Store Entry
+TEST_STORE_DIR		:=	3_test_store_entry/
+TEST_STORE_FILES	:=	ft_test_store_entry.c
+TEST_STORE			:=	$(addprefix $(TEST_STORE_DIR), $(TEST_STORE_FILES))
 
 
 #------------------------------------------------#
 #   INGREDIENTS	 	                             #
 #------------------------------------------------#
-# SRC_DIR	= source directory
-# SRCS		= source files
+LIBS				:=	push_swap libft
+LIBS_TARGET			:=	\
+						../libpush_swap.a \
+						../libft/liblibft.a
 
-# BUILD_DIR	= object directory
-# OBJS		= object files
+INCS				:=	./include/ \
+						../include/ \
+						../libft/include/
 
-SRC_DIR				:=	src
+SRC_DIR				:=	./src/
 SRCS				:=	\
-						ft_test_check_entry.c \
-						ft_test_convert_entry.c \
-						ft_test_store_entry.c
-
+						$(TEST_ENTRY) \
+						$(TEST_CONVERT) \
+						$(TEST_STORE)
 SRCS        		:=	$(SRCS:%=$(SRC_DIR)/%)
 
-BUILD_DIR			:=	.test
+BUILD_DIR			:=	./.test/
 OBJS        		:=	$(SRCS:$(SRC_DIR)/%.c=$(BUILD_DIR)/%.o)
+DEPS				:=	$(OBJS:.o=.d)
+
+CC					:=	gcc
+CFLAGS				:=	-Wall -Wextra -Werror
+IFLAGS				:=	$(addprefix -I, $(INCS))
+LDFLAGS				:=	$(addprefix -L,$(dir $(LIBS_TARGET)))
+LDLIBS 				:=	$(addprefix -l,$(LIBS))
 
 
 #------------------------------------------------#
 #   UTENSILS	                                 #
 #------------------------------------------------#
-# RM        = force remove
-# MAKEFLAGS = make flags
-# DIR_DUP   = duplicate directory tree
-
-# CC        = compiler
-# CFLAGS    = compiler flags
-# IFLAGS 	= preprocessor flags
-
 RM					:=	rm -rf
 MAKEFLAGS   		+=	--no-print-directory
 DIR_DUP     		= 	mkdir -p $(@D)
-
-CC					:=	gcc
-CFLAGS				:=	-Wall -Wextra -Werror
-IFLAGS				:=	$(addprefix -I, $(INCS))
 
 
 #------------------------------------------------#
@@ -89,13 +97,11 @@ NC					:=	'\033[0m' # No Color
 
 all: $(NAME)
 
-$(NAME): $(OBJS) $(PUSH)
+$(NAME): $(OBJS) $(LIBS_TARGET)
 	@echo $(GREEN) "--> $(NAME) COMPILED !" $(NC)" \n"
-	$(CC) $(OBJS) -o $(NAME)
+	@$(CC) $(LDFLAGS) $(OBJS) $(LDLIBS) -o $(NAME)
 
-$(PUSH):
-	@echo $(YELLOW) "Making Push Swap: $(PUSH_TARGET)" $(NC) "\n"
-	$(MAKE) $(PUSH)
+$(LIBS_TARGET):
 	$(MAKE) -C $(@D)
 
 $(BUILD_DIR)/%.o: $(SRC_DIR)/%.c
@@ -107,12 +113,13 @@ $(BUILD_DIR)/%.o: $(SRC_DIR)/%.c
 -include $(DEPS)
 
 clean:
-	@$(RM) $(BUILD_DIR) $(DEPS)
+	@for f in $(dir $(LIBS_TARGET)); do $(MAKE) -C $$f clean; done
+	@$(RM) $(OBJS) $(DEPS)
 
 fclean:
 	@$(MAKE) clean
+	@for f in $(dir $(LIBS_TARGET)); do $(MAKE) -C $$f fclean; done
 	@$(RM) $(NAME) 
-	@echo $(GREEN) "Successfully removed PUSH_TARGET:" $(NC) $(PUSH_TARGET) $(NC) "\n"
 
 re: 
 	@$(MAKE) fclean
@@ -123,3 +130,4 @@ re:
 #   SPEC                                         #
 #------------------------------------------------#
 .PHONY: all fclean clean re
+.SILENT:

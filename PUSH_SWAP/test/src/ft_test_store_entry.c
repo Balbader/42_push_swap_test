@@ -12,8 +12,6 @@
 
 #include "test.h"
 
-t_dlist	*ft_store_entry(int data);
-
 void	ft_test_store_entry(int data)
 {
 	t_dlist	*test;

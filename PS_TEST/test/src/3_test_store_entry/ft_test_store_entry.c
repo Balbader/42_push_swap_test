@@ -31,17 +31,17 @@ void	ft_test_store_entry(int data)
 	}
 }
 
-int	main(void)
-{
-	ft_test_store_entry(0);
-	ft_test_store_entry(-0);
-	ft_test_store_entry(1);
-	ft_test_store_entry(-0);
-	ft_test_store_entry(10);
-	ft_test_store_entry(-10);
-	ft_test_store_entry(123);
-	ft_test_store_entry(-123);
-	ft_test_store_entry(INT_MIN);
-	ft_test_store_entry(INT_MAX);
-	return (0);
-}
+// int	main(void)
+// {
+// 	ft_test_store_entry(0);
+// 	ft_test_store_entry(-0);
+// 	ft_test_store_entry(1);
+// 	ft_test_store_entry(-0);
+// 	ft_test_store_entry(10);
+// 	ft_test_store_entry(-10);
+// 	ft_test_store_entry(123);
+// 	ft_test_store_entry(-123);
+// 	ft_test_store_entry(INT_MIN);
+// 	ft_test_store_entry(INT_MAX);
+// 	return (0);
+// }

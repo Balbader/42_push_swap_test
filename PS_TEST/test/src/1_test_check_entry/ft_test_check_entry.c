@@ -23,14 +23,14 @@ void	ft_test_check_entry(char *str)
 		printf("res = %d\n%s: Test Fail!\n", res_ft_check_entry, str);
 }
 
-int	main(void)
-{
-	ft_test_check_entry("0");
-	ft_test_check_entry("A");
-	ft_test_check_entry(" ");
-	ft_test_check_entry("        ");
-	ft_test_check_entry("12345678");
-	ft_test_check_entry("-12345678");
-	ft_test_check_entry("abc12345678");
-	return (0);
-}
+// int	main(void)
+// {
+// 	ft_test_check_entry("0");
+// 	ft_test_check_entry("A");
+// 	ft_test_check_entry(" ");
+// 	ft_test_check_entry("        ");
+// 	ft_test_check_entry("12345678");
+// 	ft_test_check_entry("-12345678");
+// 	ft_test_check_entry("abc12345678");
+// 	return (0);
+// }

@@ -40,8 +40,8 @@ TEST_STORE			:=	$(addprefix $(TEST_STORE_DIR), $(TEST_STORE_FILES))
 #------------------------------------------------#
 #   INGREDIENTS	 	                             #
 #------------------------------------------------#
-LIBS				:=	../ \
-						../libft/
+LIBS				:=	./../ \
+						./../libft/
 
 LIBS_TARGET			:=	\
 						../libpush_swap.a \

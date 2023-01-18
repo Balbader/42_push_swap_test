@@ -96,9 +96,7 @@ SRCS				:=	\
 						$(CONVERT_ENTRY) \
 						$(STORE_ENTRY) \
 						$(OPER) \
-						$(DLIST) \
-						ft_push_swap.c \
-						main.c
+						$(DLIST) 
 
 SRCS        		:=	$(SRCS:%=$(SRC_DIR)/%)
 

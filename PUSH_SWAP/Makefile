@@ -51,8 +51,8 @@ DLIST				:=	$(addprefix $(DLIST_DIR), $(DLIST_FILES))
 # LIBS = libraries to be used
 # LIBS_TARGET = libraries to be built
 
-LIB				:=	libft
-LIB_TARGET		:=	./libft/libft.a
+LIB					:=	libft
+LIB_TARGET			:=	./libft/libft.a
 
 
 #------------------------------------------------#

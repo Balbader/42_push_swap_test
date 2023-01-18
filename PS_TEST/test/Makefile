@@ -114,7 +114,7 @@ $(BUILD_DIR)/%.o: $(SRC_DIR)/%.c
 
 clean:
 	@for f in $(dir $(LIBS_TARGET)); do $(MAKE) -C $$f clean; done
-	@$(RM) $(OBJS) $(DEPS)
+	@$(RM) $(OBJS) $(BUILD_DIR)	$(DEPS)
 
 fclean:
 	@$(MAKE) clean

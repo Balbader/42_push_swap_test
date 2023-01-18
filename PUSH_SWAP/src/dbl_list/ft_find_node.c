@@ -12,13 +12,13 @@
 
 #include "push_swap.h"
 
-t_dlist	*ft_find_node(t_dlist *dlist, int data)
+t_dblist	*ft_find_node(t_dblist *list, int data)
 {
-	t_dlist	*to_find;
+	t_dblist	*to_find;
 
-	if (!dlist)
+	if (!list)
 		return (NULL);
-	to_find = dlist;
+	to_find = list;
 	while (to_find != NULL)
 	{
 		if (to_find->data == data)

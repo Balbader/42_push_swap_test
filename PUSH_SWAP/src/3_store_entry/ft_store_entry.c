@@ -12,9 +12,9 @@
 
 #include "push_swap.h"
 
-t_dlist	*ft_store_entry(int data)
+t_dblist	*ft_store_entry(int data)
 {
-	t_dlist	*new_node;
+	t_dblist	*new_node;
 
 	new_node = ft_create_node(data);
 	return (new_node);

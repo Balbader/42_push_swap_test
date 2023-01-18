@@ -12,11 +12,11 @@
 
 #include "push_swap.h"
 
-t_dlist	*ft_create_node(int data)
+t_dblist	*ft_create_node(int data)
 {
-	t_dlist	*new_node;
+	t_dblist	*new_node;
 
-	new_node = (t_dlist *)malloc(sizeof(t_dlist));
+	new_node = (t_dblist *)malloc(sizeof(t_dblist));
 	if (!new_node)
 		return (NULL);
 	new_node->data = data;

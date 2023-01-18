@@ -10,7 +10,9 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../includes/push_swap.h"
+#include "push_swap.h"
+
+t_dlist	*ft_store_entry(int data);
 
 void	test_ft_store_entry(int data)
 {
@@ -19,7 +21,7 @@ void	test_ft_store_entry(int data)
 	test = ft_store_entry(data);
 	if (data == test->data)
 	{
-		printf("Test Success!\n");
+		ft_printf("Test Success!\n");
 		printf("data: %d\n", data);
 		printf("test->data: %d\n", test->data);
 	}

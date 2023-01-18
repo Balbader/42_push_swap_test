@@ -12,9 +12,9 @@
 
 #include "push_swap.h"
 
-void	ft_insert_node(t_dlist *dlist, int data, t_dlist *to_find)
+void	ft_insert_node(t_dblist *dlist, int data, t_dblist *to_find)
 {
-	t_dlist	*node_to_insert;
+	t_dblist	*node_to_insert;
 
 	if (!dlist)
 		return ;

@@ -227,7 +227,7 @@ $(BUILD_DIR)/%.o: $(SRC_DIR)/%.c
 	@echo $(GREEN) "CREATED:" $(NC) $@ $(NC) "\n"
 
 clean:
-	@$(RM) $(OBJS)
+	@$(RM) $(BUILD_DIR)
 
 fclean:
 	@echo $(RED) "---> clean: Removing:" $(NC) "libft.o"

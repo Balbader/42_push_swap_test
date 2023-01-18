@@ -13,7 +13,7 @@
 #------------------------------------------------#
 #   NAME		 	                             #
 #------------------------------------------------#
-NAME				:=	libpush_swap.a
+NAME				:=	push_swap.a
 
 
 #------------------------------------------------#
@@ -65,14 +65,14 @@ DLIST				:=	$(addprefix $(DLIST_DIR), $(DLIST_FILES))
 #------------------------------------------------#
 #   INGREDIENTS	 	                             #
 #------------------------------------------------#
-# INCS		  	= Header files locations
-#
-# SRC_DIR		= source directory
-# SRCS			= source files
+# INCS		= Header files locations
 
-# BUILD_DIR		= object directory
-# OBJS			= object files
-# DEPS			= dependency files
+# SRC_DIR	= source directory
+# SRCS		= source files
+
+# BUILD_DIR	= object directory
+# OBJS		= object files
+# DEPS		= dependency files
 
 # CC        = compiler
 # CFLAGS    = compiler flags
@@ -81,7 +81,12 @@ DLIST				:=	$(addprefix $(DLIST_DIR), $(DLIST_FILES))
 # AR		= creating the library
 # ARFLAGS	= at the root of the repository
 
-INCS				:=	./include/
+LIBS				:=	../libft/
+
+LIBS_TARGET			:=	../libft/libft.a
+
+INCS				:=	./include/ \
+						../libft/include/
 
 SRC_DIR				:=	./src/
 SRCS				:=	\
@@ -100,6 +105,8 @@ DEPS        		:=	$(OBJS:.o=.d)
 CC					:=	gcc
 CFLAGS				:=	-Wall -Wextra -Werror
 IFLAGS				:=	$(addprefix -I, $(INCS))
+# LDFLAGS				:=	$(addprefix -L, $(dir $(LIBS_TARGET)))
+# LDLIBS 				:= 	$(addprefix -l, $(LIBS))
 
 AR					:=	ar
 ARFLAGS				:=	rc
@@ -143,8 +150,8 @@ $(NAME): $(OBJS) $(LIBS_TARGET)
 	@echo $(GREEN) "--> $(NAME) COMPILED !" $(NC)" \n"
 	@$(AR) $(ARFLAGS) $(NAME) $(OBJS)
 
+# @$(CC) $(LDFLAGS) $(OBJS) $(LDLIBS) -o $(NAME)
 $(LIBS_TARGET):
-	@echo $(YELLOW) "Building LIbrary: $(NAME)" $(NC) "\n"
 	@$(MAKE) -C $(@D)
 
 $(BUILD_DIR)/%.o: $(SRC_DIR)/%.c
@@ -153,6 +160,7 @@ $(BUILD_DIR)/%.o: $(SRC_DIR)/%.c
 	@$(CC) $(CFLAGS) $(IFLAGS) -c -o $@ $<
 	@echo $(GREEN) "CREATED:" $(NC) $@ $(NC) "\n"
 
+# @echo $(RED) "---> Building $(NAME)" $(NC) "\n"
 -include $(DEPS)
 
 clean:

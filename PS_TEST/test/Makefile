@@ -13,7 +13,7 @@
 #------------------------------------------------#
 #   NAME		 	                             #
 #------------------------------------------------#
-NAME				:=	test
+NAME				:=	run_test
 
 
 #------------------------------------------------#
@@ -40,11 +40,10 @@ TEST_STORE			:=	$(addprefix $(TEST_STORE_DIR), $(TEST_STORE_FILES))
 #------------------------------------------------#
 #   INGREDIENTS	 	                             #
 #------------------------------------------------#
-LIBS				:=	./lib/push_swap \
-						./lib/libft
+LIBS				:=	push_swap libft
 
-LIBS_TARGET			:=	./lib/push_swap/libpush_swap.a \
-						./lib/libft/liblibft.a
+LIBS_TARGET			:=	./lib/push_swap/push_swap.a \
+						./lib/libft/libft.a
 
 INCS				:=	./include/ \
 						./lib/push_swap/include/ \
@@ -54,16 +53,17 @@ SRC_DIR				:=	./src/
 SRCS				:=	\
 						$(TEST_ENTRY) \
 						$(TEST_CONVERT) \
-						$(TEST_STORE)
+						$(TEST_STORE) \
+						main.c
 SRCS        		:=	$(SRCS:%=$(SRC_DIR)/%)
 
-BUILD_DIR			:=	./.build/
+BUILD_DIR			:=	.build
 OBJS        		:=	$(SRCS:$(SRC_DIR)/%.c=$(BUILD_DIR)/%.o)
 DEPS				:=	$(OBJS:.o=.d)
 
 CC					:=	gcc
 CFLAGS				:=	-Wall -Wextra -Werror
-IFLAGS				:=	$(addprefix -I, $(INCS))
+IFLAGS				:=	$(addprefix -I, $(INCS)) -MMD -MP
 LDFLAGS				:=	$(addprefix -L, $(dir $(LIBS_TARGET)))
 LDLIBS 				:=	$(addprefix -l:, $(LIBS))
 
@@ -99,16 +99,17 @@ NC					:=	'\033[0m' # No Color
 all: $(NAME)
 
 $(NAME): $(OBJS) $(LIBS_TARGET)
-	@echo $(GREEN) "--> $(NAME) COMPILED !" $(NC)" \n"
 	@$(CC) $(LDFLAGS) $(OBJS) $(LDLIBS) -o $(NAME)
+	@echo $(GREEN) "--> $(NAME) COMPILED !" $(NC)" \n"
 
 $(LIBS_TARGET):
-	$(MAKE) -C $(@D)
+	@echo $(RED) "--> Building $(NAME)" $(NC) "\n"
+	@$(MAKE) -C $(@D)
 
 $(BUILD_DIR)/%.o: $(SRC_DIR)/%.c
 	@echo $(YELLOW) "COMPILING:" $(NC) $<
-	$(DIR_DUP)
-	$(CC) $(IFLAGS) -c -o $@ $<
+	@$(DIR_DUP)
+	@$(CC) $(IFLAGS) -c -o $@ $<
 	@echo $(GREEN) "CREATED:" $(NC) $@ $(NC) "\n"
 
 -include $(DEPS)
@@ -130,5 +131,5 @@ re:
 #------------------------------------------------#
 #   SPEC                                         #
 #------------------------------------------------#
-.PHONY: all fclean clean re
-.SILENT:
+.PHONY: all clean fclean re
+# .SILENT:

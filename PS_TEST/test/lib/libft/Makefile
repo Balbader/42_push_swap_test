@@ -13,7 +13,7 @@
 #------------------------------------------------#
 #   NAME		 	                             #
 #------------------------------------------------#
-NAME				:=	liblibft.a
+NAME				:=	libft.a
 
 
 #------------------------------------------------#
@@ -158,9 +158,9 @@ STRING				:=	$(addprefix $(STRING_DIR), $(STRING_FILES))
 # AR		= creating the library
 # ARFLAGS	= at the root of the repository
 
-INCS				:=	include
+INCS				:=	./include/
 
-SRC_DIR				:=	src
+SRC_DIR				:=	./src/
 SRCS				:=	\
 						$(CTYPE) \
 						$(DLIST) \
@@ -178,7 +178,7 @@ DEPS        		:=	$(OBJS:.o=.d)
 
 CC					:=	gcc
 CFLAGS				:=	-Wall -Wextra -Werror
-IFLAGS				:=	$(addprefix -I, $(INC_DIR))
+IFLAGS				:=	$(addprefix -I, $(INCS))
 
 AR					:=	ar
 ARFLAGS				:=	rc

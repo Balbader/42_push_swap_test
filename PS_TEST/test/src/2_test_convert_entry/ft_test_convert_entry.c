@@ -10,7 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../include/test.h"
+#include "test.h"
 
 void	ft_test_convert_entry(char *str)
 {

@@ -40,10 +40,10 @@ TEST_STORE			:=	$(addprefix $(TEST_STORE_DIR), $(TEST_STORE_FILES))
 #------------------------------------------------#
 #   INGREDIENTS	 	                             #
 #------------------------------------------------#
-LIBS				:=	push_swap libft
+LIBS				:=	lib_push_swap lib_libft
 LIBS_TARGET			:=	\
-						../libpush_swap.a \
-						../libft/liblibft.a
+						../lib_push_swap.a \
+						../libft/lib_libft.a
 
 INCS				:=	./include/ \
 						../include/ \
@@ -63,8 +63,8 @@ DEPS				:=	$(OBJS:.o=.d)
 CC					:=	gcc
 CFLAGS				:=	-Wall -Wextra -Werror
 IFLAGS				:=	$(addprefix -I, $(INCS))
-LDFLAGS				:=	$(addprefix -L,$(dir $(LIBS_TARGET)))
-LDLIBS 				:=	$(addprefix -l,$(LIBS))
+LDFLAGS				:=	$(addprefix -L, $(dir $(LIBS_TARGET)))
+LDLIBS 				:=	$(addprefix -l, $(LIBS))
 
 
 #------------------------------------------------#
@@ -117,8 +117,8 @@ clean:
 	@$(RM) $(OBJS) $(BUILD_DIR)	$(DEPS)
 
 fclean:
-	@$(MAKE) clean
 	@for f in $(dir $(LIBS_TARGET)); do $(MAKE) -C $$f fclean; done
+	@$(MAKE) clean
 	@$(RM) $(NAME) 
 
 re: 

@@ -13,7 +13,7 @@
 #------------------------------------------------#
 #   NAME		 	                             #
 #------------------------------------------------#
-NAME				:=	libpush_swap.a
+NAME				:=	lib_push_swap.a
 
 
 #------------------------------------------------#
@@ -168,17 +168,19 @@ $(BUILD_DIR)/%.o: $(SRC_DIR)/%.c
 -include $(DEPS)
 
 clean:
-	@for f in $(dir $(LIBS_TARGET)); do $(MAKE) -C $$f clean; done
-	@echo $(RED) "---> clean: Removing:" $(NC) "$(NAME) / *.o files"
 	@$(RM) $(BUILD_DIR) $(DEPS)
-	@echo $(GREEN) "Successfully removed:" $(NC) "$(NAME) / *.o files" $(NC) "\n"
+
+# @for f in $(dir $(LIBS_TARGET)); do $(MAKE) -C $$f clean; done
 
 fclean:
-	@$(MAKE) clean
-	@for f in $(dir $(LIBS_TARGET)); do $(MAKE) -C $$f fclean; done
+	@echo $(RED) "---> clean: Removing:" $(NC) "$(NAME) / *.o files"
+	@echo $(GREEN) "Successfully removed:" $(NC) "$(NAME) / *.o files" $(NC) "\n"
 	@echo $(RED) "--> fclean: Removing:" $(NC) $(NAME)
+	@$(MAKE) clean
 	@$(RM) $(NAME) 
 	@echo $(GREEN) "Successfully removed:" $(NC) $(NAME) $(NC) "\n"
+
+# @for f in $(dir $(LIBS_TARGET)); do $(MAKE) -C $$f fclean; done
 
 re: 
 	@$(MAKE) fclean

@@ -13,7 +13,7 @@
 #------------------------------------------------#
 #   NAME		 	                             #
 #------------------------------------------------#
-NAME				:=	libft.a
+NAME				:=	liblibft.a
 
 
 #------------------------------------------------#
@@ -229,9 +229,9 @@ clean:
 	@$(RM) $(BUILD_DIR)
 
 fclean:
-	@echo $(RED) "---> clean: Removing:" $(NC) ".o files"
+	@echo $(RED) "---> clean: Removing:" $(NC) "$(NAME) / *.o files"
 	@$(MAKE) clean
-	@echo $(GREEN) "Successfully removed:" $(NC) ".o files" $(NC) "\n"
+	@echo $(GREEN) "Successfully removed:" $(NC) "$(NAME) / *.o files" $(NC) "\n"
 	@echo $(RED) "--> fclean: Removing:" $(NC) $(NAME)
 	@$(RM) $(NAME)
 	@echo $(GREEN) "Successfully removed:" $(NC) $(NAME) $(NC) "\n"

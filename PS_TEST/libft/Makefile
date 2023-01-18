@@ -145,7 +145,6 @@ STRING				:=	$(addprefix $(STRING_DIR), $(STRING_FILES))
 # INCS		= Header files locations
 
 INC_DIR				:=	include
-INC_FILE			:=	libft.h
 
 
 #------------------------------------------------#
@@ -230,9 +229,9 @@ clean:
 	@$(RM) $(BUILD_DIR)
 
 fclean:
-	@echo $(RED) "---> clean: Removing:" $(NC) "libft.o"
+	@echo $(RED) "---> clean: Removing:" $(NC) ".o files"
 	@$(MAKE) clean
-	@echo $(GREEN) "Successfully removed:" $(NC) "libft.o" $(NC) "\n"
+	@echo $(GREEN) "Successfully removed:" $(NC) ".o files" $(NC) "\n"
 	@echo $(RED) "--> fclean: Removing:" $(NC) $(NAME)
 	@$(RM) $(NAME)
 	@echo $(GREEN) "Successfully removed:" $(NC) $(NAME) $(NC) "\n"

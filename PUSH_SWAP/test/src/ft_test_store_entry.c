@@ -1,20 +1,20 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   test_ft_store_entry.c                              :+:      :+:    :+:   */
+/*   ft_test_store_entry.c                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: baalbade <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/01/17 08:31:14 by baalbade          #+#    #+#             */
-/*   Updated: 2023/01/17 08:31:20 by baalbade         ###   ########.fr       */
+/*   Created: 2023/01/18 12:33:50 by baalbade          #+#    #+#             */
+/*   Updated: 2023/01/18 12:33:52 by baalbade         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "push_swap.h"
+#include "test.h"
 
 t_dlist	*ft_store_entry(int data);
 
-void	test_ft_store_entry(int data)
+void	ft_test_store_entry(int data)
 {
 	t_dlist	*test;
 
@@ -35,15 +35,15 @@ void	test_ft_store_entry(int data)
 
 int	main(void)
 {
-	test_ft_store_entry(0);
-	test_ft_store_entry(-0);
-	test_ft_store_entry(1);
-	test_ft_store_entry(-0);
-	test_ft_store_entry(10);
-	test_ft_store_entry(-10);
-	test_ft_store_entry(123);
-	test_ft_store_entry(-123);
-	test_ft_store_entry(INT_MIN);
-	test_ft_store_entry(INT_MAX);
+	ft_test_store_entry(0);
+	ft_test_store_entry(-0);
+	ft_test_store_entry(1);
+	ft_test_store_entry(-0);
+	ft_test_store_entry(10);
+	ft_test_store_entry(-10);
+	ft_test_store_entry(123);
+	ft_test_store_entry(-123);
+	ft_test_store_entry(INT_MIN);
+	ft_test_store_entry(INT_MAX);
 	return (0);
 }

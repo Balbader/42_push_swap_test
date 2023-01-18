@@ -1,17 +1,16 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   test_ft_check_entry.c                              :+:      :+:    :+:   */
+/*   ft_test_check_entry.c                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: baalbade <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/01/16 13:32:02 by baalbade          #+#    #+#             */
-/*   Updated: 2023/01/16 13:32:10 by baalbade         ###   ########.fr       */
+/*   Created: 2023/01/18 12:32:54 by baalbade          #+#    #+#             */
+/*   Updated: 2023/01/18 12:32:57 by baalbade         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ft_push_swap"
-
+#include "../include/test.h"
 
 void	ft_test_check_entry(char *str)
 {

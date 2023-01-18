@@ -21,22 +21,22 @@
 # include <limits.h>
 # include <stdio.h>
 
-typedef struct s_dlist
+typedef struct s_dblist
 {
 	int				data;
-	struct s_dlist	*next;
-	struct s_dlist	*prev;
-}				t_dlist;
+	struct s_dblist	*next;
+	struct s_dblist	*prev;
+}				t_dblist;
 
 // **************** check errors *****************
 int			ft_check_entry(char *str);
 int			ft_convert_entry(char *str);
-t_dlist		*ft_store_entry(int data);
+t_dblist		*ft_store_entry(int data);
 
 // ***************** dbl_list *******************
-t_dlist		*ft_create_node(int data);
-t_dlist		*ft_find_node(t_dlist *dlist, int data);
-t_dlist		*ft_init_stack_a(int *arr, int arr_size);
-void		ft_insert_node(t_dlist *dlist, int data, t_dlist *to_find);
+t_dblist		*ft_create_node(int data);
+t_dblist		*ft_find_node(t_dblist *dlist, int data);
+t_dblist		*ft_init_stack_a(int *arr, int arr_size);
+void		ft_insert_node(t_dblist *dlist, int data, t_dblist *to_find);
 
 #endif

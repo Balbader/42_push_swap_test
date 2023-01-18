@@ -37,6 +37,23 @@ STORE_ENTRY_FILES	:=	ft_store_entry.c
 STORE_ENTRY			:=	$(addprefix $(STORE_ENTRY_DIR), $(STORE_ENTRY_FILES))
 
 
+# Operations
+OPER_DIR			:=	4_operations/
+OPER_FILES			:=	\
+						ft_pa.c \
+						ft_pb.c \
+						ft_ra.c \
+						ft_rb.c \
+						ft_rr.c \
+						ft_rra.c \
+						ft_rrb.c \
+						ft_rrr.c \
+						ft_sa.c \
+						ft_sb.c \
+						ft_ss.c
+OPER				:=	$(addprefix $(OPER_DIR), $(OPER_FILES))
+
+
 # dbl_list
 DLIST_DIR			:=	dbl_list/
 DLIST_FILES			:=	ft_create_node.c \
@@ -79,6 +96,7 @@ SRCS				:=	\
 						$(CHECK_ENTRY) \
 						$(CONVERT_ENTRY) \
 						$(STORE_ENTRY) \
+						$(OPER) \
 						$(DLIST) \
 						ft_push_swap.c \
 						main.c

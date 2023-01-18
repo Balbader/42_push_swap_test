@@ -21,19 +21,22 @@ NAME				:=	push_swap
 #------------------------------------------------#
 # Check Entry
 CHECK_ENTRY_DIR		:=	1_check_entry/
-CHECK_ENTRY_FILES	:=	ft_check_entry.c
+CHECK_ENTRY_FILES	:=	ft_check_entry.c /
+						test_ft_check_entry.c
 CHECK_ENTRY			:=	$(addprefix $(CHECK_ENTRY_DIR), $(CHECK_ENTRY_FILES))
 
 
 # Convert Entry
 CONVERT_ENTRY_DIR	:=	2_convert_entry/
-CONVERT_ENTRY_FILES	:=	ft_convert_entry.c
+CONVERT_ENTRY_FILES	:=	ft_convert_entry.c \
+						test_ft_convert_entry.c
 CONVERT_ENTRY		:=	$(addprefix $(CONVERT_ENTRY_DIR), $(CONVERT_ENTRY_FILES))
 
 
 # Store Entry
 STORE_ENTRY_DIR		:=	3_store_entry/
-STORE_ENTRY_FILES	:=	ft_store_entry.c
+STORE_ENTRY_FILES	:=	ft_store_entry.c \
+						test_ft_store_entry.c
 STORE_ENTRY			:=	$(addprefix $(STORE_ENTRY_DIR), $(STORE_ENTRY_FILES))
 
 

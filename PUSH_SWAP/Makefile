@@ -82,6 +82,7 @@ SRCS				:=	\
 						$(DLIST) \
 						ft_push_swap.c \
 						main.c
+
 SRCS        		:=	$(SRCS:%=$(SRC_DIR)/%)
 
 BUILD_DIR			:=	.build

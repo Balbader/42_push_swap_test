@@ -13,7 +13,7 @@
 #ifndef PUSH_SWAP_H
 # define PUSH_SWAP_H
 
-#include "../libft/include/libft.h"
+# include "../libft/include/libft.h"
 
 # include <unistd.h>
 # include <stdlib.h>
@@ -31,12 +31,12 @@ typedef struct s_dblist
 // **************** check errors *****************
 int			ft_check_entry(char *str);
 int			ft_convert_entry(char *str);
-t_dblist		*ft_store_entry(int data);
+t_dblist	*ft_store_entry(int data);
 
 // ***************** dbl_list *******************
-t_dblist		*ft_create_node(int data);
-t_dblist		*ft_find_node(t_dblist *dlist, int data);
-t_dblist		*ft_init_stack_a(int *arr, int arr_size);
+t_dblist	*ft_create_node(int data);
+t_dblist	*ft_find_node(t_dblist *dlist, int data);
+t_dblist	*ft_init_stack_a(int *arr, int arr_size);
 void		ft_insert_node(t_dblist *dlist, int data, t_dblist *to_find);
 
 #endif

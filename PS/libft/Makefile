@@ -140,17 +140,10 @@ STRING				:=	$(addprefix $(STRING_DIR), $(STRING_FILES))
 
 
 #------------------------------------------------#
-#   INCLUDES	 	                             #
+#   INGREDIENTS	 	                             #
 #------------------------------------------------#
 # INCS		= Header files locations
 
-INC_DIR				:=	include
-INC_FILE			:=	libft.h
-
-
-#------------------------------------------------#
-#   INGREDIENTS	 	                             #
-#------------------------------------------------#
 # SRC_DIR	= source directory
 # SRCS		= source files
 
@@ -158,7 +151,16 @@ INC_FILE			:=	libft.h
 # OBJS		= object files
 # DEPS		= dependency files
 
-SRC_DIR				:=	src
+# CC        = compiler
+# CFLAGS    = compiler flags
+# IFLAGS 	= preprocessor flags
+
+# AR		= creating the library
+# ARFLAGS	= at the root of the repository
+
+INCS				:=	./include/
+
+SRC_DIR				:=	./src/
 SRCS				:=	\
 						$(CTYPE) \
 						$(DLIST) \
@@ -174,6 +176,13 @@ BUILD_DIR			:=	.build
 OBJS        		:=	$(SRCS:$(SRC_DIR)/%.c=$(BUILD_DIR)/%.o)
 DEPS        		:=	$(OBJS:.o=.d)
 
+CC					:=	gcc
+CFLAGS				:=	-Wall -Wextra -Werror
+IFLAGS				:=	$(addprefix -I, $(INCS))
+
+AR					:=	ar
+ARFLAGS				:=	-r -c -s
+
 
 #------------------------------------------------#
 #   UTENSILS	                                 #
@@ -182,23 +191,9 @@ DEPS        		:=	$(OBJS:.o=.d)
 # MAKEFLAGS = make flags
 # DIR_DUP   = duplicate directory tree
 
-# CC        = compiler
-# CFLAGS    = compiler flags
-# IFLAGS 	= preprocessor flags
-
-# AR		= creating the library
-# ARFLAGS	= at the root of the repository
-
 RM					:=	rm -rf
 MAKEFLAGS   		+=	--no-print-directory
 DIR_DUP				=	mkdir -p $(@D)
-
-CC					:=	gcc
-CFLAGS				:=	-Wall -Wextra -Werror
-IFLAGS				:=	-I$(INC_DIR)
-
-AR					:=	ar
-ARFLAGS				:=	rc
 
 
 #------------------------------------------------#
@@ -223,16 +218,18 @@ $(NAME): $(OBJS)
 $(BUILD_DIR)/%.o: $(SRC_DIR)/%.c
 	@echo $(YELLOW) "COMPILING:" $(NC) $<
 	@$(DIR_DUP)
-	@$(CC) $(CFLAGS) $(IFLAGS) -c -o $@ $<
+	@$(CC) $(CFLAGS) $(IFLAGS) -c $ -o $@ $<
 	@echo $(GREEN) "CREATED:" $(NC) $@ $(NC) "\n"
 
+-include $(DEPS)
+
 clean:
-	@$(RM) $(BUILD_DIR)
+	@$(RM) $(BUILD_DIR) $(DEPS)
 
 fclean:
-	@echo $(RED) "---> clean: Removing:" $(NC) "libft.o"
+	@echo $(RED) "---> clean: Removing:" $(NC) "$(NAME) / *.o files"
 	@$(MAKE) clean
-	@echo $(GREEN) "Successfully removed:" $(NC) "libft.o" $(NC) "\n"
+	@echo $(GREEN) "Successfully removed:" $(NC) "$(NAME) / *.o files" $(NC) "\n"
 	@echo $(RED) "--> fclean: Removing:" $(NC) $(NAME)
 	@$(RM) $(NAME)
 	@echo $(GREEN) "Successfully removed:" $(NC) $(NAME) $(NC) "\n"

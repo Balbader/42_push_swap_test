@@ -109,7 +109,7 @@ IFLAGS				:=	$(addprefix -I, $(INCS))
 # LDLIBS 				:= 	$(addprefix -l, $(LIBS))
 
 AR					:=	ar
-ARFLAGS				:=	rc
+ARFLAGS				:=	-r -c -s
 
 
 #------------------------------------------------#
@@ -157,7 +157,7 @@ $(LIBS_TARGET):
 $(BUILD_DIR)/%.o: $(SRC_DIR)/%.c
 	@echo $(YELLOW) "COMPILING:" $(NC) $<
 	@$(DIR_DUP)
-	@$(CC) $(CFLAGS) $(IFLAGS) -c -o $@ $<
+	@$(CC) $(CFLAGS) $(IFLAGS) -c $< -o $@
 	@echo $(GREEN) "CREATED:" $(NC) $@ $(NC) "\n"
 
 # @echo $(RED) "---> Building $(NAME)" $(NC) "\n"

@@ -19,7 +19,8 @@ NAME				:=	run_test
 #------------------------------------------------#
 #   INGREDIENTS	 	                             #
 #------------------------------------------------#
-LIBS				:=	push_swap libft
+LIBS				:=	push_swap.a \
+						libft.a
 
 LIBS_TARGET			:=	./lib/push_swap/push_swap.a \
 						./lib/libft/libft.a
@@ -32,7 +33,8 @@ SRC_DIR				:=	./src/
 SRCS				:=	\
 						ft_test_check_entry.c \
 						ft_test_convert_entry.c \
-						ft_test_store_entry.c 
+						ft_test_store_entry.c \
+						main.c
 SRCS        		:=	$(SRCS:%=$(SRC_DIR)/%)
 
 BUILD_DIR			:=	.build
@@ -81,26 +83,26 @@ $(NAME): $(OBJS) $(LIBS_TARGET)
 	@echo $(GREEN) "--> $(NAME) COMPILED !" $(NC)" \n"
 
 $(LIBS_TARGET):
+	@echo $(RED) "--> Building $(NAME) executable" $(NC) "\n"
 	@echo $(RED) "--> Building $(LIBS)" $(NC) "\n"
 	@$(MAKE) -C $(@D)
 
 $(BUILD_DIR)/%.o: $(SRC_DIR)/%.c
 	@echo $(YELLOW) "COMPILING:" $(NC) $<
 	@$(DIR_DUP)
-	@$(CC) $(IFLAGS) -c -o $@ $<
+	@$(CC) $(CFLAGS) $(IFLAGS) -c -o $@ $<
 	@echo $(GREEN) "CREATED:" $(NC) $@ $(NC) "\n"
 
 -include $(DEPS)
 
 clean:
 	@for f in $(dir $(LIBS_TARGET)); do $(MAKE) -C $$f clean; done
-	@$(RM) $(OBJS) $(BUILD_DIR)	$(DEPS)
+	@$(RM) $(OBJS) $(BUILD_DIR) $(DEPS)
 
 fclean:
 	@for f in $(dir $(LIBS_TARGET)); do $(MAKE) -C $$f fclean; done
 	@$(MAKE) clean
 	@$(RM) $(NAME) 
-	@echo $(RED) "--> Building $(NAME) executable" $(NC) "\n"
 
 re: 
 	@$(MAKE) fclean

@@ -152,6 +152,7 @@ $(NAME): $(OBJS) $(LIBS_TARGET)
 
 # @$(CC) $(LDFLAGS) $(OBJS) $(LDLIBS) -o $(NAME)
 $(LIBS_TARGET):
+	@echo $(RED) "--> Building $(LIBS) executable" $(NC) "\n"
 	@$(MAKE) -C $(@D)
 
 $(BUILD_DIR)/%.o: $(SRC_DIR)/%.c

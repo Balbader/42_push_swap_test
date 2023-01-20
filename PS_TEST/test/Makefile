@@ -82,9 +82,9 @@ $(NAME): $(OBJS) $(LIBS_TARGET)
 	@$(CC) $(LDFLAGS) $(OBJS) $(LDLIBS) -o $(NAME)
 	@echo $(GREEN) "--> $(NAME) COMPILED !" $(NC)" \n"
 
+# @echo $(RED) "--> Building $(NAME) executable" $(NC) "\n"
 $(LIBS_TARGET):
-	@echo $(RED) "--> Building $(NAME) executable" $(NC) "\n"
-	@echo $(RED) "--> Building $(LIBS)" $(NC) "\n"
+	@echo $(RED) "--> Building push_swap.a" $(NC) "\n"
 	@$(MAKE) -C $(@D)
 
 $(BUILD_DIR)/%.o: $(SRC_DIR)/%.c

@@ -187,11 +187,13 @@ ARFLAGS				:=	-r -c -s
 #------------------------------------------------#
 #   UTENSILS	                                 #
 #------------------------------------------------#
-# RM        = force remove
+# RM        = remove
+# RMFLAGS   = recursive && force
 # MAKEFLAGS = make flags
 # DIR_DUP   = duplicate directory tree
 
-RM					:=	rm -rf
+RM					:=	rm
+RMFLAGS				:=	-r -f
 MAKEFLAGS   		+=	--no-print-directory
 DIR_DUP				=	mkdir -p $(@D)
 
@@ -224,14 +226,14 @@ $(BUILD_DIR)/%.o: $(SRC_DIR)/%.c
 -include $(DEPS)
 
 clean:
-	@$(RM) $(BUILD_DIR) $(DEPS)
+	@$(RM) $(RMFLAGS) $(BUILD_DIR) $(DEPS)
 
 fclean:
 	@echo $(RED) "---> clean: Removing:" $(NC) "$(NAME) / *.o files"
 	@$(MAKE) clean
 	@echo $(GREEN) "Successfully removed:" $(NC) "$(NAME) / *.o files" $(NC) "\n"
 	@echo $(RED) "--> fclean: Removing:" $(NC) $(NAME)
-	@$(RM) $(NAME)
+	@$(RM) $(RMFLAGS) $(NAME)
 	@echo $(GREEN) "Successfully removed:" $(NC) $(NAME) $(NC) "\n"
 
 re: 

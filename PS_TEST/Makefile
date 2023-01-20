@@ -29,15 +29,15 @@ INCS				:=	./include/ \
 						./lib/push_swap/include/ \
 						./lib/libft/include/
 
-SRC_DIR				:=	./src/
+SRCS_DIR			:=	./src/
 SRCS				:=	ft_test_check_entry.c \
 						ft_test_convert_entry.c \
 						ft_test_store_entry.c \
 						main.c
-SRCS        		:=	$(SRCS:%=$(SRC_DIR)/%)
+SRCS        		:=	$(SRCS:%=$(SRCS_DIR)/%)
 
 BUILD_DIR			:=	.build
-OBJS        		:=	$(SRCS:$(SRC_DIR)/%.c=$(BUILD_DIR)/%.o)
+OBJS        		:=	$(SRCS:$(SRCS_DIR)/%.c=$(BUILD_DIR)/%.o)
 DEPS				:=	$(OBJS:.o=.d)
 
 CC					:=	gcc
@@ -51,6 +51,7 @@ LDLIBS 				:=	$(addprefix -l:, $(LIBS))
 #   UTENSILS	                                 #
 #------------------------------------------------#
 RM					:=	rm -rf
+RMFLAGS				:=	-r -f
 MAKEFLAGS   		+=	--no-print-directory
 DIR_DUP     		= 	mkdir -p $(@D)
 
@@ -88,12 +89,12 @@ $(BUILD_DIR)/%.o: $(SRC_DIR)/%.c
 
 clean:
 	@for f in $(dir $(LIBS_TARGET)); do $(MAKE) -C $$f clean; done
-	@$(RM) $(OBJS) $(BUILD_DIR) $(DEPS)
+	@$(RM) $(RMFLAGS) $(BUILD_DIR) $(DEPS)
 
 fclean:
 	@for f in $(dir $(LIBS_TARGET)); do $(MAKE) -C $$f fclean; done
 	@$(MAKE) clean
-	@$(RM) $(NAME) 
+	@$(RM) $(RMFLAGS) $(NAME)
 
 re: 
 	@$(MAKE) fclean

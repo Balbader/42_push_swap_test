@@ -56,34 +56,19 @@ OPER				:=	$(addprefix $(OPER_DIR), $(OPER_FILES))
 
 # dbl_list
 DLIST_DIR			:=	dbl_list/
-DLIST_FILES			:=	ft_create_node.c \
+DLIST_FILES			:=	\
+						ft_create_node.c \
 						ft_find_node.c \
 						ft_insert_node.c
 DLIST				:=	$(addprefix $(DLIST_DIR), $(DLIST_FILES))
 
 
 #------------------------------------------------#
-#   LIBS	 	                                 #
-#------------------------------------------------#
-# LIBS = libraries to be used
-# LIBS_TARGET = libraries to be built
-
-LIB					:=	libft
-LIB_TARGET			:=	./libft/libft.a
-
-
-#------------------------------------------------#
-#   INCLUDES	 	                             #
-#------------------------------------------------#
-# INCS		= Header files locations
-
-INCS				:=	include \
-						libft/include
-
-
-#------------------------------------------------#
 #   INGREDIENTS	 	                             #
 #------------------------------------------------#
+
+# INCS		= Header files locations
+
 # SRC_DIR	= source directory
 # SRCS		= source files
 
@@ -91,7 +76,21 @@ INCS				:=	include \
 # OBJS		= object files
 # DEPS		= dependency files
 
-SRC_DIR				:=	src
+# CC        = compiler
+# CFLAGS    = compiler flags
+# IFLAGS 	= preprocessor flags
+
+# AR		= creating the library
+# ARFLAGS	= at the root of the repository
+
+LIBS				:=	libft.a
+
+LIBS_TARGET			:=	./libft/libft.a
+
+INCS				:=	./include/ \
+						./libft/include/ 
+
+SRCS_DIR			:=	./src/
 SRCS				:=	\
 						$(CHECK_ENTRY) \
 						$(CONVERT_ENTRY) \
@@ -100,33 +99,31 @@ SRCS				:=	\
 						$(DLIST) \
 						ft_push_swap.c \
 						main.c
-
-SRCS        		:=	$(SRCS:%=$(SRC_DIR)/%)
+SRCS        		:=	$(SRCS:%=$(SRCS_DIR)/%)
 
 BUILD_DIR			:=	.build
-OBJS        		:=	$(SRCS:$(SRC_DIR)/%.c=$(BUILD_DIR)/%.o)
+OBJS        		:=	$(SRCS:$(SRCS_DIR)/%.c=$(BUILD_DIR)/%.o)
 DEPS        		:=	$(OBJS:.o=.d)
+
+CC					:=	gcc
+CFLAGS				:=	-Wall -Wextra -Werror
+IFLAGS				:=	$(addprefix -I, $(INCS))
+LDFLAGS				:=	$(addprefix -L, $(dir $(LIBS_TARGET)))
+LDLIBS 				:= 	$(addprefix -l:, $(LIBS))
 
 
 #------------------------------------------------#
 #   UTENSILS	                                 #
 #------------------------------------------------#
-# RM        = force remove
+# RM        = remove
+# RMFLAGS   = recursive && force
 # MAKEFLAGS = make flags
 # DIR_DUP   = duplicate directory tree
 
-# CC        = compiler
-# CFLAGS    = compiler flags
-# IFLAGS 	= preprocessor flags
-
-RM					:=	rm -rf
+RM					:=	rm
+RMFLAGS				:=	-r -f
 MAKEFLAGS   		+=	--no-print-directory
 DIR_DUP     		= 	mkdir -p $(@D)
-
-CC					:=	gcc
-CFLAGS				:=	-Wall -Wextra -Werror
-IFLAGS				:=	$(addprefix -I, $(INCS))
-LFLAGS				:=	$(addprefix -L, $(dir $(LIB_TARGET)))
 
 
 #------------------------------------------------#
@@ -151,15 +148,15 @@ NC					:=	'\033[0m' # No Color
 
 all: $(NAME)
 
-$(NAME): $(OBJS) $(LIB_TARGET)
+$(NAME): $(OBJS) $(LIBS_TARGET)
+	$(CC) $(LDFLAGS) $(OBJS) $(LDLIBS) -o $(NAME)
 	@echo $(GREEN) "--> $(NAME) COMPILED !" $(NC)" \n"
-	$(CC) $(LFLAGS) $(OBJS) -o $(NAME)
 
-$(LIB_TARGET):
-	@echo $(YELLOW) "Building LIbrary: $(LIBS_TARGET)" $(NC) "\n"
+$(LIBS_TARGET):
+	@echo $(RED) "Building LIbrary: $(LIBS_TARGET)" $(NC) "\n"
 	$(MAKE) -C $(@D)
 
-$(BUILD_DIR)/%.o: $(SRC_DIR)/%.c
+$(BUILD_DIR)/%.o: $(SRCS_DIR)/%.c
 	@echo $(YELLOW) "COMPILING:" $(NC) $<
 	$(DIR_DUP)
 	$(CC) $(CFLAGS) $(IFLAGS) -c -o $@ $<
@@ -168,24 +165,20 @@ $(BUILD_DIR)/%.o: $(SRC_DIR)/%.c
 -include $(DEPS)
 
 clean:
-	@for f in $(dir $(LIB_TARGET)); do $(MAKE) -C $$f clean; done
-	@$(RM) $(BUILD_DIR) $(DEPS)
+	for f in $(dir $(LIBS_TARGET)); do $(MAKE) -C $$f clean; done
+	$(RM) $(RMFLAGS) $(BUILD_DIR) $(DEPS)
 
 fclean:
-	@$(MAKE) clean
-	@for f in $(dir $(LIB_TARGET)); do $(MAKE) -C $$f fclean; done
-	@$(RM) $(NAME) 
-	@echo $(GREEN) "Successfully removed LIB_TARGET:" $(NC) $(LIB_TARGET) $(NC) "\n"
+	for f in $(dir $(LIBS_TARGET)); do $(MAKE) -C $$f fclean; done
+	$(MAKE) clean
+	$(RM) $(RMFLAGS) $(NAME)
 
 re: 
-	@$(MAKE) fclean
-	@$(MAKE) all
-
-run:
-	$(MAKE) re
-	~./$(NAME)
+	$(MAKE) fclean
+	$(MAKE) all
 
 #------------------------------------------------#
 #   SPEC                                         #
 #------------------------------------------------#
-.PHONY: run
+.PHONY: all clean fclean re
+.SILENT:

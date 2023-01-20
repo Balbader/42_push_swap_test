@@ -34,7 +34,6 @@ SRCS				:=	ft_test_check_entry.c \
 						ft_test_convert_entry.c \
 						ft_test_store_entry.c \
 						main.c
-
 SRCS        		:=	$(SRCS:%=$(SRC_DIR)/%)
 
 BUILD_DIR			:=	.build
@@ -69,20 +68,12 @@ NC					:=	'\033[0m' # No Color
 #------------------------------------------------#
 #   RECIPES                                      #
 #------------------------------------------------#
-# all       = default goal
-# $(NAME)   = linking .o -> binary
-# %.o       = compilation .c -> .o
-# clean     = remove .o
-# fclean    = remove .o + binary
-# re        = remake default goal
-
 all: $(NAME)
 
 $(NAME): $(OBJS) $(LIBS_TARGET)
 	@$(CC) $(LDFLAGS) $(OBJS) $(LDLIBS) -o $(NAME)
 	@echo $(GREEN) "--> $(NAME) COMPILED !" $(NC)" \n"
 
-# @echo $(RED) "--> Building $(NAME) executable" $(NC) "\n"
 $(LIBS_TARGET):
 	@echo $(RED) "--> Building push_swap.a" $(NC) "\n"
 	@$(MAKE) -C $(@D)

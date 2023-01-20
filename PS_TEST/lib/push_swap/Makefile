@@ -150,7 +150,6 @@ $(NAME): $(OBJS) $(LIBS_TARGET)
 	@echo $(GREEN) "--> $(NAME) COMPILED !" $(NC)" \n"
 	@$(AR) $(ARFLAGS) $(NAME) $(OBJS)
 
-# @$(CC) $(LDFLAGS) $(OBJS) $(LDLIBS) -o $(NAME)
 $(LIBS_TARGET):
 	@echo $(RED) "--> Building $(LIBS) executable" $(NC) "\n"
 	@$(MAKE) -C $(@D)
@@ -161,13 +160,10 @@ $(BUILD_DIR)/%.o: $(SRC_DIR)/%.c
 	@$(CC) $(CFLAGS) $(IFLAGS) -c $< -o $@
 	@echo $(GREEN) "CREATED:" $(NC) $@ $(NC) "\n"
 
-# @echo $(RED) "---> Building $(NAME)" $(NC) "\n"
 -include $(DEPS)
 
 clean:
 	@$(RM) $(BUILD_DIR) $(DEPS)
-
-# @for f in $(dir $(LIBS_TARGET)); do $(MAKE) -C $$f clean; done
 
 fclean:
 	@echo $(RED) "---> clean: Removing:" $(NC) "$(NAME) / *.o files"
@@ -176,8 +172,6 @@ fclean:
 	@$(MAKE) clean
 	@$(RM) $(NAME) 
 	@echo $(GREEN) "Successfully removed:" $(NC) $(NAME) $(NC) "\n"
-
-# @for f in $(dir $(LIBS_TARGET)); do $(MAKE) -C $$f fclean; done
 
 re: 
 	@$(MAKE) fclean

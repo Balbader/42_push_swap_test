@@ -17,27 +17,6 @@ NAME				:=	run_test
 
 
 #------------------------------------------------#
-#   srcs_files	 	                             #
-#------------------------------------------------#
-# Test Check Entry
-TEST_ENTRY_DIR		:=	1_test_check_entry/
-TEST_ENTRY_FILES	:=	ft_test_check_entry.c
-TEST_ENTRY			:=	$(addprefix $(TEST_ENTRY_DIR), $(TEST_ENTRY_FILES))
-
-
-# Convert Entry
-TEST_CONVERT_DIR	:=	2_test_convert_entry/
-TEST_CONVERT_FILES	:=	ft_test_convert_entry.c
-TEST_CONVERT		:=	$(addprefix $(TEST_CONVERT_DIR), $(TEST_CONVERT_FILES))
-
-
-# Store Entry
-TEST_STORE_DIR		:=	3_test_store_entry/
-TEST_STORE_FILES	:=	ft_test_store_entry.c
-TEST_STORE			:=	$(addprefix $(TEST_STORE_DIR), $(TEST_STORE_FILES))
-
-
-#------------------------------------------------#
 #   INGREDIENTS	 	                             #
 #------------------------------------------------#
 LIBS				:=	push_swap libft
@@ -51,10 +30,9 @@ INCS				:=	./include/ \
 
 SRC_DIR				:=	./src/
 SRCS				:=	\
-						$(TEST_ENTRY) \
-						$(TEST_CONVERT) \
-						$(TEST_STORE) \
-						main.c
+						ft_test_check_entry.c \
+						ft_test_convert_entry.c \
+						ft_test_store_entry.c 
 SRCS        		:=	$(SRCS:%=$(SRC_DIR)/%)
 
 BUILD_DIR			:=	.build
@@ -63,7 +41,7 @@ DEPS				:=	$(OBJS:.o=.d)
 
 CC					:=	gcc
 CFLAGS				:=	-Wall -Wextra -Werror
-IFLAGS				:=	$(addprefix -I, $(INCS)) -MMD -MP
+IFLAGS				:=	$(addprefix -I, $(INCS))
 LDFLAGS				:=	$(addprefix -L, $(dir $(LIBS_TARGET)))
 LDLIBS 				:=	$(addprefix -l:, $(LIBS))
 
@@ -103,7 +81,7 @@ $(NAME): $(OBJS) $(LIBS_TARGET)
 	@echo $(GREEN) "--> $(NAME) COMPILED !" $(NC)" \n"
 
 $(LIBS_TARGET):
-	@echo $(RED) "--> Building $(NAME)" $(NC) "\n"
+	@echo $(RED) "--> Building $(LIBS)" $(NC) "\n"
 	@$(MAKE) -C $(@D)
 
 $(BUILD_DIR)/%.o: $(SRC_DIR)/%.c
@@ -122,6 +100,7 @@ fclean:
 	@for f in $(dir $(LIBS_TARGET)); do $(MAKE) -C $$f fclean; done
 	@$(MAKE) clean
 	@$(RM) $(NAME) 
+	@echo $(RED) "--> Building $(NAME) executable" $(NC) "\n"
 
 re: 
 	@$(MAKE) fclean

@@ -20,9 +20,9 @@ void	ft_test_convert_entry(char *str)
 	res_ft = ft_convert_entry(str);
 	res_atoi = atoi(str);
 	if (res_ft == res_atoi)
-		printf("%s: success!\n", str);
+		ft_printf("%s: success!\n", str);
 	else
-		printf("%s: failed!\n res_ft: %d\n res_atoi: %d\n", str, res_ft, res_atoi);
+		ft_printf("%s: failed!\n res_ft: %d\n res_atoi: %d\n", str, res_ft, res_atoi);
 }
 
 // int	main(void)

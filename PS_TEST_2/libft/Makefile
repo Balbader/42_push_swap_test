@@ -229,12 +229,9 @@ clean:
 	@$(RM) $(RMFLAGS) $(BUILD_DIR) $(DEPS)
 
 fclean:
-	@echo $(RED) "---> clean: Removing:" $(NC) "$(NAME) / *.o files"
 	@$(MAKE) clean
-	@echo $(GREEN) "Successfully removed:" $(NC) "$(NAME) / *.o files" $(NC) "\n"
-	@echo $(RED) "--> fclean: Removing:" $(NC) $(NAME)
 	@$(RM) $(RMFLAGS) $(NAME)
-	@echo $(GREEN) "Successfully removed:" $(NC) $(NAME) $(NC) "\n"
+	@echo $(GREEN) "Successfully removed:" $(NC) $(NAME) "\n"
 
 re: 
 	@$(MAKE) fclean

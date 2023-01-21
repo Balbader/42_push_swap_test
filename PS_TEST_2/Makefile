@@ -17,7 +17,7 @@ NAME				:=	push_swap
 
 
 #------------------------------------------------#
-#   srcs_files	 	                             #
+#   SRCS FILES	 	                             #
 #------------------------------------------------#
 # Check Entry
 CHECK_ENTRY_DIR		:=	1_check_entry/
@@ -66,29 +66,12 @@ DLIST				:=	$(addprefix $(DLIST_DIR), $(DLIST_FILES))
 #------------------------------------------------#
 #   INGREDIENTS	 	                             #
 #------------------------------------------------#
-
-# INCS		= Header files locations
-
-# SRC_DIR	= source directory
-# SRCS		= source files
-
-# BUILD_DIR	= object directory
-# OBJS		= object files
-# DEPS		= dependency files
-
-# CC        = compiler
-# CFLAGS    = compiler flags
-# IFLAGS 	= preprocessor flags
-
-# AR		= creating the library
-# ARFLAGS	= at the root of the repository
-
 LIBS				:=	libft.a
-
 LIBS_TARGET			:=	./libft/libft.a
 
 INCS				:=	./include/ \
-						./libft/include/ 
+						./libft/include/ \
+						./test/include/
 
 SRCS_DIR			:=	./src/
 SRCS				:=	\
@@ -105,6 +88,40 @@ BUILD_DIR			:=	.build
 OBJS        		:=	$(SRCS:$(SRCS_DIR)/%.c=$(BUILD_DIR)/%.o)
 DEPS        		:=	$(OBJS:.o=.d)
 
+
+#------------------------------------------------#
+#   TEST EXECUTABLE	                             #
+#------------------------------------------------#
+TEST_EXE			:=	run_test
+
+
+#------------------------------------------------#
+#   UNITY	                             #
+#------------------------------------------------#
+UNITY_SRCS_DIR		:=	./unity/src/
+UNITY_FIX_DIR		:=	./unity/extras/fixture/src/
+UNITY_CONF_DEFINES	:=	-D UNITY_OUTPUT_COLORS \
+						-D UNITY_FIXTURES_NO_EXTRAS
+
+UNITY_INC			:=	$(addprefix -I, $(UNITY_SRCS_DIR)) \
+						$(addprefix -I, $(UNITY_FIX_DIR))
+
+
+#------------------------------------------------#
+#   TEST FILES		                             #
+#------------------------------------------------#
+TEST_DIR			:=	./test/
+TEST_FILES			:=	$(UNITY_SRCS_DIR)/unity.c \
+						$(UNITY_FIX_DIR)/unity_fixture.c \
+						$(TEST_DIR)/src/ft_test_check_entry.c \
+						$(TEST_DIR)/src/ft_test_convert_entry.c \
+						$(TEST_DIR)/src/ft_test_store_entry.c \
+						$(TEST_DIR)/test_runners/all_tests.c \
+						$(TEST_DIR)/test_runners/all_tests_runner.c 
+
+TEST_BUILD_DIR		:=	./test/.build
+TEST_OBJS			:=	$(TEST_FILES:%.c=$(TEST_BUILD_DIR)/%.o)
+
 CC					:=	gcc
 CFLAGS				:=	-Wall -Wextra -Werror
 IFLAGS				:=	$(addprefix -I, $(INCS))
@@ -115,11 +132,6 @@ LDLIBS 				:= 	$(addprefix -l:, $(LIBS))
 #------------------------------------------------#
 #   UTENSILS	                                 #
 #------------------------------------------------#
-# RM        = remove
-# RMFLAGS   = recursive && force
-# MAKEFLAGS = make flags
-# DIR_DUP   = duplicate directory tree
-
 RM					:=	rm
 RMFLAGS				:=	-r -f
 MAKEFLAGS   		+=	--no-print-directory
@@ -139,13 +151,6 @@ NC					:=	'\033[0m' # No Color
 #------------------------------------------------#
 #   RECIPES                                      #
 #------------------------------------------------#
-# all       = default goal
-# $(NAME)   = linking .o -> binary
-# %.o       = compilation .c -> .o
-# clean     = remove .o
-# fclean    = remove .o + binary
-# re        = remake default goal
-
 all: $(NAME)
 
 $(NAME): $(OBJS) $(LIBS_TARGET)
@@ -153,7 +158,7 @@ $(NAME): $(OBJS) $(LIBS_TARGET)
 	@echo $(GREEN) "--> $(NAME) COMPILED !" $(NC)" \n"
 
 $(LIBS_TARGET):
-	@echo $(RED) "Building LIbrary: $(LIBS_TARGET)" $(NC) "\n"
+	@echo $(RED) "Building Library: $(LIBS_TARGET)" $(NC) "\n"
 	$(MAKE) -C $(@D)
 
 $(BUILD_DIR)/%.o: $(SRCS_DIR)/%.c
@@ -167,15 +172,31 @@ $(BUILD_DIR)/%.o: $(SRCS_DIR)/%.c
 clean:
 	for f in $(dir $(LIBS_TARGET)); do $(MAKE) -C $$f clean; done
 	$(RM) $(RMFLAGS) $(BUILD_DIR) $(DEPS)
+	$(RM) $(RMFLAGS) $(TEST_BUILD_DIR)
 
 fclean:
 	for f in $(dir $(LIBS_TARGET)); do $(MAKE) -C $$f fclean; done
 	$(MAKE) clean
 	$(RM) $(RMFLAGS) $(NAME)
+	$(RM) $(RMFLAGS) $(TEST_EXE)
+	@echo $(GREEN) "Successfully removed:" $(NC) $(NAME) "and" $(TEST_EXE) $(NC) "\n"
 
 re: 
 	$(MAKE) fclean
 	$(MAKE) all
+
+test: $(TEST_BUILD_DIR) $(TEST_EXE)
+
+$(TEST_BUILD_DIR):
+	$(DIR_DUP)
+
+$(TEST_EXE): $(LIBS_TARGET) $(TEST_OBJS)
+	$(CC) $(CFLAGS) $^ -o $@ $(LDFLAGS)
+
+$(TEST_OBJS): $(TEST_BUILD_DIR)/%.o :%.c
+	$(DIR_DUP)
+	${CC} ${CFLAGS} ${UNITY_CONFIG_DEFINES} ${UNITY_INC} ${IFLAGS} -c $< -o $@
+	
 
 #------------------------------------------------#
 #   SPEC                                         #

@@ -84,9 +84,15 @@ SRCS				:=	\
 						main.c
 SRCS        		:=	$(SRCS:%=$(SRCS_DIR)/%)
 
-BUILD_DIR			:=	.build
-OBJS        		:=	$(SRCS:$(SRCS_DIR)/%.c=$(BUILD_DIR)/%.o)
+OBJS_DIR			:=	./.objs
+OBJS        		:=	$(SRCS:$(SRCS_DIR)/%.c=$(OBJS_DIR)/%.o)
 DEPS        		:=	$(OBJS:.o=.d)
+
+CC					:=	gcc
+CFLAGS				:=	-Wall -Wextra -Werror
+IFLAGS				:=	$(addprefix -I, $(INCS))
+LDFLAGS				:=	$(addprefix -L, $(dir $(LIBS_TARGET) -lft -lreadline))
+LDLIBS 				:= 	$(addprefix -l:, $(LIBS))
 
 
 #------------------------------------------------#
@@ -110,23 +116,21 @@ UNITY_INC			:=	$(addprefix -I, $(UNITY_SRCS_DIR)) \
 #------------------------------------------------#
 #   TEST FILES		                             #
 #------------------------------------------------#
-TEST_DIR			:=	./test/
-TEST_FILES			:=	$(UNITY_SRCS_DIR)/unity.c \
+TESTS_DIR			:=	./test/
+TESTS				:=	$(UNITY_SRCS_DIR)/unity.c \
 						$(UNITY_FIX_DIR)/unity_fixture.c \
 						$(TEST_DIR)/src/ft_test_check_entry.c \
 						$(TEST_DIR)/src/ft_test_convert_entry.c \
 						$(TEST_DIR)/src/ft_test_store_entry.c \
 						$(TEST_DIR)/test_runners/all_tests.c \
-						$(TEST_DIR)/test_runners/all_tests_runner.c 
+						$(TEST_DIR)/test_runners/all_tests_runner.c \
+						$(addprefix $(SRCS_DIR), $(CHECK_ENTRY)) \
+						$(addprefix $(SRCS_DIR), $(CONVERT_ENTRY)) \
+						$(addprefix $(SRCS_DIR), $(STORE_ENTRY)) 
+TESTS				:=	$(TESTS:%=$(TESTS_DIR))
 
-TEST_BUILD_DIR		:=	./test/.build
-TEST_OBJS			:=	$(TEST_FILES:%.c=$(TEST_BUILD_DIR)/%.o)
-
-CC					:=	gcc
-CFLAGS				:=	-Wall -Wextra -Werror
-IFLAGS				:=	$(addprefix -I, $(INCS))
-LDFLAGS				:=	$(addprefix -L, $(dir $(LIBS_TARGET)))
-LDLIBS 				:= 	$(addprefix -l:, $(LIBS))
+TESTS_OBJS_DIR		:=	./test/.test_objs
+TESTS_OBJS			:=	$(TEST_FILES:%.c=$(TESTS_BUILD_DIR)/%.o)
 
 
 #------------------------------------------------#
@@ -195,7 +199,7 @@ $(TEST_EXE): $(LIBS_TARGET) $(TEST_OBJS)
 
 $(TEST_OBJS): $(TEST_BUILD_DIR)/%.o :%.c
 	$(DIR_DUP)
-	${CC} ${CFLAGS} ${UNITY_CONFIG_DEFINES} ${UNITY_INC} ${IFLAGS} -c $< -o $@
+	$(CC) $(CFLAGS) $(UNITY_CONFIG_DEFINES) $(UNITY_INC) $(IFLAGS) -c $< -o $@
 	
 
 #------------------------------------------------#

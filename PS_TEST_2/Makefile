@@ -182,7 +182,23 @@ $(OBJS_BUILD_DIR)/%.o: $(SRCS_DIR)/%.c
 
 -include $(DEPS)
 
-# -include $(TESTS_DEPS)
+test: $(TEST_EXE)
+
+$(TEST_EXE): $(OBJS) $(LIBS_TARGET) $(TEST_OBJS)
+	$(CC) $(LDFLAGS) $(OBJS) $(TEST_OBJS) $(LDLIBS) -o $(TEST_EXE)
+	@echo $(GREEN) "--> $(TEST_EXE) COMPILED !" $(NC)" \n"
+
+$(TESTS_BUILD_DIR)/%.o: $(TESTS)/%.c
+	@echo $(YELLOW) "COMPILING:" $(NC) $<
+	$(DIR_DUP)
+	$(CC) $(CFLAGS) $(IFLAGS) -c -o $@ $<
+	@echo $(GREEN) "CREATED:" $(NC) $@ $(NC) "\n"
+
+$(TESTS_OBJS):
+	$(DIR_DUP)
+	$(CC) $(CFLAGS) $(UNITY_CONFIG_DEFINES) $(UNITY_INC) $(IFLAGS) -c $< -o $@
+
+-include $(TESTS_DEPS)
 
 clean:
 	for f in $(dir $(LIBS_TARGET)); do $(MAKE) -C $$f clean; done
@@ -199,22 +215,6 @@ fclean:
 re:
 	$(MAKE) fclean
 	$(MAKE) all
-
-test: $(TEST_EXE)
-
-$(TEST_EXE): $(OBJS) $(LIBS_TARGET) $(TEST_OBJS)
-	$(CC) $(LDFLAGS) $(OBJS) $(TEST_OBJS) $(LDLIBS) -o $(TEST_EXE)
-	@echo $(GREEN) "--> $(TEST_EXE) COMPILED !" $(NC)" \n"
-
-$(TESTS_BUILD_DIR)/%.o: $(TESTS)/%.c
-	@echo $(YELLOW) "COMPILING:" $(NC) $<
-	$(DIR_DUP)
-	$(CC) $(CFLAGS) $(IFLAGS) -c -o $@ $<
-	@echo $(GREEN) "CREATED:" $(NC) $@ $(NC) "\n"
-
-$(TESTS_OBJS):
-	$(DIR_DUP)
-	$(CC) $(CFLAGS) $(UNITY_CONFIG_DEFINES) $(UNITY_INC) $(IFLAGS) -c $< -o $@
 
 
 #------------------------------------------------#

@@ -21,5 +21,4 @@ void	ft_dlist_print_reverse(t_dlist *dlist)
 	reverse_list = dlist;
 	while (reverse_list->next != NULL)
 		reverse_list = reverse_list->next;
-
 }

@@ -15,5 +15,5 @@
 int	ft_isascii(int c)
 {
 	return (c >= FIRST_ASCII
-			&& c <= LAST_ASCII);
+		&& c <= LAST_ASCII);
 }

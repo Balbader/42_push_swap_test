@@ -14,58 +14,58 @@
 #include "unity_fixture.h"
 #include "push_swap.h"
 
-static void	ft_test_check_entry(char *str)
+static int	ft_test_check_entry(char *str)
 {
 	int	res;
 
 	res = ft_check_entry(str);
 	if (res == 0)
-		ft_printf("Test Success!\nres = %d\nstring tested: %s\n", res, str);
+		return (res);
 	else
-		ft_printf("Test Fail!\nres = %d\nstring tested: %s\n", res, str);
+		return (1);
 }
 
-TEST_GROUP(CheckEntries);
+TEST_GROUP(checkEntries);
 
-TEST_SETUP(CheckEntries)
+TEST_SETUP(checkEntries)
 {
 }
 
-TEST_TEARDOWN(CheckEntries)
+TEST_TEARDOWN(checkEntries)
 {
 }
 
-TEST(CheckEntries, zero)
+TEST(checkEntries, zero)
 {
 	TEST_ASSERT_EQUAL(0, ft_test_check_entry("0"));
 }
 
-TEST(CheckEntries, A)
+TEST(checkEntries, A)
 {
 	TEST_ASSERT_EQUAL(1, ft_test_check_entry("A"));
 }
 
-TEST(CheckEntries, space)
+TEST(checkEntries, space)
 {
 	TEST_ASSERT_EQUAL(1, ft_test_check_entry(" "));
 }
 
-TEST(CheckEntries, large_space)
+TEST(checkEntries, largeSpace)
 {
 	TEST_ASSERT_EQUAL(1, ft_test_check_entry("       "));
 }
 
-TEST(CheckEntries, positive_number)
+TEST(checkEntries, positiveNumber)
 {
 	TEST_ASSERT_EQUAL(0, ft_test_check_entry("12345678"));
 }
 
-TEST(CheckEntries, negative_number)
+TEST(checkEntries, negativeNumber)
 {
 	TEST_ASSERT_EQUAL(0, ft_test_check_entry("-12345678"));
 }
 
-TEST(CheckEntries, letters_numbers)
+TEST(checkEntries, lettersNumbers)
 {
 	TEST_ASSERT_EQUAL(1, ft_test_check_entry("abc12345678"));
 }

@@ -73,7 +73,7 @@ INCS				:=	./include/ \
 						./libft/include/
 
 SRCS_DIR			:=	./src/
-SRCS				:=	\
+SRCS_FILES			:=	\
 						$(CHECK_ENTRY) \
 						$(CONVERT_ENTRY) \
 						$(STORE_ENTRY) \
@@ -81,7 +81,7 @@ SRCS				:=	\
 						$(DLIST) \
 						ft_push_swap.c \
 						main.c
-SRCS        		:=	$(SRCS:%=$(SRCS_DIR)/%)
+SRCS        		:=	$(addprefix $(SRCS_DIR), $(SRCS_FILES))
 
 OBJS_BUILD_DIR		:=	./.build
 OBJS        		:=	$(SRCS:$(SRCS_DIR)/%.c=$(OBJS_BUILD_DIR)/%.o)
@@ -104,7 +104,13 @@ TEST_EXE			:=	run_test
 #   UNITY	                             #
 #------------------------------------------------#
 UNITY_SRCS_DIR		:=	./unity/src/
-UNITY_FIX_DIR		:=	./unity/extras/fixture/
+UNITY_SRCS_FILES	:=	unity.c
+UNITY_SRCS			:=	$(addprefix $(UNITY_SRCS_DIR), $(UNITY_SRCS))
+
+UNITY_FIX_DIR		:=	./unity/extras/fixture/src/
+UNITY_FIX_FILES		:=	unity_fixture.c
+UNITY_FIX			:=	$(addprefix $(UNITY_FIX_DIR), $(UNITY_FIX_FILES))
+
 UNITY_CONF_DEFINES	:=	-D UNITY_OUTPUT_COLORS \
 						-D UNITY_FIXTURES_NO_EXTRAS
 
@@ -116,17 +122,24 @@ UNITY_INC			:=	$(addprefix -I, $(UNITY_SRCS_DIR)) \
 #   TEST FILES		                             #
 #------------------------------------------------#
 TESTS_DIR			:=	./test/
-TESTS				:=	$(UNITY_SRCS_DIR)/unity.c \
-						$(UNITY_FIX_DIR)/unity_fixture.c \
-						$(TESTS_DIR)/src/test_check_entry.c \
-						$(TESTS_DIR)/src/test_convert_entry.c \
-						$(TESTS_DIR)/src/test_store_entry.c \
-						$(TESTS_DIR)/test_runners/all_tests.c \
-						$(TESTS_DIR)/test_runners/all_tests_runner.c
-TESTS				:=	$(TESTS:%=$(TESTS_DIR))
+
+TESTS_FILES			:=	\
+						src/test_check_entry.c \
+						src/test_convert_entry.c \
+						src/test_store_entry.c \
+						test_runners/all_tests.c \
+						test_runners/all_tests_runner.c
+
+TESTS				:=	\
+						$(UNITY_SRCS) \
+						$(UNITY_FIX) \
+						$(addprefix $(TESTS_DIR), $(TESTS_FILES))
 
 TESTS_BUILD_DIR		:=	./test/.build_test
-TESTS_OBJS			:=	$(TESTS:$(TESTS)/%.c=$(TESTS_OBJS_DIR)/%.o)
+
+TESTS_OBJS			:=	$(TESTS:$(TESTS)/%.c=$(TESTS_BUILD_DIR)/%.o)
+
+TESTS_DEPS       	:=	$(TESTS_OBJS:.o=.d)
 
 
 #------------------------------------------------#
@@ -155,7 +168,7 @@ all: $(NAME)
 
 $(NAME): $(OBJS) $(LIBS_TARGET)
 	$(CC) $(LDFLAGS) $(OBJS) $(LDLIBS) -o $(NAME)
-	@echo $(GREEN) "--> $(NAME) COMPILED !" $(NC)" \n"
+	@echo $(GREEN) "--> $(NAME) COMPILED !" $(NC) "\n"
 
 $(LIBS_TARGET):
 	@echo $(RED) "Building Library: $(LIBS_TARGET)" $(NC) "\n"
@@ -169,6 +182,8 @@ $(OBJS_BUILD_DIR)/%.o: $(SRCS_DIR)/%.c
 
 -include $(DEPS)
 
+# -include $(TESTS_DEPS)
+
 clean:
 	for f in $(dir $(LIBS_TARGET)); do $(MAKE) -C $$f clean; done
 	$(RM) $(RMFLAGS) $(OBJS_BUILD_DIR) $(DEPS)
@@ -181,7 +196,7 @@ fclean:
 	$(RM) $(RMFLAGS) $(TEST_EXE)
 	@echo $(GREEN) "Successfully removed:" $(NC) $(NAME) "and" $(TEST_EXE) $(NC) "\n"
 
-re: 
+re:
 	$(MAKE) fclean
 	$(MAKE) all
 
@@ -191,18 +206,17 @@ $(TEST_EXE): $(OBJS) $(LIBS_TARGET) $(TEST_OBJS)
 	$(CC) $(LDFLAGS) $(OBJS) $(TEST_OBJS) $(LDLIBS) -o $(TEST_EXE)
 	@echo $(GREEN) "--> $(TEST_EXE) COMPILED !" $(NC)" \n"
 
-# $(CC) $(CFLAGS) $^ -o $@ $(LDFLAGS)
 $(TESTS_BUILD_DIR)/%.o: $(TESTS)/%.c
 	@echo $(YELLOW) "COMPILING:" $(NC) $<
 	$(DIR_DUP)
 	$(CC) $(CFLAGS) $(IFLAGS) -c -o $@ $<
 	@echo $(GREEN) "CREATED:" $(NC) $@ $(NC) "\n"
 
-
 $(TESTS_OBJS):
+	$(DIR_DUP)
 	$(CC) $(CFLAGS) $(UNITY_CONFIG_DEFINES) $(UNITY_INC) $(IFLAGS) -c $< -o $@
 
-# $(DIR_DUP)
+
 #------------------------------------------------#
 #   SPEC                                         #
 #------------------------------------------------#

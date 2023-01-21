@@ -13,4 +13,6 @@
 #include "push_swap.h"
 #include "unity.h"
 
-
+void	ft_check_entry(char *str);
+void	ft_test_convert_entry(char *str);
+void	ft_test_store_entry(int data);

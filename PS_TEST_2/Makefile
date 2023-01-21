@@ -70,8 +70,7 @@ LIBS				:=	libft.a
 LIBS_TARGET			:=	./libft/libft.a
 
 INCS				:=	./include/ \
-						./libft/include/ \
-						./test/include/
+						./libft/include/
 
 SRCS_DIR			:=	./src/
 SRCS				:=	\
@@ -105,7 +104,7 @@ TEST_EXE			:=	run_test
 #   UNITY	                             #
 #------------------------------------------------#
 UNITY_SRCS_DIR		:=	./unity/src/
-UNITY_FIX_DIR		:=	./unity/extras/fixture/src/
+UNITY_FIX_DIR		:=	./unity/extras/fixture/
 UNITY_CONF_DEFINES	:=	-D UNITY_OUTPUT_COLORS \
 						-D UNITY_FIXTURES_NO_EXTRAS
 
@@ -119,18 +118,15 @@ UNITY_INC			:=	$(addprefix -I, $(UNITY_SRCS_DIR)) \
 TESTS_DIR			:=	./test/
 TESTS				:=	$(UNITY_SRCS_DIR)/unity.c \
 						$(UNITY_FIX_DIR)/unity_fixture.c \
-						$(TEST_DIR)/src/ft_test_check_entry.c \
-						$(TEST_DIR)/src/ft_test_convert_entry.c \
-						$(TEST_DIR)/src/ft_test_store_entry.c \
-						$(TEST_DIR)/test_runners/all_tests.c \
-						$(TEST_DIR)/test_runners/all_tests_runner.c \
-						$(addprefix $(SRCS_DIR), $(CHECK_ENTRY)) \
-						$(addprefix $(SRCS_DIR), $(CONVERT_ENTRY)) \
-						$(addprefix $(SRCS_DIR), $(STORE_ENTRY)) 
+						$(TESTS_DIR)/src/test_check_entry.c \
+						$(TESTS_DIR)/src/test_convert_entry.c \
+						$(TESTS_DIR)/src/test_store_entry.c \
+						$(TESTS_DIR)/test_runners/all_tests.c \
+						$(TESTS_DIR)/test_runners/all_tests_runner.c
 TESTS				:=	$(TESTS:%=$(TESTS_DIR))
 
-TESTS_OBJS_DIR		:=	./test/.test_objs
-TESTS_OBJS			:=	$(TEST_FILES:%.c=$(TESTS_BUILD_DIR)/%.o)
+TESTS_OBJS_DIR		:=	.test_objs
+TESTS_OBJS			:=	$(TESTS:$(TESTS_DIR)/%.c=$(TESTS_OBJS_DIR)/%.o)
 
 
 #------------------------------------------------#
@@ -165,7 +161,7 @@ $(LIBS_TARGET):
 	@echo $(RED) "Building Library: $(LIBS_TARGET)" $(NC) "\n"
 	$(MAKE) -C $(@D)
 
-$(BUILD_DIR)/%.o: $(SRCS_DIR)/%.c
+$(OBJS_DIR)/%.o: $(SRCS_DIR)/%.c
 	@echo $(YELLOW) "COMPILING:" $(NC) $<
 	$(DIR_DUP)
 	$(CC) $(CFLAGS) $(IFLAGS) -c -o $@ $<
@@ -175,8 +171,8 @@ $(BUILD_DIR)/%.o: $(SRCS_DIR)/%.c
 
 clean:
 	for f in $(dir $(LIBS_TARGET)); do $(MAKE) -C $$f clean; done
-	$(RM) $(RMFLAGS) $(BUILD_DIR) $(DEPS)
-	$(RM) $(RMFLAGS) $(TEST_BUILD_DIR)
+	$(RM) $(RMFLAGS) $(OBJS_DIR) $(DEPS)
+	$(RM) $(RMFLAGS) $(TESTS_OBJS_DIR)
 
 fclean:
 	for f in $(dir $(LIBS_TARGET)); do $(MAKE) -C $$f fclean; done
@@ -189,19 +185,24 @@ re:
 	$(MAKE) fclean
 	$(MAKE) all
 
-test: $(TEST_BUILD_DIR) $(TEST_EXE)
+test: $(TEST_EXE)
 
-$(TEST_BUILD_DIR):
-	$(DIR_DUP)
+$(TEST_EXE): $(OBJS) $(LIBS_TARGET) $(TEST_OBJS)
+	$(CC) $(LDFLAGS) $(OBJS) $(TEST_OBJS) $(LDLIBS) -o $(TEST_EXE)
+	@echo $(GREEN) "--> $(TEST_EXE) COMPILED !" $(NC)" \n"
 
-$(TEST_EXE): $(LIBS_TARGET) $(TEST_OBJS)
-	$(CC) $(CFLAGS) $^ -o $@ $(LDFLAGS)
+# $(CC) $(CFLAGS) $^ -o $@ $(LDFLAGS)
+$(TESTS_OBJS_DIR)/%.o: $(TESTS)/%.c
+	@echo $(YELLOW) "COMPILING:" $(NC) $<
+	$(CC) $(CFLAGS) $(IFLAGS) -c -o $@ $<
+	@echo $(GREEN) "CREATED:" $(NC) $@ $(NC) "\n"
 
-$(TEST_OBJS): $(TEST_BUILD_DIR)/%.o :%.c
-	$(DIR_DUP)
+# $(DIR_DUP)
+
+$(TESTS_OBJS):
 	$(CC) $(CFLAGS) $(UNITY_CONFIG_DEFINES) $(UNITY_INC) $(IFLAGS) -c $< -o $@
-	
 
+# $(DIR_DUP)
 #------------------------------------------------#
 #   SPEC                                         #
 #------------------------------------------------#

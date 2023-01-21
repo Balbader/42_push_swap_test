@@ -11,7 +11,6 @@
 /* ************************************************************************** */
 
 #include "test.h"
-#include "push_swap.h"
 
 void	ft_test_check_entry(char *str)
 {

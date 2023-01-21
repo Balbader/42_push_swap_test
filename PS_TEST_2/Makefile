@@ -83,8 +83,8 @@ SRCS				:=	\
 						main.c
 SRCS        		:=	$(SRCS:%=$(SRCS_DIR)/%)
 
-OBJS_DIR			:=	./.objs
-OBJS        		:=	$(SRCS:$(SRCS_DIR)/%.c=$(OBJS_DIR)/%.o)
+OBJS_BUILD_DIR		:=	./.build
+OBJS        		:=	$(SRCS:$(SRCS_DIR)/%.c=$(OBJS_BUILD_DIR)/%.o)
 DEPS        		:=	$(OBJS:.o=.d)
 
 CC					:=	gcc
@@ -125,8 +125,8 @@ TESTS				:=	$(UNITY_SRCS_DIR)/unity.c \
 						$(TESTS_DIR)/test_runners/all_tests_runner.c
 TESTS				:=	$(TESTS:%=$(TESTS_DIR))
 
-TESTS_OBJS_DIR		:=	.test_objs
-TESTS_OBJS			:=	$(TESTS:$(TESTS_DIR)/%.c=$(TESTS_OBJS_DIR)/%.o)
+TESTS_BUILD_DIR		:=	./test/.build_test
+TESTS_OBJS			:=	$(TESTS:$(TESTS)/%.c=$(TESTS_OBJS_DIR)/%.o)
 
 
 #------------------------------------------------#
@@ -161,7 +161,7 @@ $(LIBS_TARGET):
 	@echo $(RED) "Building Library: $(LIBS_TARGET)" $(NC) "\n"
 	$(MAKE) -C $(@D)
 
-$(OBJS_DIR)/%.o: $(SRCS_DIR)/%.c
+$(OBJS_BUILD_DIR)/%.o: $(SRCS_DIR)/%.c
 	@echo $(YELLOW) "COMPILING:" $(NC) $<
 	$(DIR_DUP)
 	$(CC) $(CFLAGS) $(IFLAGS) -c -o $@ $<
@@ -171,8 +171,8 @@ $(OBJS_DIR)/%.o: $(SRCS_DIR)/%.c
 
 clean:
 	for f in $(dir $(LIBS_TARGET)); do $(MAKE) -C $$f clean; done
-	$(RM) $(RMFLAGS) $(OBJS_DIR) $(DEPS)
-	$(RM) $(RMFLAGS) $(TESTS_OBJS_DIR)
+	$(RM) $(RMFLAGS) $(OBJS_BUILD_DIR) $(DEPS)
+	$(RM) $(RMFLAGS) $(TESTS_BUILD_DIR)
 
 fclean:
 	for f in $(dir $(LIBS_TARGET)); do $(MAKE) -C $$f fclean; done
@@ -192,12 +192,12 @@ $(TEST_EXE): $(OBJS) $(LIBS_TARGET) $(TEST_OBJS)
 	@echo $(GREEN) "--> $(TEST_EXE) COMPILED !" $(NC)" \n"
 
 # $(CC) $(CFLAGS) $^ -o $@ $(LDFLAGS)
-$(TESTS_OBJS_DIR)/%.o: $(TESTS)/%.c
+$(TESTS_BUILD_DIR)/%.o: $(TESTS)/%.c
 	@echo $(YELLOW) "COMPILING:" $(NC) $<
+	$(DIR_DUP)
 	$(CC) $(CFLAGS) $(IFLAGS) -c -o $@ $<
 	@echo $(GREEN) "CREATED:" $(NC) $@ $(NC) "\n"
 
-# $(DIR_DUP)
 
 $(TESTS_OBJS):
 	$(CC) $(CFLAGS) $(UNITY_CONFIG_DEFINES) $(UNITY_INC) $(IFLAGS) -c $< -o $@

@@ -15,7 +15,9 @@
 
 static void	run_all_tests(void)
 {
-	RUN_TEST_GROUP(Entries);
+	RUN_TEST_GROUP(checkEntries);
+	RUN_TEST_GROUP(convertEntries);
+	RUN_TEST_GROUP(storeEntries);
 }
 
 int	main(int argc, char *argv[])

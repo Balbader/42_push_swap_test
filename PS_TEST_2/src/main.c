@@ -12,7 +12,7 @@
 
 #include "push_swap.h"
 
-int main(void)
+int	main(void)
 {
 	ft_printf("I am Main.c");
 	return (0);

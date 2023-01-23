@@ -88,7 +88,7 @@ LIBS				:=	libft.a
 LIBS_TARGET			:=	./libft/libft.a
 
 INCS				:=	./include/ \
-						./libft/include/ 
+						./libft/include/
 
 SRCS_DIR			:=	./src/
 SRCS				:=	\

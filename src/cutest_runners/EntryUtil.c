@@ -5,7 +5,7 @@
 // *---------------------------------------------------------------------------*
 
 // * Numbers ------------------------------------------------------------------*
-void	TestCuCheckEntry_SingleDigit(CuTest *tc)
+void	Test_CheckEntry_SingleDigit(CuTest *tc)
 {
 	char *input = ft_strdup("1");
 	int actual = ft_check_entry(input);
@@ -13,7 +13,7 @@ void	TestCuCheckEntry_SingleDigit(CuTest *tc)
 	CuAssertIntEquals(tc, expected, actual);
 }
 
-void	TestCuCheckEntry_NegativeSingleDigit(CuTest *tc)
+void	Test_CheckEntry_SingleDigit_Negative(CuTest *tc)
 {
 	char *input = ft_strdup("-1");
 	int actual = ft_check_entry(input);
@@ -21,7 +21,7 @@ void	TestCuCheckEntry_NegativeSingleDigit(CuTest *tc)
 	CuAssertIntEquals(tc, expected, actual);
 }
 
-void	TestCuCheckEntry_DoubleDigit(CuTest *tc)
+void	Test_CheckEntry_DoubleDigit(CuTest *tc)
 {
 	char *input = ft_strdup("12");
 	int actual = ft_check_entry(input);
@@ -29,7 +29,7 @@ void	TestCuCheckEntry_DoubleDigit(CuTest *tc)
 	CuAssertIntEquals(tc, expected, actual);
 }
 
-void	TestCuCheckEntry_NegativeDoubleDigit(CuTest *tc)
+void	Test_CheckEntry_DoubleDigit_Negative(CuTest *tc)
 {
 	char *input = ft_strdup("12");
 	int actual = ft_check_entry(input);
@@ -37,7 +37,7 @@ void	TestCuCheckEntry_NegativeDoubleDigit(CuTest *tc)
 	CuAssertIntEquals(tc, expected, actual);
 }
 
-void	TestCuCheckEntry_Float(CuTest *tc)
+void	Test_CheckEntry_Float(CuTest *tc)
 {
 	char *input = ft_strdup("1.2");
 	int actual = ft_check_entry(input);
@@ -45,7 +45,7 @@ void	TestCuCheckEntry_Float(CuTest *tc)
 	CuAssertIntEquals(tc, expected, actual);
 }
 
-void	TestCuCheckEntry_NegativeFloat(CuTest *tc)
+void	Test_CheckEntry_Float_Negative(CuTest *tc)
 {
 	char *input = ft_strdup("-1.2");
 	int actual = ft_check_entry(input);
@@ -54,7 +54,7 @@ void	TestCuCheckEntry_NegativeFloat(CuTest *tc)
 }
 
 // * Characters ---------------------------------------------------------------*
-void	TestCuCheckEntry_SingleChar(CuTest *tc)
+void	Test_CheckEntry_SingleChar(CuTest *tc)
 {
 	char *input = ft_strdup("A");
 	int actual = ft_check_entry(input);
@@ -62,7 +62,7 @@ void	TestCuCheckEntry_SingleChar(CuTest *tc)
 	CuAssertIntEquals(tc, expected, actual);
 }
 
-void	TestCuCheckEntry_DoubleChar(CuTest *tc)
+void	Test_CheckEntry_DoubleChar(CuTest *tc)
 {
 	char *input = ft_strdup("AB");
 	int actual = ft_check_entry(input);
@@ -71,11 +71,10 @@ void	TestCuCheckEntry_DoubleChar(CuTest *tc)
 }
 
 
-
 /*-------------------------------------------------------------------------*
  * ft_convert_entry Test
  *-------------------------------------------------------------------------*/
-void	TestCuConvertEntry_SingleChar(CuTest *tc)
+void	Test_ConvertEntry_SingleChar(CuTest *tc)
 {
 	char *input = ft_strdup("1");
 	int actual = ft_convert_entry(input);
@@ -87,16 +86,16 @@ void	TestCuConvertEntry_SingleChar(CuTest *tc)
 CuSuite *CuGetSuite()
 {
 	CuSuite *suite = CuSuiteNew();
-	SUITE_ADD_TEST(suite, TestCuCheckEntry_SingleDigit);
-	SUITE_ADD_TEST(suite, TestCuCheckEntry_NegativeSingleDigit);
-	SUITE_ADD_TEST(suite, TestCuCheckEntry_DoubleDigit);
-	SUITE_ADD_TEST(suite, TestCuCheckEntry_NegativeDoubleDigit);
-	SUITE_ADD_TEST(suite, TestCuCheckEntry_Float);
-	SUITE_ADD_TEST(suite, TestCuCheckEntry_NegativeFloat);
-	SUITE_ADD_TEST(suite, TestCuCheckEntry_SingleChar);
-	SUITE_ADD_TEST(suite, TestCuCheckEntry_DoubleChar);
+	SUITE_ADD_TEST(suite, Test_CheckEntry_SingleDigit);
+	SUITE_ADD_TEST(suite, Test_CheckEntry_SingleDigit_Negative);
+	SUITE_ADD_TEST(suite, Test_CheckEntry_DoubleDigit);
+	SUITE_ADD_TEST(suite, Test_CheckEntry_DoubleDigit_Negative);
+	SUITE_ADD_TEST(suite, Test_CheckEntry_Float);
+	SUITE_ADD_TEST(suite, Test_CheckEntry_Float_Negative);
+	SUITE_ADD_TEST(suite, Test_CheckEntry_SingleChar);
+	SUITE_ADD_TEST(suite, Test_CheckEntry_DoubleChar);
 
 
-	SUITE_ADD_TEST(suite, TestCuConvertEntry_SingleChar);
+	SUITE_ADD_TEST(suite, Test_ConvertEntry_SingleChar);
 	return (suite);
 }

@@ -96,7 +96,7 @@ fclean:
 	@$(MAKE) clean
 	@$(RM) $(RMFLAGS) $(NAME)
 
-re: 
+re:
 	@$(MAKE) fclean
 	@$(MAKE) all
 

@@ -30,25 +30,13 @@ typedef struct s_dblist
 
 // **************** check errors *****************
 int			ft_check_entry(char *str);
-// int			test_ft_check_entry(char *str);
-
 int			ft_convert_entry(char *str);
-// int			test_ft_convert_entry(char *str);
-
 t_dblist	*ft_store_entry(int data);
-// t_dblist	*test_ft_store_entry(int data);
 
 // ***************** dbl_list *******************
 t_dblist	*ft_create_node(int data);
-// t_dblist	*test_ft_create_node(int data);
-
 t_dblist	*ft_find_node(t_dblist *dlist, int data);
-// t_dblist	*test_ft_find_node(t_dblist *dlist, int data);
-
 t_dblist	*ft_init_stack_a(int *arr, int arr_size);
-// t_dblist	*test_ft_init_stack_a(int *arr, int arr_size);
-
 void		ft_insert_node(t_dblist *dlist, int data, t_dblist *to_find);
-// void		test_ft_insert_node(t_dblist *dlist, int data, t_dblist *to_find);
 
 #endif

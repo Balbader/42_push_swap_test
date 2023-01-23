@@ -172,8 +172,9 @@ fclean:
 	for f in $(dir $(LIBS_TARGET)); do $(MAKE) -C $$f fclean; done
 	$(MAKE) clean
 	$(RM) $(RMFLAGS) $(NAME)
+	@echo $(GREEN) "Successfully removed:" $(NC) $(NAME) $(NC) "\n"
 
-re: 
+re:
 	$(MAKE) fclean
 	$(MAKE) all
 

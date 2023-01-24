@@ -6,8 +6,24 @@
 #include <math.h>
 #include <string.h>
 #include <stdlib.h>
+#include <stdio.h>
 
 #include "CuTest.h"
+
+/*-------------------------------------------------------------------------*
+ * Colors
+ *-------------------------------------------------------------------------*/
+char *red(char *str)
+{
+	printf("\033[1;31m");
+	return (str);
+}
+
+void green(char *str)
+{
+	printf("\033[1;32m");
+	printf("%s\n", str);
+}
 
 /*-------------------------------------------------------------------------*
  * CuStr
@@ -321,9 +337,9 @@ void CuSuiteDetails(CuSuite* testSuite, CuString* details)
 	else
 	{
 		if (testSuite->failCount == 1)
-			CuStringAppend(details, "There was 1 failure:\n");
+			CuStringAppend(details, "There was 1 failure:\n\n");
 		else
-			CuStringAppendFormat(details, "There were %d failures:\n", testSuite->failCount);
+			CuStringAppendFormat(details, "There were %d failures:\n\n", testSuite->failCount);
 
 		for (i = 0 ; i < testSuite->count ; ++i)
 		{
@@ -331,14 +347,14 @@ void CuSuiteDetails(CuSuite* testSuite, CuString* details)
 			if (testCase->failed)
 			{
 				failCount++;
-				CuStringAppendFormat(details, "%d) %s: %s\n",
+				CuStringAppendFormat(details, "%d) %s: %s\n\n",
 					failCount, testCase->name, testCase->message->buffer);
 			}
 		}
 		CuStringAppend(details, "\n!!!FAILURES!!!\n");
 
-		CuStringAppendFormat(details, "Runs: %d ",   testSuite->count);
-		CuStringAppendFormat(details, "Passes: %d ", testSuite->count - testSuite->failCount);
+		CuStringAppendFormat(details, "Runs: %d\n",   testSuite->count);
+		CuStringAppendFormat(details, "Passes: %d\n", testSuite->count - testSuite->failCount);
 		CuStringAppendFormat(details, "Fails: %d\n",  testSuite->failCount);
 	}
 }

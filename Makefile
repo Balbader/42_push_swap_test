@@ -59,10 +59,11 @@ OPER				:=	$(addprefix $(OPER_DIR), $(OPER_FILES))
 RUNNERS_DIR			:=	cutest_runners/
 RUNNERS_FILES		:=	AllTests.c \
 						CuTest.c \
-						EntryUtil.c \
-						ConvertUtil.c \
-						StoreUtil.c
+						CheckEntryUtil.c \
+						ConvertEntryUtil.c \
+						StoreEntryUtil.c
 RUNNERS				:=	$(addprefix $(RUNNERS_DIR), $(RUNNERS_FILES))
+# GetEntryUtil.c \
 
 # dbl_list
 DLIST_DIR			:=	dbl_list/
@@ -87,9 +88,11 @@ SRCS				:=	\
 						$(CHECK_ENTRY) \
 						$(CONVERT_ENTRY) \
 						$(STORE_ENTRY) \
+						$(INIT_STACK) \
 						$(OPER) \
 						$(RUNNERS) \
 						$(DLIST)
+# $(GET_ENTRY) \
 SRCS        		:=	$(SRCS:%=$(SRCS_DIR)/%)
 
 BUILD_DIR			:=	.build

@@ -32,7 +32,7 @@ typedef struct s_dblist
 int			*ft_get_entry(char ac, char *av[]);
 int			ft_check_entry(char *str);
 int			ft_convert_entry(char *str);
-int			*ft_store_entry(int data);
+int			*ft_store_entry(int data, int *entries, int pos);
 
 // ***************** dbl_list *******************
 t_dblist	*ft_create_node(int data);

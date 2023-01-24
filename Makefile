@@ -48,7 +48,9 @@ OPER				:=	$(addprefix $(OPER_DIR), $(OPER_FILES))
 RUNNERS_DIR			:=	cutest_runners/
 RUNNERS_FILES		:=	AllTests.c \
 						CuTest.c \
-						EntryUtil.c
+						EntryUtil.c \
+						ConvertUtil.c \
+						StoreUtil.c
 RUNNERS				:=	$(addprefix $(RUNNERS_DIR), $(RUNNERS_FILES))
 
 # dbl_list

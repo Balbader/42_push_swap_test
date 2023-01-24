@@ -31,7 +31,7 @@ typedef struct s_dblist
 // **************** check errors *****************
 int			ft_check_entry(char *str);
 int			ft_convert_entry(char *str);
-t_dblist	*ft_store_entry(int data);
+// int			*ft_store_entry(int ac, char *av[]);
 
 // ***************** dbl_list *******************
 t_dblist	*ft_create_node(int data);

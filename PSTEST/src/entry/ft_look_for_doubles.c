@@ -14,20 +14,18 @@
 
 int	ft_look_for_doubles(int *data_arr, int data_arr_size)
 {
-	int	temp[data_arr_size];
 	int	i;
 	int	j;
 
-	j = 0;
 	i = 0;
-	temp[j] = data_arr[i];
-	while (data_arr[i])
+	while (i < data_arr_size)
 	{
-		while (temp[j])
+		j = i + 1;
+		while (j < data_arr_size)
 		{
-			if (data_arr[i] == temp[j])
+			if (data_arr[i] == data_arr[j])
 				return (1);
-			temp[++j] = data_arr[++i];
+			++j;
 		}
 		++i;
 	}

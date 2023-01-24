@@ -21,22 +21,27 @@ NAME				:=	run_test
 ##################
 
 # Check Entry
-CHECK_ENTRY_DIR		:=	1_check_entry/
+CHECK_ENTRY_DIR		:=	1_Check_Entry/
 CHECK_ENTRY_FILES	:=	ft_check_entry.c
 CHECK_ENTRY			:=	$(addprefix $(CHECK_ENTRY_DIR), $(CHECK_ENTRY_FILES))
 
 # Convert Entry
-CONVERT_ENTRY_DIR	:=	2_convert_entry/
+CONVERT_ENTRY_DIR	:=	2_Convert_Entry/
 CONVERT_ENTRY_FILES	:=	ft_convert_entry.c
 CONVERT_ENTRY		:=	$(addprefix $(CONVERT_ENTRY_DIR), $(CONVERT_ENTRY_FILES))
 
 # Store Entry
-STORE_ENTRY_DIR		:=	3_store_entry/
+STORE_ENTRY_DIR		:=	3_Store_Entry/
 STORE_ENTRY_FILES	:=	ft_store_entry.c
 STORE_ENTRY			:=	$(addprefix $(STORE_ENTRY_DIR), $(STORE_ENTRY_FILES))
 
+# Init Stack a
+INIT_STACK_DIR		:=	4_Init_Stack/
+INIT_STACK_FILES	:=	ft_init_stack_a.c
+INIT_STACK			:=	$(addprefix $(INIT_STACK_DIR), $(INIT_STACK_FILES))
+
 # Operations
-OPER_DIR			:=	4_operations/
+OPER_DIR			:=	operations/
 OPER_FILES			:=	\
 						ft_pa.c ft_pb.c \
 						ft_ra.c ft_rb.c ft_rr.c \

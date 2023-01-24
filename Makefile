@@ -19,24 +19,30 @@ NAME				:=	run_test
 ##################
 #   SRCS FILES	 #
 ##################
+# Get Entry
+GET_ENTRY_DIR		:=	1_Get_Entry/
+GET_ENTRY_FILES		:=	ft_get_entry.c
+GET_ENTRY			:=	$(addprefix $(GET_ENTRY_DIR), $(GET_ENTRY_FILES))
 
 # Check Entry
-CHECK_ENTRY_DIR		:=	1_Check_Entry/
+CHECK_ENTRY_DIR		:=	2_Check_Entry/
 CHECK_ENTRY_FILES	:=	ft_check_entry.c
 CHECK_ENTRY			:=	$(addprefix $(CHECK_ENTRY_DIR), $(CHECK_ENTRY_FILES))
 
 # Convert Entry
-CONVERT_ENTRY_DIR	:=	2_Convert_Entry/
+CONVERT_ENTRY_DIR	:=	3_Convert_Entry/
 CONVERT_ENTRY_FILES	:=	ft_convert_entry.c
 CONVERT_ENTRY		:=	$(addprefix $(CONVERT_ENTRY_DIR), $(CONVERT_ENTRY_FILES))
 
 # Store Entry
-STORE_ENTRY_DIR		:=	3_Store_Entry/
-STORE_ENTRY_FILES	:=	ft_store_entry.c
+STORE_ENTRY_DIR		:=	4_Store_Entry/
+STORE_ENTRY_FILES	:=	ft_store_entry.c \
+						ft_look_for_doubles.c \
+						ft_check_int_size.c
 STORE_ENTRY			:=	$(addprefix $(STORE_ENTRY_DIR), $(STORE_ENTRY_FILES))
 
 # Init Stack a
-INIT_STACK_DIR		:=	4_Init_Stack/
+INIT_STACK_DIR		:=	5_Init_Stack/
 INIT_STACK_FILES	:=	ft_init_stack_a.c
 INIT_STACK			:=	$(addprefix $(INIT_STACK_DIR), $(INIT_STACK_FILES))
 

@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   EntryUtil.c                                        :+:      :+:    :+:   */
+/*   CheckEntryUtil.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: baalbade <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/01/24 06:54:36 by baalbade          #+#    #+#             */
-/*   Updated: 2023/01/24 06:54:39 by baalbade         ###   ########.fr       */
+/*   Created: 2023/01/24 11:32:14 by baalbade          #+#    #+#             */
+/*   Updated: 2023/01/24 11:32:26 by baalbade         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -127,7 +127,7 @@ void	Test_CheckEntry_PlusMinusLettersNumbers(CuTest *tc)
 }
 
 
-CuSuite *EntryUtilGetSuite()
+CuSuite *CheckEntryUtilGetSuite()
 {
 	CuSuite *suite = CuSuiteNew();
 

@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ConvertUtil.c                                      :+:      :+:    :+:   */
+/*   ConvertEntryUtil.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: baalbade <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/01/24 06:52:28 by baalbade          #+#    #+#             */
-/*   Updated: 2023/01/24 06:52:30 by baalbade         ###   ########.fr       */
+/*   Created: 2023/01/24 11:32:47 by baalbade          #+#    #+#             */
+/*   Updated: 2023/01/24 11:32:49 by baalbade         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -133,11 +133,10 @@ void	Test_ConvertEntry_GreaterIntMax_WithSpaces_Plus(CuTest *tc)
 	CuAssertIntEquals(tc, expected, actual);
 }
 
-CuSuite *ConvertUtilGetSuite()
+CuSuite *ConvertEntryUtilGetSuite()
 {
 	CuSuite *suite = CuSuiteNew();
 
-	// Test_ConvertEntry =======================================================
 	SUITE_ADD_TEST(suite, Test_ConvertEntry_SingleDigit_Zero);
 	SUITE_ADD_TEST(suite, Test_ConvertEntry_SingleDigit_Zero_Negative);
 	SUITE_ADD_TEST(suite, Test_ConvertEntry_SingleDigit_One);

@@ -1,18 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_look_for_doubles.c                              :+:      :+:    :+:   */
+/*   GetEntryUtil.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: baalbade <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/01/23 16:49:50 by baalbade          #+#    #+#             */
-/*   Updated: 2023/01/23 16:49:52 by baalbade         ###   ########.fr       */
+/*   Created: 2023/01/24 11:32:58 by baalbade          #+#    #+#             */
+/*   Updated: 2023/01/24 11:33:00 by baalbade         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "push_swap.h"
+#include "CuTest.h"
 
-void	ft_look_for_doubles(char *str)
+// TO DO: Define test for GetEntry
+
+
+CuSuite *GetEntryUtilGetSuite()
 {
-	(void)str;
+	CuSuite *suite = CuSuiteNew();
+
+	SUITE_ADD_TEST(suite,);
+
+	return (suite);
 }

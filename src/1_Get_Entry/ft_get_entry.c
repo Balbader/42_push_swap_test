@@ -10,4 +10,17 @@
 /*                                                                            */
 /* ************************************************************************** */
 
+#include "push_swap.h"
 
+int	*ft_get_entry(char ac, char *av[])
+{
+	int	*entries;
+	int i;
+
+	entries = (int *)malloc(sizeof(int) * (ac - 1));
+	if (!entries)
+		return (0);
+	i = 0;
+
+	return (entries);
+}

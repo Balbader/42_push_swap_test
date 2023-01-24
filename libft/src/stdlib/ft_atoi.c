@@ -12,11 +12,6 @@
 
 #include "libft.h"
 
-static int	ft_is_sign(char c)
-{
-	return (c == '-' || c == '+');
-}
-
 int	ft_atoi(const char *str)
 {
 	int	sign;
@@ -26,19 +21,18 @@ int	ft_atoi(const char *str)
 	res = 0;
 	sign = 1;
 	i = 0;
-	if (ft_is_sign(str[i]) && ft_is_sign(str[i + 1]))
-		return (0);
-	if (str[i] == '-')
+	while (str[i] == ' ')
+		++i;
+	if (str[i] == '+' || str[i] == '-')
 	{
-		sign *= -1;
-		i++;
+		if (str[i] == '-')
+			sign *= -1;
+		++i;
 	}
-	else if (str[i] == '+')
-		i++;
 	while (ft_isdigit(str[i]))
 	{
 		res = res * 10 + str[i] - '0';
-		i++;
+		++i;
 	}
 	return (res * sign);
 }

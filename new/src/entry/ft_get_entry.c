@@ -14,14 +14,7 @@
 
 int	ft_get_entry(char **av, int elem, int i)
 {
-	if (ft_check_entry(av[i]) == 1)
-	{
-		ft_putstr_fd("Error\n", 2);
-		return (1);
-	}
-	else
-	{
-		elem = ft_convert_entry(av[i]);
-		return (elem);
-	}
+	ft_check_entry(av[i]);
+	elem = ft_convert_entry(av[i]);
+	return (elem);
 }

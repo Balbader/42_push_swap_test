@@ -14,9 +14,9 @@
 
 int	main(int ac, char **av)
 {
-	int	*entries;
-	int	i;
-	int	j;
+	int		*entries;
+	int		i;
+	int		j;
 
 	entries = (int *)ft_calloc(ac, sizeof(int));
 	if (!entries)
@@ -32,8 +32,8 @@ int	main(int ac, char **av)
 			++i;
 		}
 	}
-	for (i = 1; i < ac; ++i) {
-		ft_printf("%d\n", entries[i]);
-	}
+	// for (i = 1; i < ac; ++i) {
+	// 	ft_printf("%d\n", entries[i]);
+	// }
 	return (0);
 }

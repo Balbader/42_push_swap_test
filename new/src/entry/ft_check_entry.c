@@ -22,9 +22,15 @@ int	ft_check_entry(char *str)
 		if (str[i] == '-')
 			++i;
 		else if (str[i] == '-' && (!ft_isdigit(str[i + 1])))
-			return (1);
+		{
+			ft_putstr_fd("Error\n", 2);
+			break ;
+		}
 		if (!ft_isdigit(str[i]))
-			return (1);
+		{
+			ft_putstr_fd("Error\n", 2);
+			break ;
+		}
 		++i;
 	}
 	return (0);

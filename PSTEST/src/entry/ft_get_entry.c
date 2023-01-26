@@ -20,26 +20,20 @@
  * 7. If no error found ==> return the array for init stack a
 */
 
-#include "push_swap.h"
-
+// #include "push_swap.h"
+#include <stdio.h>
 
 int	*ft_get_entry(char ac, char *av[])
 {
-	int	*entries;
-	int	value;
-	int	j;
-	int i;
+		int		tot_entries;
+		int		i;
 
-	entries = (int *)malloc(sizeof(int) * (ac - 1));
-	if (!entries)
-		return (0);
-	j = 0;
-	i = 1;
-	while (i < ac - 1)
-	{
-		value = ft_convert_entry(av[i]);
-		entries = ft_store_entry(value, entries, j);
-	}
-
-	return (entries);
+		i = 1;
+		tot_entries = ac - 1;
+		while (i < tot_entries)
+		{
+			printf("%s\n", av[i]);
+			++i;
+		}
+	return (0);
 }

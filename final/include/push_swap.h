@@ -34,4 +34,10 @@ void	ft_print_ptr(size_t ptr, int *tot_len);
 void	ft_print_char(char c, int *tot_len);
 void	ft_print_str(char *str, int *tot_len);
 
+// Utils
+int		ft_atoi(char *str);
+int		ft_strlen(char *str);
+void	*ft_calloc(size_t nmemb, size_t size);
+
+
 #endif

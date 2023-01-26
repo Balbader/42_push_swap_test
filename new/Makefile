@@ -15,7 +15,6 @@
 ############
 NAME				:=	push_swap
 
-
 ##################
 #   SRCS FILES	 #
 ##################
@@ -44,7 +43,6 @@ OPER_FILES			:=	\
 						ft_sa.c ft_sb.c ft_ss.c
 OPER				:=	$(addprefix $(OPER_DIR), $(OPER_FILES))
 
-
 ###################
 #   INGREDIENTS	  #
 ###################
@@ -72,7 +70,6 @@ IFLAGS				:=	$(addprefix -I, $(INCS))
 LDFLAGS				:=	$(addprefix -L, $(dir $(LIBS_TARGET)))
 LDLIBS 				:= 	$(addprefix -l:, $(LIBS))
 
-
 ################
 #   UTENSILS   #
 ################
@@ -80,7 +77,6 @@ RM					:=	rm
 RMFLAGS				:=	-r -f
 MAKEFLAGS   		+=	--no-print-directory
 DIR_DUP     		= 	mkdir -p $(@D)
-
 
 ######################
 #   COLORS DISPLAY   #
@@ -90,7 +86,6 @@ GREEN				:=	'\033[1;32m'
 ORANGE				:=	'\033[0;33m'
 YELLOW				:=	'\033[1;33m'
 NC					:=	'\033[0m'
-
 
 ###############
 #   RECIPES   #

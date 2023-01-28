@@ -52,6 +52,9 @@ PRINTF				:=	$(addprefix $(PRINTF_DIR), $(PRINTF_FILES))
 ###################
 #   INGREDIENTS	  #
 ###################
+LIBS				:=	libft.a
+LIBS_TARGET			:=	./libft/libft.a
+
 INCS				:=	./include/
 
 SRCS_DIR			:=	./src/
@@ -95,9 +98,13 @@ NC					:=	'\033[0m'
 ###############
 all: $(NAME)
 
-$(NAME): $(OBJS)
-	$(CC) $(OBJS) -o $(NAME)
+$(NAME): $(OBJS) $(LIBS_TARGET)
+	$(CC) $(LDFLAGS) $(OBJS) $(LDLIBS) -o $(NAME)
 	@echo $(GREEN) "--> $(NAME) COMPILED !" $(NC)" \n"
+
+$(LIBS_TARGET):
+	@echo $(RED) "Building LIbrary: $(LIBS_TARGET)" $(NC) "\n"
+	$(MAKE) -C $(@D)
 
 $(BUILD_DIR)/%.o: $(SRCS_DIR)/%.c
 	@echo $(YELLOW) "COMPILING:" $(NC) $<
@@ -108,9 +115,11 @@ $(BUILD_DIR)/%.o: $(SRCS_DIR)/%.c
 -include $(DEPS)
 
 clean:
+	for f in $(dir $(LIBS_TARGET)); do $(MAKE) -C $$f clean; done
 	$(RM) $(RMFLAGS) $(BUILD_DIR) $(DEPS)
 
 fclean:
+	for f in $(dir $(LIBS_TARGET)); do $(MAKE) -C $$f fclean; done
 	$(MAKE) clean
 	$(RM) $(RMFLAGS) $(NAME)
 	@echo $(GREEN) "Successfully removed:" $(NC) $(NAME) $(NC) "\n"

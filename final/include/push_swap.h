@@ -27,4 +27,12 @@ typedef struct s_dblist
 	struct s_dblist	*prev;
 }				t_dblist;
 
+int		ft_check_entry(char *str);
+int		ft_check_int_size(long data);
+int		ft_convert_entry(char *str);
+int		ft_get_entry(char **av, int elem, int i);
+int		ft_look_for_doubles(int *arr, int arr_size);
+int		*ft_process_entry(int ac, char **av);
+int		*ft_store_entry(int data, int *entries, int pos);
+
 #endif

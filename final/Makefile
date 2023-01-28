@@ -26,6 +26,7 @@ ENTRY_FILES			:=	\
 						ft_convert_entry.c \
 						ft_get_entry.c \
 						ft_look_for_doubles.c \
+						ft_process_entry.c \
 						ft_store_entry.c
 ENTRY				:=	$(addprefix $(ENTRY_DIR), $(ENTRY_FILES))
 
@@ -43,26 +44,20 @@ OPER_FILES			:=	\
 						ft_sa.c ft_sb.c ft_ss.c
 OPER				:=	$(addprefix $(OPER_DIR), $(OPER_FILES))
 
-PRINTF_DIR			:=	ft_printf/
-PRINTF_FILES		:=	ft_printf.c \
-						ft_printf_numbers_utils.c \
-						ft_printf_string_utils.c
-PRINTF				:=	$(addprefix $(PRINTF_DIR), $(PRINTF_FILES))
-
 ###################
 #   INGREDIENTS	  #
 ###################
-LIBS				:=	libft.a
+LIBS				:=	./libft.a
 LIBS_TARGET			:=	./libft/libft.a
 
-INCS				:=	./include/
+INCS				:=	./include/ \
+						./libft/include/
 
 SRCS_DIR			:=	./src/
 SRCS				:=	\
 						$(ENTRY) \
 						$(INIT_STACK) \
 						$(OPER) \
-						$(PRINTF) \
 						main.c
 SRCS        		:=	$(SRCS:%=$(SRCS_DIR)/%)
 

@@ -18,7 +18,8 @@
 # include <stddef.h>
 # include <stdarg.h>
 
-# include "../libft/include/libft.h"
+# define INT_MAX 2147483647
+# define INT_MIN -2147483648
 
 typedef struct s_dblist
 {
@@ -27,12 +28,23 @@ typedef struct s_dblist
 	struct s_dblist	*prev;
 }				t_dblist;
 
-int		ft_check_entry(char *str);
-int		ft_check_int_size(long data);
-int		ft_convert_entry(char *str);
-int		ft_get_entry(char **av, int elem, int i);
-int		ft_look_for_doubles(int *arr, int arr_size);
-int		*ft_process_entry(int ac, char **av);
-int		*ft_store_entry(int data, int *entries, int pos);
+/* Entry Check */
+
+int			ft_check_entry(char *str);
+int			ft_check_int_size(long data);
+int			ft_convert_entry(char *str);
+int			ft_get_entry(char **av, int elem, int i);
+int			ft_look_for_doubles(int *arr, int arr_size);
+int			*ft_process_entry(int ac, char **av);
+int			*ft_store_entry(int data, int *entries, int pos);
+
+/* Utils */
+
+long int	ft_atoi(const char *str);
+void		*ft_calloc(size_t nmemb, size_t size);
+void		ft_putstr_fd(char *str, int fd);
+void		ft_free_stack(t_dblist *stack);
+int			ft_is_digit(char c);
+int			ft_strlen(const char *str);
 
 #endif

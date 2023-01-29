@@ -44,6 +44,7 @@ long int	ft_atoi(const char *str);
 void		*ft_calloc(size_t nmemb, size_t size);
 void		ft_putstr_fd(char *str, int fd);
 void		ft_free_stack(t_dblist *stack);
+void		ft_print_err(t_dblist *stack_a, t_dblist *stack_b);
 int			ft_is_digit(char c);
 int			ft_strlen(const char *str);
 

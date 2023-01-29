@@ -12,11 +12,11 @@
 
 #include "push_swap.h"
 
-void	ft_print_err(t_dblist *stack_a, t_dblist *stack_b)
+void	ft_print_err(t_dblist **stack_a, t_dblist **stack_b)
 {
-	if (stack_a == NULL)
+	if (*stack_a == NULL)
 		ft_free_stack(stack_a);
-	if (stack_b == NULL)
+	if (*stack_b == NULL)
 		ft_free_stack(stack_b);
 	ft_putstr_fd("Error\n", 2);
 	exit (1);

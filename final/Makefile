@@ -44,14 +44,21 @@ OPER_FILES			:=	\
 						ft_sa.c ft_sb.c ft_ss.c
 OPER				:=	$(addprefix $(OPER_DIR), $(OPER_FILES))
 
+# Utils
+UTILS_DIR			:=	utils/
+UTILS_FILES			:=	\
+						ft_atoi.c \
+						ft_calloc.c \
+						ft_free_stack.c \
+						ft_isdigit.c \
+						ft_putstr_fd.c \
+						ft_strlen.c
+UTILS				:=	$(addprefix $(UTILS_DIR), $(UTILS_FILES))
+
 ###################
 #   INGREDIENTS	  #
 ###################
-LIBS				:=	./libft.a
-LIBS_TARGET			:=	./libft/libft.a
-
-INCS				:=	./include/ \
-						./libft/include/
+INCS				:=	./include/
 
 SRCS_DIR			:=	./src/
 SRCS				:=	\
@@ -68,8 +75,6 @@ DEPS        		:=	$(OBJS:.o=.d)
 CC					:=	gcc
 CFLAGS				:=	-Wall -Wextra -Werror
 IFLAGS				:=	$(addprefix -I, $(INCS))
-LDFLAGS				:=	$(addprefix -L, $(dir $(LIBS_TARGET)))
-LDLIBS 				:= 	$(addprefix -l:, $(LIBS))
 
 ################
 #   UTENSILS   #
@@ -93,13 +98,9 @@ NC					:=	'\033[0m'
 ###############
 all: $(NAME)
 
-$(NAME): $(OBJS) $(LIBS_TARGET)
-	$(CC) $(LDFLAGS) $(OBJS) $(LDLIBS) -o $(NAME)
+$(NAME): $(OBJS)
+	$(CC) $(OBJS) -o $(NAME)
 	@echo $(GREEN) "--> $(NAME) COMPILED !" $(NC)" \n"
-
-$(LIBS_TARGET):
-	@echo $(RED) "Building LIbrary: $(LIBS_TARGET)" $(NC) "\n"
-	$(MAKE) -C $(@D)
 
 $(BUILD_DIR)/%.o: $(SRCS_DIR)/%.c
 	@echo $(YELLOW) "COMPILING:" $(NC) $<
@@ -110,11 +111,9 @@ $(BUILD_DIR)/%.o: $(SRCS_DIR)/%.c
 -include $(DEPS)
 
 clean:
-	for f in $(dir $(LIBS_TARGET)); do $(MAKE) -C $$f clean; done
 	$(RM) $(RMFLAGS) $(BUILD_DIR) $(DEPS)
 
 fclean:
-	for f in $(dir $(LIBS_TARGET)); do $(MAKE) -C $$f fclean; done
 	$(MAKE) clean
 	$(RM) $(RMFLAGS) $(NAME)
 	@echo $(GREEN) "Successfully removed:" $(NC) $(NAME) $(NC) "\n"

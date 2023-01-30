@@ -12,7 +12,27 @@
 
 #include "push_swap.h"
 
-int	ft_convert_entry(char *str)
+int	ft_convert_entry(const char *str)
 {
-	return (ft_atoi(str));
+	long int	sign;
+	long int	nb;
+	long int	i;
+
+	sign = 1;
+	nb = 0;
+	i = 0;
+	if (str[i] == '+')
+		++i;
+	else if (str[i] == '-')
+	{
+		sign *= -1;
+		++i;
+	}
+	while (ft_isdigit(str[i]))
+	{
+		nb *= 10;
+		nb += (str[i] - '0');
+		++i;
+	}
+	return (nb * sign);
 }

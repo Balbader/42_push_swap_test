@@ -30,11 +30,6 @@ ENTRY_FILES			:=	\
 						ft_store_entry.c
 ENTRY				:=	$(addprefix $(ENTRY_DIR), $(ENTRY_FILES))
 
-# Init Stack a
-INIT_STACK_DIR		:=	stack/
-INIT_STACK_FILES	:=	ft_init_stack_a.c
-INIT_STACK			:=	$(addprefix $(INIT_STACK_DIR), $(INIT_STACK_FILES))
-
 # Operations
 OPER_DIR			:=	operations/
 OPER_FILES			:=	\
@@ -44,10 +39,27 @@ OPER_FILES			:=	\
 						ft_sa.c ft_sb.c ft_ss.c
 OPER				:=	$(addprefix $(OPER_DIR), $(OPER_FILES))
 
+# ft_printf
+FT_PRINTF_DIR		:=	ft_printf/
+FT_PRINTF_FILES		:=	\
+						ft_print_char.c \
+						ft_print_hexa.c \
+						ft_print_nb.c \
+						ft_print_ptr.c \
+						ft_print_str.c \
+						ft_print_unsigned.c \
+						ft_printf.c
+FT_PRINTF			:=	$(addprefix $(FT_PRINTF_DIR), $(FT_PRINTF_FILES))
+
+# Stack
+STACK_DIR			:=	stack/
+STACK_FILES			:=	ft_init_stack_a.c
+STACK				:=	$(addprefix $(INIT_STACK_DIR), $(INIT_STACK_FILES))
+
+
 # Utils
 UTILS_DIR			:=	utils/
 UTILS_FILES			:=	\
-						ft_atoi.c \
 						ft_calloc.c \
 						ft_free_stack.c \
 						ft_isdigit.c \
@@ -63,8 +75,10 @@ INCS				:=	./include/
 SRCS_DIR			:=	./src/
 SRCS				:=	\
 						$(ENTRY) \
-						$(INIT_STACK) \
 						$(OPER) \
+						$(FT_PRINTF) \
+						$(STACK) \
+						$(UTILS) \
 						main.c
 SRCS        		:=	$(SRCS:%=$(SRCS_DIR)/%)
 

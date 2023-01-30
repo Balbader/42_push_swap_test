@@ -32,20 +32,28 @@ typedef struct s_dblist
 
 int			ft_check_entry(char *str);
 int			ft_check_int_size(long data);
-int			ft_convert_entry(char *str);
+int			ft_convert_entry(const char *str);
 int			ft_get_entry(char **av, int elem, int i);
 int			ft_look_for_doubles(int *arr, int arr_size);
 int			*ft_process_entry(int ac, char **av);
 int			*ft_store_entry(int data, int *entries, int pos);
 
+/* ft_printf */
+void		ft_print_char(char c, int *tot_len);
+void		ft_print_hexa(unsigned int nb, char c, int *tot_len);
+void		ft_print_nb(int nb, int *tot_len);
+void		ft_print_ptr(size_t ptr, int *tot_len);
+void		ft_print_str(char *str, int *tot_len);
+void		ft_print_unsigned(unsigned int u, int *tot_len);
+int			ft_printf(const char *str, ...);
+
 /* Utils */
 
-long int	ft_atoi(const char *str);
 void		*ft_calloc(size_t nmemb, size_t size);
 void		ft_putstr_fd(char *str, int fd);
 void		ft_free_stack(t_dblist *stack);
 void		ft_print_err(t_dblist *stack_a, t_dblist *stack_b);
-int			ft_is_digit(char c);
+int			ft_isdigit(char c);
 int			ft_strlen(const char *str);
 
 #endif

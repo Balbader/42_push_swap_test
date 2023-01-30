@@ -53,9 +53,16 @@ FT_PRINTF			:=	$(addprefix $(FT_PRINTF_DIR), $(FT_PRINTF_FILES))
 
 # Stack
 STACK_DIR			:=	stack/
-STACK_FILES			:=	ft_init_stack_a.c
+STACK_FILES			:=	\
+						ft_free_stack.c \
+						ft_get_before_last_node.c \
+						ft_get_last_node.c \
+						ft_init_stack_a.c \
+						ft_push_node.c \
+						ft_reverse_rotate_stack.c \
+						ft_rotate_stack.c \
+						ft_swap_stack.c
 STACK				:=	$(addprefix $(INIT_STACK_DIR), $(INIT_STACK_FILES))
-
 
 # Utils
 UTILS_DIR			:=	utils/
@@ -66,7 +73,6 @@ UTILS_FILES			:=	\
 						ft_print_err.c \
 						ft_putstr_fd.c \
 						ft_strlen.c \
-						ft_swap_stack.c
 UTILS				:=	$(addprefix $(UTILS_DIR), $(UTILS_FILES))
 
 ###################

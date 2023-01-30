@@ -63,8 +63,10 @@ UTILS_FILES			:=	\
 						ft_calloc.c \
 						ft_free_stack.c \
 						ft_isdigit.c \
+						ft_print_err.c \
 						ft_putstr_fd.c \
-						ft_strlen.c
+						ft_strlen.c \
+						ft_swap_stack.c
 UTILS				:=	$(addprefix $(UTILS_DIR), $(UTILS_FILES))
 
 ###################

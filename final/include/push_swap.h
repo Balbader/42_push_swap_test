@@ -39,6 +39,7 @@ int			*ft_process_entry(int ac, char **av);
 int			*ft_store_entry(int data, int *entries, int pos);
 
 /* ft_printf */
+
 void		ft_print_char(char c, int *tot_len);
 void		ft_print_hexa(unsigned int nb, char c, int *tot_len);
 void		ft_print_nb(int nb, int *tot_len);

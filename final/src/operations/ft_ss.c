@@ -11,3 +11,10 @@
 /* ************************************************************************** */
 
 #include "push_swap.h"
+
+void	ft_ss(t_dlist **stack_a, t_dlist **stack_b)
+{
+	ft_swap_stack(*stack_a);
+	ft_swap_stack(*stack_b);
+	ft_printf("ss\n");
+}

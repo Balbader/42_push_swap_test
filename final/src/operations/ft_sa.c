@@ -11,3 +11,9 @@
 /* ************************************************************************** */
 
 #include "push_swap.h"
+
+void	ft_sa(t_dlist **stack_a)
+{
+	ft_swap_stack(*stack_a);
+	ft_printf("sa\n");
+}

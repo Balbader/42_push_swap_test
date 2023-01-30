@@ -11,3 +11,9 @@
 /* ************************************************************************** */
 
 #include "push_swap.h"
+
+void	ft_rb(t_list **stack_b)
+{
+	ft_rotate_stack(stack_b);
+	ft_printf("rb\n");
+}

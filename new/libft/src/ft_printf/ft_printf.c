@@ -10,7 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ft_printf.h"
+#include "push_swap.h"
 
 static void	ft_check_sign(char sign, va_list *arg, int *tot_len, int *i)
 {

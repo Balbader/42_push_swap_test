@@ -10,7 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ft_printf.h"
+#include "push_swap.h"
 
 void	ft_print_hexa(unsigned int nb, char c, int *tot_len)
 {

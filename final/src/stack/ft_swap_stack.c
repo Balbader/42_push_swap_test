@@ -12,7 +12,7 @@
 
 #include "push_swap.h"
 
-void	ft_swap_stack(t_dlist *stack)
+void	ft_swap_stack(t_list *stack)
 {
 	int	temp;
 

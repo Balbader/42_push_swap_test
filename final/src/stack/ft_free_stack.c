@@ -12,9 +12,9 @@
 
 #include "push_swap.h"
 
-void		ft_free_stack(t_dlist **stack)
+void	ft_free_stack(t_list **stack)
 {
-	t_dlist	*temp;
+	t_list	*temp;
 
 	if (!stack || !(*stack))
 		return ;

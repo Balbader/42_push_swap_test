@@ -12,7 +12,7 @@
 
 #include "push_swap.h"
 
-void	ft_push_node(t_list **dest, t_list *src)
+void	ft_push_node(t_list **dest, t_list **src)
 {
 	t_list	*temp;
 
@@ -21,5 +21,5 @@ void	ft_push_node(t_list **dest, t_list *src)
 	temp = (*src)->next;
 	(*src)->next = *dest;
 	*dest = *src;
-	*src = *temp;
+	*src = temp;
 }

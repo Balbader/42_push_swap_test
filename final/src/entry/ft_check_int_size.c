@@ -14,7 +14,7 @@
 
 int	ft_check_int_size(long data)
 {
-	if (!(data >= INT_MIN  && data <= INT_MAX))
+	if (!(data >= INT_MIN && data <= INT_MAX))
 		return (1);
 	return (0);
 }

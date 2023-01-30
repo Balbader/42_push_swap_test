@@ -39,18 +39,6 @@ OPER_FILES			:=	\
 						ft_sa.c ft_sb.c ft_ss.c
 OPER				:=	$(addprefix $(OPER_DIR), $(OPER_FILES))
 
-# ft_printf
-FT_PRINTF_DIR		:=	ft_printf/
-FT_PRINTF_FILES		:=	\
-						ft_print_char.c \
-						ft_print_hexa.c \
-						ft_print_nb.c \
-						ft_print_ptr.c \
-						ft_print_str.c \
-						ft_print_unsigned.c \
-						ft_printf.c
-FT_PRINTF			:=	$(addprefix $(FT_PRINTF_DIR), $(FT_PRINTF_FILES))
-
 # Stack
 STACK_DIR			:=	stack/
 STACK_FILES			:=	\
@@ -62,17 +50,16 @@ STACK_FILES			:=	\
 						ft_reverse_rotate_stack.c \
 						ft_rotate_stack.c \
 						ft_swap_stack.c
-STACK				:=	$(addprefix $(INIT_STACK_DIR), $(INIT_STACK_FILES))
+STACK				:=	$(addprefix $(STACK_DIR), $(STACK_FILES))
 
 # Utils
 UTILS_DIR			:=	utils/
 UTILS_FILES			:=	\
 						ft_calloc.c \
-						ft_free_stack.c \
 						ft_isdigit.c \
 						ft_print_err.c \
 						ft_putstr_fd.c \
-						ft_strlen.c \
+						ft_strlen.c 
 UTILS				:=	$(addprefix $(UTILS_DIR), $(UTILS_FILES))
 
 ###################
@@ -84,7 +71,6 @@ SRCS_DIR			:=	./src/
 SRCS				:=	\
 						$(ENTRY) \
 						$(OPER) \
-						$(FT_PRINTF) \
 						$(STACK) \
 						$(UTILS) \
 						main.c

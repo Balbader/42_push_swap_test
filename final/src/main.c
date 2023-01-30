@@ -14,6 +14,6 @@
 
 int	main(void)
 {
-	ft_printf("I am main!\n");
+	ft_putstr_fd("I am main!\n", 1);
 	return (0);
 }

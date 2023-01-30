@@ -12,4 +12,17 @@
 
 #include "push_swap.h"
 
+void		ft_free_stack(t_dblist **stack)
+{
+	t_dblist	*temp;
 
+	if (!stack || !(*stack))
+		return ;
+	while (*stack)
+	{
+		temp = (*stack)->next;
+		free(*stack);
+		*stack = temp;
+	}
+	*stack = NULL;
+}

@@ -45,9 +45,13 @@ void	ft_print_str(char *str, int *tot_len);
 void	ft_print_unsigned(unsigned int u, int *tot_len);
 int		ft_printf(const char *str, ...);
 
-/* d_list */
+/* stack */
+void	ft_push_node(t_list **dest, t_list *src);
 void	ft_swap_stack(t_list *stack);
+void	ft_rotate_stack(t_list **stack);
+void	ft_reverse_rotate_stack(t_list **stack);
 t_list	*ft_get_last_node(t_list *stack);
+t_list	*ft_get_before_last_node(t_list *stack);
 
 /* Utils */
 void	*ft_calloc(size_t nmemb, size_t size);
@@ -61,6 +65,9 @@ int		ft_strlen(const char *str);
 void	ft_ra(t_list **stack_a);
 void	ft_rb(t_list **stack_b);
 void	ft_rr(t_list **stack_a, t_list **stack_b);
+void	ft_rra(t_list **stack_a);
+void	ft_rrb(t_list **stack_b);
+void	ft_rrr(t_list **stack_a, t_list **stack_b);
 void	ft_sa(t_list **stack_a);
 void	ft_sb(t_list **stack_b);
 void	ft_ss(t_list **stack_a, t_list **stack_b);

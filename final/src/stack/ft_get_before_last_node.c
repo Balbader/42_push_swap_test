@@ -14,7 +14,12 @@
 
 t_list	*ft_get_before_last_node(t_list *stack)
 {
-	while (stack && stack->next && stack->next->next != NULL)
-		stack = stack->next;
-	return (stack);
+	t_list	*before_last_node;
+
+	if (!stack)
+		return (NULL);
+	before_last_node = stack;
+	while (before_last_node->next && before_last_node->next->next != NULL)
+		before_last_node = before_last_node->next;
+	return (before_last_node);
 }

@@ -21,12 +21,12 @@
 # define INT_MAX 2147483647
 # define INT_MIN -2147483648
 
-typedef struct s_dblist
+typedef struct s_dlist
 {
 	int				data;
 	struct s_dblist	*next;
 	struct s_dblist	*prev;
-}				t_dblist;
+}				t_dlist;
 
 /* Entry Check */
 
@@ -52,8 +52,8 @@ int			ft_printf(const char *str, ...);
 
 void		*ft_calloc(size_t nmemb, size_t size);
 void		ft_putstr_fd(char *str, int fd);
-void		ft_free_stack(t_dblist *stack);
-void		ft_print_err(t_dblist *stack_a, t_dblist *stack_b);
+void		ft_free_stack(t_dlist *stack);
+void		ft_print_err(t_dlist *stack_a, t_dlist *stack_b);
 int			ft_isdigit(char c);
 int			ft_strlen(const char *str);
 

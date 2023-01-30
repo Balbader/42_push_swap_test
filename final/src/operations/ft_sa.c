@@ -12,8 +12,8 @@
 
 #include "push_swap.h"
 
-void	ft_sa(t_dlist **stack_a)
+void	ft_sa(t_list **stack_a)
 {
 	ft_swap_stack(*stack_a);
-	ft_printf("sa\n");
+	ft_putstr_fd("sa\n", 1);
 }

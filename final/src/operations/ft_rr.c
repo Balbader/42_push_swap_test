@@ -16,5 +16,5 @@ void	ft_rr(t_list **stack_a, t_list **stack_b)
 {
 	ft_rotate_stack(stack_a);
 	ft_rotate_stack(stack_b);
-	ft_printf("rr\n");
+	ft_putstr_fd("rr\n", 1);
 }

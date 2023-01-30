@@ -15,5 +15,5 @@
 void	ft_rrb(t_list **stack_b)
 {
 	ft_reverse_rotate_stack(stack_b);
-	ft_printf("rra\n");
+	ft_putstr_fd("rrb\n", 1);
 }

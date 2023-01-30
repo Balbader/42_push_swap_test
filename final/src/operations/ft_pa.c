@@ -15,5 +15,5 @@
 void	ft_pa(t_list **stack_b, t_list **stack_a)
 {
 	ft_push_node(stack_b, stack_a);
-	ft_printf("pa\n");
+	ft_putstr_fd("pa\n", 1);
 }

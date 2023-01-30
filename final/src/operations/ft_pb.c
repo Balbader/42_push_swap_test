@@ -11,3 +11,9 @@
 /* ************************************************************************** */
 
 #include "push_swap.h"
+
+void	ft_pb(t_list **stack_a, t_list **stack_b)
+{
+	ft_push_node(stack_a, stack_b);
+	ft_printf("pb\n");
+}

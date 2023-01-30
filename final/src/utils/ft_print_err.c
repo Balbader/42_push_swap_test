@@ -12,7 +12,7 @@
 
 #include "push_swap.h"
 
-void	ft_print_err(t_dlist **stack_a, t_dlist **stack_b)
+void	ft_print_err(t_list **stack_a, t_list **stack_b)
 {
 	if (*stack_a == NULL)
 		ft_free_stack(stack_a);

@@ -10,11 +10,15 @@
 /*                                                                            */
 /* ************************************************************************** */
 
+/*
+*	checks every argument, convert it and returns the converted argument
+*/
+
 #include "push_swap.h"
 
-int	ft_get_entry(char **av, int elem, int i)
+int	ft_get_entry(char *av, int elem)
 {
-	ft_check_entry(av[i]);
-	elem = ft_convert_entry(av[i]);
+	ft_check_entry(av);
+	elem = ft_convert_entry(av);
 	return (elem);
 }

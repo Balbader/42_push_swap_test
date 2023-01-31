@@ -3,33 +3,33 @@
 /*                                                        :::      ::::::::   */
 /*   ft_check_entry.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: baalbade <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: baalbade <baalbade@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/01/16 11:09:05 by baalbade          #+#    #+#             */
-/*   Updated: 2023/01/16 11:09:13 by baalbade         ###   ########.fr       */
+/*   Created: 2023/01/31 13:36:49 by baalbade          #+#    #+#             */
+/*   Updated: 2023/01/31 13:36:51 by baalbade         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-int	ft_check_entry(char *str)
+int	ft_check_entry(char *av)
 {
 	int	i;
 
 	i = 0;
-	while (str[i])
+	while (av[i])
 	{
-		if (str[i] == '-')
+		if (av[i] == '-')
 			++i;
-		else if (str[i] == '-' && (!ft_isdigit(str[i + 1])))
+		else if (av[i] == '-' && (!ft_isdigit(av[i + 1])))
 		{
 			ft_putstr_fd("Error\n", 2);
-			break ;
+			exit(1);
 		}
-		if (!ft_isdigit(str[i]))
+		else if (!ft_isdigit(av[i]))
 		{
 			ft_putstr_fd("Error\n", 2);
-			break ;
+			exit(1);
 		}
 		++i;
 	}

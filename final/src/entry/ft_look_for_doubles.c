@@ -12,7 +12,7 @@
 
 #include "push_swap.h"
 
-int	ft_look_for_doubles(int *arr, int arr_size)
+void	ft_look_for_doubles(int *arr, int arr_size)
 {
 	int	i;
 	int	j;
@@ -24,10 +24,12 @@ int	ft_look_for_doubles(int *arr, int arr_size)
 		while (j < arr_size)
 		{
 			if (arr[i] == arr[j])
-				return (1);
+			{
+				ft_putstr_fd("Error\n", 2);
+				exit(1);
+			}
 			++j;
 		}
 		++i;
 	}
-	return (0);
 }

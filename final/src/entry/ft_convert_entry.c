@@ -10,9 +10,13 @@
 /*                                                                            */
 /* ************************************************************************** */
 
+/*
+*	Convert entry from string to digit
+*/
+
 #include "push_swap.h"
 
-int	ft_convert_entry(const char *str)
+int	ft_convert_entry(const char *av)
 {
 	long int	sign;
 	long int	nb;
@@ -21,17 +25,17 @@ int	ft_convert_entry(const char *str)
 	sign = 1;
 	nb = 0;
 	i = 0;
-	if (str[i] == '+')
+	if (av[i] == '+')
 		++i;
-	else if (str[i] == '-')
+	else if (av[i] == '-')
 	{
 		sign *= -1;
 		++i;
 	}
-	while (ft_isdigit(str[i]))
+	while (ft_isdigit(av[i]))
 	{
 		nb *= 10;
-		nb += (str[i] - '0');
+		nb += (av[i] - '0');
 		++i;
 	}
 	return (nb * sign);

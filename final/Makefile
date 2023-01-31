@@ -26,7 +26,6 @@ ENTRY_FILES			:=	\
 						ft_convert_entry.c \
 						ft_get_entry.c \
 						ft_look_for_doubles.c \
-						ft_process_entry.c \
 						ft_store_entry.c
 ENTRY				:=	$(addprefix $(ENTRY_DIR), $(ENTRY_FILES))
 

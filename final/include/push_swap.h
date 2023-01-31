@@ -17,6 +17,7 @@
 # include <stdlib.h>
 # include <stddef.h>
 # include <stdarg.h>
+# include <stdio.h>
 
 # define INT_MAX 2147483647
 # define INT_MIN -2147483648
@@ -32,10 +33,9 @@ typedef struct s_list
 int		ft_check_entry(char *str);
 int		ft_check_int_size(long data);
 int		ft_convert_entry(const char *str);
-int		ft_get_entry(char **av, int elem, int i);
-int		ft_look_for_doubles(int *arr, int arr_size);
-int		*ft_process_entry(int ac, char **av);
+int		ft_get_entry(char *av, int elem);
 int		*ft_store_entry(int data, int *entries, int pos);
+void	ft_look_for_doubles(int *arr, int arr_size);
 
 /* stack */
 void	ft_push_node(t_list **dest, t_list **src);
@@ -44,6 +44,7 @@ void	ft_rotate_stack(t_list **stack);
 void	ft_reverse_rotate_stack(t_list **stack);
 t_list	*ft_get_last_node(t_list *stack);
 t_list	*ft_get_before_last_node(t_list *stack);
+t_list	*ft_init_stack_a(t_list *stack_a, int *entries, int ac);
 
 /* Utils */
 void	*ft_calloc(size_t nmemb, size_t size);

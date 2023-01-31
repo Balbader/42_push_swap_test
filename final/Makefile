@@ -22,11 +22,9 @@ NAME				:=	push_swap
 ENTRY_DIR			:=	entry/
 ENTRY_FILES			:=	\
 						ft_check_entry.c \
-						ft_check_int_size.c \
 						ft_convert_entry.c \
 						ft_get_entry.c \
-						ft_look_for_doubles.c \
-						ft_store_entry.c
+						ft_look_for_doubles.c
 ENTRY				:=	$(addprefix $(ENTRY_DIR), $(ENTRY_FILES))
 
 # Operations
@@ -37,6 +35,12 @@ OPER_FILES			:=	\
 						ft_rra.c ft_rrb.c ft_rrr.c \
 						ft_sa.c ft_sb.c ft_ss.c
 OPER				:=	$(addprefix $(OPER_DIR), $(OPER_FILES))
+
+# Sorting
+SORTING_DIR			:=	sorting/
+SORTING_FILES		:=	\
+						ft_sort_case_3.c
+SORTING				:=	$(addprefix $(SORTING_DIR), $(SORTING_FILES))
 
 # Stack
 STACK_DIR			:=	stack/
@@ -70,6 +74,7 @@ SRCS_DIR			:=	./src/
 SRCS				:=	\
 						$(ENTRY) \
 						$(OPER) \
+						$(SORTING) \
 						$(STACK) \
 						$(UTILS) \
 						main.c

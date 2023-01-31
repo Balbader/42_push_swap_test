@@ -14,12 +14,7 @@
 
 t_list	*ft_get_last_node(t_list *stack)
 {
-	t_list	*last_node;
-
-	if (!stack)
-		return (NULL);
-	last_node = stack;
-	while (last_node->next != NULL)
-		last_node = last_node->next;
-	return (last_node);
+	while (stack && stack->next != NULL)
+		stack = stack->next;
+	return (stack);
 }

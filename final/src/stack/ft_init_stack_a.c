@@ -28,18 +28,18 @@ static t_list	*ft_create_node(int data, int index)
 static t_list	*ft_create_list(t_list *stack_a, int ac, int *entries)
 {
 	t_list	*head;
-	int 	i;
-	int 	j;
+	int		i;
+	int		j;
 
-	j = 0;
 	i = 1;
-	stack_a = ft_create_node(entries[j], j);
+	j = 0;
+	stack_a = ft_create_node(entries[j], i);
 	head = stack_a;
 	while (i < ac)
 	{
 		++i;
 		++j;
-		stack_a->next = ft_create_node(entries[j], j);
+		stack_a->next = ft_create_node(entries[j], i);
 		stack_a = stack_a->next;
 	}
 	return (head);
@@ -50,4 +50,3 @@ t_list	*ft_init_stack_a(t_list *stack_a, int *entries, int ac)
 	stack_a = ft_create_list(stack_a, ac, entries);
 	return (stack_a);
 }
-

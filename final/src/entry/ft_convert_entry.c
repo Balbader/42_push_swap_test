@@ -16,7 +16,7 @@
 
 #include "push_swap.h"
 
-int	ft_convert_entry(const char *av)
+long int	ft_convert_entry(const char *av)
 {
 	long int	sign;
 	long int	nb;

@@ -28,11 +28,11 @@ static int	ft_check_av(int ac, char **av)
 
 static int	*ft_init_entries_arr(int ac, char **av)
 {
-	int		*arr;
-	int		arr_size;
-	int		elem;
-	int		i;
-	int		j;
+	int			*arr;
+	int			arr_size;
+	long int	elem;
+	int			i;
+	int			j;
 
 	arr_size = ac - 1;
 	arr = (int *)malloc(sizeof(int) * arr_size);
@@ -65,6 +65,7 @@ int	main(int ac, char **av)
 	ft_check_av(ac, av);
 	entries = ft_init_entries_arr(ac, av);
 	stack_a = ft_init_stack_a(stack_a, entries, ac);
+	stack_a = ft_sort_case_3(entries, stack_a);
 	while (stack_a->next != NULL) {
 		printf("stack_a[%d]: %d\n", stack_a->index, stack_a->data);
 		stack_a = stack_a->next;

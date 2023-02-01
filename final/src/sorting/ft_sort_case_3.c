@@ -14,15 +14,15 @@
 
 static int	ft_find_case_3(int arr[3])
 {
-	if (arr[0] > arr[1] && arr[1] < arr[2] && arr[2] > arr[0])
+	if ((arr[0] > arr[1]) && (arr[1] < arr[2]) && (arr[2] > arr[0]))
 		return (1);
-	else if (arr[0] > arr[1] && arr[1] > arr[2] && arr[2] < arr[0])
+	else if ((arr[0] > arr[1]) && (arr[1] > arr[2]) && (arr[2] < arr[0]))
 		return (2);
-	else if (arr[0] > arr[1] && arr[1] < arr[2] && arr[2] < arr[0])
+	else if ((arr[0] > arr[1]) && (arr[1] < arr[2]) && (arr[2] < arr[0]))
 		return (3);
-	else if (arr[0] < arr[1] && arr[1] > arr[2] & arr[2] > arr[0])
+	else if ((arr[0] < arr[1]) && (arr[1] > arr[2]) && (arr[2] > arr[0]))
 		return (4);
-	else if (arr[0] < arr[1] && arr[0] > arr[2] && arr[1] > arr[2])
+	else if ((arr[0] < arr[1]) && (arr[0] > arr[2]) && (arr[1] > arr[2]))
 		return (5);
 	return (0);
 }

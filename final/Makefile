@@ -39,7 +39,8 @@ OPER				:=	$(addprefix $(OPER_DIR), $(OPER_FILES))
 # Sorting
 SORTING_DIR			:=	sorting/
 SORTING_FILES		:=	\
-						ft_sort_case_3.c
+						ft_sort_case_3.c \
+						ft_sort_case_5.c
 SORTING				:=	$(addprefix $(SORTING_DIR), $(SORTING_FILES))
 
 # Stack
@@ -62,7 +63,7 @@ UTILS_FILES			:=	\
 						ft_isdigit.c \
 						ft_print_err.c \
 						ft_putstr_fd.c \
-						ft_strlen.c 
+						ft_strlen.c
 UTILS				:=	$(addprefix $(UTILS_DIR), $(UTILS_FILES))
 
 ###################

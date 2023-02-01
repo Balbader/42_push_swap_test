@@ -32,29 +32,24 @@ t_list	*ft_sort_case_3(int arr[3], t_list *stack_a)
 	if (ft_find_case_3(arr) == 1)
 	{
 		ft_sa(&stack_a);
-		// exit(1);
 	}
-	if (ft_find_case_3(arr) == 2)
+	else if (ft_find_case_3(arr) == 2)
 	{
 		ft_sa(&stack_a);
 		ft_rra(&stack_a);
-		// exit(1);
 	}
-	if (ft_find_case_3(arr) == 3)
+	else if (ft_find_case_3(arr) == 3)
 	{
 		ft_ra(&stack_a);
-		// exit(1);
 	}
-	if (ft_find_case_3(arr) == 4)
+	else if (ft_find_case_3(arr) == 4)
 	{
 		ft_sa(&stack_a);
 		ft_ra(&stack_a);
-		// exit(1);
 	}
-	if (ft_find_case_3(arr) == 5)
+	else if (ft_find_case_3(arr) == 5)
 	{
 		ft_rra(&stack_a);
-		// exit(1);
 	}
 	return (stack_a);
 }

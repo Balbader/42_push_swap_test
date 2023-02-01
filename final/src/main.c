@@ -55,20 +55,41 @@ static int	*ft_init_entries_arr(int ac, char **av)
 int	main(int ac, char **av)
 {
 	t_list	*stack_a;
-	// t_list	*stack_b;
+	t_list	*stack_b;
+	// t_list	*head;
 	int		*entries;
 
 	if (ac < 2)
 		return (0);
 	stack_a = NULL;
-	// stack_b = NULL;
+	stack_b = NULL;
 	ft_check_av(ac, av);
 	entries = ft_init_entries_arr(ac, av);
-	stack_a = ft_init_stack_a(stack_a, entries, ac);
-	stack_a = ft_sort_case_3(entries, stack_a);
-	while (stack_a->next != NULL) {
-		printf("stack_a[%d]: %d\n", stack_a->index, stack_a->data);
-		stack_a = stack_a->next;
-	}
+	stack_a = ft_init_stack_a(stack_a, entries, ac - 1);
+
+	// head = stack_a;
+	// printf("Before Sorting:\n");
+	// printf("\n");
+	// while (head != NULL) {
+	// 	printf("stack_a[%d]: %d\n", head->index, head->data);
+	// 	head = head->next;
+	// }
+	// printf("\n");
+	if (ft_stack_is_sorted(stack_a))
+		return (0);
+	else if (ac - 1 == 2)
+		ft_sa(stack_a);
+	else if (ac - 1 == 3)
+		stack_a = ft_sort_case_3(entries, stack_a);
+	else if (ac - 1 == 5)
+		stack_a = ft_sort_case_5(entries, stack_a, stack_b);
+	// printf("\n");
+
+	// printf("After Sorting:\n");
+	// printf("\n");
+	// while (stack_a != NULL) {
+	// 	printf("stack_a[%d]: %d\n", stack_a->index, stack_a->data);
+	// 	stack_a = stack_a->next;
+	// }
 	return (0);
 }

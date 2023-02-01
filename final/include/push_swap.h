@@ -36,6 +36,7 @@ long int	ft_convert_entry(const char *av);
 
 /* Sorting */
 t_list		*ft_sort_case_3(int arr[3], t_list *stack_a);
+t_list		*ft_sort_case_5(int entries[5], t_list *stack_a, t_list *stack_b);
 
 
 /* Stack */

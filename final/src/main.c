@@ -75,7 +75,7 @@ int	main(int ac, char **av)
 	else if (ac - 1 == 3)
 		stack_a = ft_sort_case_3(entries, stack_a);
 	else if (ac - 1 == 5)
-		stack_a = ft_sort_case_5(entries, stack_a, stack_b);
+		stack_a = ft_sort_case_5(stack_a, stack_b);
 
 	return (0);
 }

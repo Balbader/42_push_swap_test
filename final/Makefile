@@ -39,20 +39,25 @@ OPER				:=	$(addprefix $(OPER_DIR), $(OPER_FILES))
 # Sorting
 SORTING_DIR			:=	sorting/
 SORTING_FILES		:=	\
+						ft_init_arr_3.c \
 						ft_sort_case_3.c \
-						ft_sort_case_5.c
+						ft_sort_case_5.c \
+						ft_sort_case_5_utils.c
 SORTING				:=	$(addprefix $(SORTING_DIR), $(SORTING_FILES))
 
 # Stack
 STACK_DIR			:=	stack/
 STACK_FILES			:=	\
 						ft_find_smallest_node_pos.c \
-						ft_find_bigest_node_pos.c \
+						ft_find_biggest_node_pos.c \
 						ft_free_stack.c \
 						ft_get_before_last_node.c \
 						ft_get_last_node.c \
+						ft_get_stack_size.c \
 						ft_init_stack_a.c \
+						ft_is_biggest_node.c \
 						ft_push_node.c \
+						ft_re_init_index.c \
 						ft_reverse_rotate_stack.c \
 						ft_rotate_stack.c \
 						ft_stack_is_sorted.c \

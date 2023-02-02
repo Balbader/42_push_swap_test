@@ -38,23 +38,25 @@ long int	ft_convert_entry(const char *av);
 t_list		*ft_sort_case_3(int arr[3], t_list *stack_a);
 t_list		*ft_sort_case_5(int entries[5], t_list *stack_a, t_list *stack_b);
 
-
 /* Stack */
+int			ft_find_smallest_node_pos(t_list *stack);
+int			ft_find_bigest_node_pos(t_list *stack);
+int			ft_stack_is_sorted(t_list *stack);
 void		ft_push_node(t_list **dest, t_list **src);
 void		ft_swap_stack(t_list *stack);
 void		ft_rotate_stack(t_list **stack);
 void		ft_reverse_rotate_stack(t_list **stack);
+void		ft_free_stack(t_list **stack);
 t_list		*ft_get_last_node(t_list *stack);
 t_list		*ft_get_before_last_node(t_list *stack);
 t_list		*ft_init_stack_a(t_list *stack_a, int *entries, int ac);
 
 /* Utils */
-void		*ft_calloc(size_t nmemb, size_t size);
-void		ft_putstr_fd(char *str, int fd);
-void		ft_free_stack(t_list **stack);
-void		ft_print_err(t_list **stack_a, t_list **stack_b);
 int			ft_isdigit(char c);
 int			ft_strlen(const char *str);
+void		*ft_calloc(size_t nmemb, size_t size);
+void		ft_putstr_fd(char *str, int fd);
+void		ft_print_err(t_list **stack_a, t_list **stack_b);
 
 /* Operations */
 void		ft_pa(t_list **stack_b, t_list **stack_a);

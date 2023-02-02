@@ -1,20 +1,24 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_get_before_last_node.c                          :+:      :+:    :+:   */
+/*   ft_stack_is_sorted.c                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: baalbade <baalbade@student.42.fr>          +#+  +:+       +#+        */
+/*   By: baalbade <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/01/30 17:16:34 by baalbade          #+#    #+#             */
-/*   Updated: 2023/01/30 17:16:36 by baalbade         ###   ########.fr       */
+/*   Created: 2023/02/02 07:33:34 by baalbade          #+#    #+#             */
+/*   Updated: 2023/02/02 07:33:41 by baalbade         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-t_list	*ft_get_before_last_node(t_list *stack)
+int	ft_stack_is_sorted(t_list *stack)
 {
-	while (stack && stack->next->next != NULL)
+	while (stack->next != NULL)
+	{
+		if (stack->data > stack->next->data)
+			return (0);
 		stack = stack->next;
-	return (stack);
+	}
+	return (1);
 }

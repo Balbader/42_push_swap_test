@@ -1,20 +1,31 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_get_before_last_node.c                          :+:      :+:    :+:   */
+/*   ft_find_smallest_node_pos.c                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: baalbade <baalbade@student.42.fr>          +#+  +:+       +#+        */
+/*   By: baalbade <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/01/30 17:16:34 by baalbade          #+#    #+#             */
-/*   Updated: 2023/01/30 17:16:36 by baalbade         ###   ########.fr       */
+/*   Created: 2023/02/02 08:39:25 by baalbade          #+#    #+#             */
+/*   Updated: 2023/02/02 08:39:27 by baalbade         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-t_list	*ft_get_before_last_node(t_list *stack)
+int	ft_find_smallest_node_pos(t_list *stack)
 {
-	while (stack && stack->next->next != NULL)
+	int		data;
+	int		index;
+
+	data = stack->data;
+	while (stack)
+	{
+		if (stack->data < data)
+		{
+			data = stack->data;
+			index = stack->index;
+		}
 		stack = stack->next;
-	return (stack);
+	}
+	return (index);
 }

@@ -12,24 +12,30 @@
 
 #include "push_swap.h"
 
-static int	ft_find_case_5(int *entries, int entries_size,
-							t_list *stack_a, t_list *stack_b)
+static void	ft_print(t_list **stack, char *name)
 {
+	t_list	*temp;
+
+	temp = *stack;
+	while (temp)
+	{
+		printf("%s[%d]: %d\n", name, temp->index, temp->data);
+		temp = temp->next;
+	}
 }
 
-t_list	*ft_sort_case_5(int entries[5], t_list *stack_a, t_list *stack_b)
+t_list	*ft_sort_case_5(t_list *stack_a, t_list *stack_b)
 {
-	t_list	*before;
+	int		stack_size;
+	int		*arr;
 
-	(void)stack_b;
-	(void)entries;
-	before = stack_a;
-	printf("Before Sorting:\n");
-	while (before != NULL)
-	{
-		printf("stack_a[%d]: %d\n", before->index, before->data);
-		before = before->next;
-	}
+	stack_size = ft_get_stack_size(stack_a);
+	ft_start_sorting(&stack_a, &stack_b, stack_size);
+	arr = ft_init_arr_3(stack_a);
+	stack_a = ft_sort_case_3(arr, stack_a);
+	ft_print(&stack_a, "stack_a");
 	printf("\n");
+	ft_finish_sorting(&stack_a, &stack_b);
+	ft_print(&stack_a, "stack_a");
 	return (stack_a);
 }

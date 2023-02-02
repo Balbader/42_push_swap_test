@@ -46,6 +46,8 @@ SORTING				:=	$(addprefix $(SORTING_DIR), $(SORTING_FILES))
 # Stack
 STACK_DIR			:=	stack/
 STACK_FILES			:=	\
+						ft_find_smallest_node_pos.c \
+						ft_find_bigest_node_pos.c \
 						ft_free_stack.c \
 						ft_get_before_last_node.c \
 						ft_get_last_node.c \
@@ -53,6 +55,7 @@ STACK_FILES			:=	\
 						ft_push_node.c \
 						ft_reverse_rotate_stack.c \
 						ft_rotate_stack.c \
+						ft_stack_is_sorted.c \
 						ft_swap_stack.c
 STACK				:=	$(addprefix $(STACK_DIR), $(STACK_FILES))
 

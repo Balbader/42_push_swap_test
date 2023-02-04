@@ -12,18 +12,6 @@
 
 #include "push_swap.h"
 
-static void	ft_print(t_list **stack, char *name)
-{
-	t_list	*temp;
-
-	temp = *stack;
-	while (temp)
-	{
-		printf("%s[%d]: %d\n", name, temp->index, temp->data);
-		temp = temp->next;
-	}
-}
-
 void	ft_push_big_nodes_5(t_list **stack_a,
 						t_list **stack_b, int big_node_index)
 {
@@ -81,7 +69,7 @@ void	ft_start_sorting(t_list **stack_a,
 {
 	int		big_node_index;
 
-	ft_print(stack_a, "stack_a");
+	ft_print_stack(stack_a, "stack_a");
 	printf("\n");
 	while (stack_size > 3)
 	{
@@ -91,7 +79,7 @@ void	ft_start_sorting(t_list **stack_a,
 		else
 			ft_push_big_nodes_4(stack_a, stack_b, big_node_index);
 		*stack_a = ft_re_init_index(*stack_a);
-		ft_print(stack_a, "stack_a");
+		ft_print_stack(stack_a, "stack_a");
 		printf("\n");
 		--stack_size;
 	}

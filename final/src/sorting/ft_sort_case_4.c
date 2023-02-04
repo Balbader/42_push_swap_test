@@ -1,18 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_sort_case_5.c                                   :+:      :+:    :+:   */
+/*   ft_sort_case_4.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: baalbade <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/02/01 16:09:30 by baalbade          #+#    #+#             */
-/*   Updated: 2023/02/01 16:09:32 by baalbade         ###   ########.fr       */
+/*   Created: 2023/02/04 11:49:01 by baalbade          #+#    #+#             */
+/*   Updated: 2023/02/04 11:49:05 by baalbade         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-t_list	*ft_sort_case_5(t_list *stack_a, t_list *stack_b)
+t_list	*ft_sort_case_4(t_list *stack_a, t_list *stack_b)
 {
 	int		stack_size;
 	int		*arr;

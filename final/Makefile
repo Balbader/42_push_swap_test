@@ -41,6 +41,7 @@ SORTING_DIR			:=	sorting/
 SORTING_FILES		:=	\
 						ft_init_arr_3.c \
 						ft_sort_case_3.c \
+						ft_sort_case_4.c \
 						ft_sort_case_5.c \
 						ft_sort_case_5_utils.c
 SORTING				:=	$(addprefix $(SORTING_DIR), $(SORTING_FILES))
@@ -70,6 +71,7 @@ UTILS_FILES			:=	\
 						ft_calloc.c \
 						ft_isdigit.c \
 						ft_print_err.c \
+						ft_print_stack.c \
 						ft_putstr_fd.c \
 						ft_strlen.c
 UTILS				:=	$(addprefix $(UTILS_DIR), $(UTILS_FILES))

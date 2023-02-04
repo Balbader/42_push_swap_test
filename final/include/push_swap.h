@@ -44,6 +44,7 @@ void		ft_start_sorting(t_list **stack_a,
 				t_list **stack_b, int stack_size);
 void		ft_finish_sorting(t_list **stack_a, t_list **stack_b);
 t_list		*ft_sort_case_3(int arr[3], t_list *stack_a);
+t_list		*ft_sort_case_4(t_list *stack_a, t_list *stack_b);
 t_list		*ft_sort_case_5(t_list *stack_a, t_list *stack_b);
 
 /* Stack */
@@ -68,6 +69,7 @@ int			ft_strlen(const char *str);
 void		*ft_calloc(size_t nmemb, size_t size);
 void		ft_putstr_fd(char *str, int fd);
 void		ft_print_err(t_list **stack_a, t_list **stack_b);
+void		ft_print_stack(t_list **stack, char *name);
 
 /* Operations */
 void		ft_pa(t_list **stack_b, t_list **stack_a);

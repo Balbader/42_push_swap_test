@@ -12,18 +12,18 @@
 
 #include "push_swap.h"
 
-static t_list	*ft_create_node(int data, int index)
-{
-	t_list	*new_node;
+// static t_list	*ft_create_node(int data, int index)
+// {
+// 	t_list	*new_node;
 
-	new_node = (t_list *)malloc(sizeof(t_list));
-	if (!new_node)
-		return (NULL);
-	new_node->data = data;
-	new_node->index = index;
-	new_node->next = NULL;
-	return (new_node);
-}
+// 	new_node = (t_list *)malloc(sizeof(t_list));
+// 	if (!new_node)
+// 		return (NULL);
+// 	new_node->data = data;
+// 	new_node->index = index;
+// 	new_node->next = NULL;
+// 	return (new_node);
+// }
 
 static t_list	*ft_create_list(t_list *stack_a, int ac, int *entries)
 {

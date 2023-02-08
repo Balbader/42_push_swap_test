@@ -12,12 +12,12 @@
 
 #include "sort.h"
 
-static t_list	*ft_get_last_node(t_list *stack)
-{
-	while (stack && stack->next != NULL)
-		stack = stack->next;
-	return (stack);
-}
+// static t_list	*ft_get_last_node(t_list *stack)
+// {
+// 	while (stack && stack->next != NULL)
+// 		stack = stack->next;
+// 	return (stack);
+// }
 
 static void	ft_swap_nodes(t_list *a, t_list *b)
 {

@@ -12,3 +12,5 @@
 
 #include "push_swap.h"
 
+t_list	*ft_sort_stack(t_list *stack_a, t_list *stack_b);
+

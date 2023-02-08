@@ -26,9 +26,8 @@ static void	ft_print_stack(t_list **stack, char *name)
 
 int	main(void)
 {
-	t_list	*rand_stack = NULL;
-	t_list	*pre_sorted_stack = NULL;
-	// t_list	*temp;
+	t_list	*stack_a;
+	t_list	*stack_b;
 	int		*rand_arr;
 	int		size;
 
@@ -36,11 +35,17 @@ int	main(void)
 	rand_arr = (int *)malloc(sizeof(int) * size);
 	if (!rand_arr)
 		return (0);
-	rand_stack = ft_init_rand_stack(rand_arr, 0, size);
-	// temp = rand_stack;
-	ft_print_stack(&rand_stack, "rand_stack");
+	stack_b = (t_list *)malloc(sizeof(t_list));
+	if (!stack_b)
+		return (0);
+	stack_a = ft_init_rand_stack(rand_arr, 0, size);
+	stack_a = ft_pre_sort_stack(stack_a);
+	ft_print_stack(&stack_a, "stack_a");
 	printf("\n\n");
-	pre_sorted_stack = ft_pre_sort_stack(rand_stack);
-	ft_print_stack(&pre_sorted_stack, "pre_sorted_stack");
+	ft_pb(stack_a, stack_b);
+	printf("\n\n");
+	ft_print_stack(&stack_b, "stack_b");
+	printf("\n");
+	ft_print_stack(&stack_a, "stack_a");
 	return (0);
 }

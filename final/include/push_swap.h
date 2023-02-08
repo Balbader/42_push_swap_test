@@ -46,6 +46,8 @@ void		ft_finish_sorting(t_list **stack_a, t_list **stack_b);
 t_list		*ft_sort_case_3(int arr[3], t_list *stack_a);
 t_list		*ft_sort_case_4(t_list *stack_a, t_list *stack_b);
 t_list		*ft_sort_case_5(t_list *stack_a, t_list *stack_b);
+t_list		*ft_pre_sort_stack(t_list *rand_stack);
+t_list		*ft_sort_stack(t_list *stack_a, t_list *stack_b);
 
 /* Stack */
 int			ft_find_smallest_node_pos(t_list *stack);
@@ -57,8 +59,10 @@ void		ft_swap_stack(t_list *stack);
 void		ft_rotate_stack(t_list **stack);
 void		ft_reverse_rotate_stack(t_list **stack);
 void		ft_free_stack(t_list **stack);
+void		ft_split_stack(t_list *stack_a, t_list *stack_b);
 t_list		*ft_re_init_index(t_list *stack);
 t_list		*ft_is_biggest_node(t_list **stack);
+t_list		*ft_find_middle_node(t_list *stack);
 t_list		*ft_get_last_node(t_list *stack);
 t_list		*ft_get_before_last_node(t_list *stack);
 t_list		*ft_init_rand_stack(int *rand_arr, int start, int end);

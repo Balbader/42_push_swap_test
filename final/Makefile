@@ -43,7 +43,9 @@ SORTING_FILES		:=	\
 						ft_sort_case_3.c \
 						ft_sort_case_4.c \
 						ft_sort_case_5.c \
-						ft_sort_case_5_utils.c
+						ft_sort_case_5_utils.c \
+						ft_pre_sort_stack.c \
+						ft_sort_stack.c
 SORTING				:=	$(addprefix $(SORTING_DIR), $(SORTING_FILES))
 
 # Stack
@@ -51,6 +53,7 @@ STACK_DIR			:=	stack/
 STACK_FILES			:=	\
 						ft_create_node.c \
 						ft_find_smallest_node_pos.c \
+						ft_find_mid_node.c \
 						ft_find_biggest_node_pos.c \
 						ft_free_stack.c \
 						ft_get_before_last_node.c \
@@ -63,6 +66,7 @@ STACK_FILES			:=	\
 						ft_re_init_index.c \
 						ft_reverse_rotate_stack.c \
 						ft_rotate_stack.c \
+						ft_split_stack.c \
 						ft_stack_is_sorted.c \
 						ft_swap_stack.c
 STACK				:=	$(addprefix $(STACK_DIR), $(STACK_FILES))
@@ -98,7 +102,7 @@ OBJS        		:=	$(SRCS:$(SRCS_DIR)/%.c=$(BUILD_DIR)/%.o)
 DEPS        		:=	$(OBJS:.o=.d)
 
 CC					:=	gcc
-CFLAGS				:=	-Wall -Wextra -Werror
+CFLAGS				:=	-Wall -Wextra -Werror -g3
 IFLAGS				:=	$(addprefix -I, $(INCS))
 
 ################

@@ -4,9 +4,28 @@ INCS				:=	./
 
 SRCS_DIR			:=	./
 SRCS				:=	\
+						ft_pa.c \
+						ft_pb.c \
+						ft_ra.c \
+						ft_rb.c \
+						ft_rr.c \
+						ft_sa.c \
+						ft_sb.c \
+						ft_ss.c \
+						ft_rra.c \
+						ft_rrb.c \
+						ft_rrr.c \
+						ft_get_last_node.c \
+						ft_get_before_last_node.c \
+						ft_push_node.c \
+						ft_swap_stack.c \
+						ft_reverse_rotate_stack.c \
+						ft_rotate_stack.c \
 						ft_create_node.c \
+						ft_find_mid_node.c \
 						ft_init_rand_stack.c \
 						ft_pre_sort_stack.c \
+						ft_del_head_node.c \
 						main.c
 
 SRCS        		:=	$(SRCS:%=$(SRCS_DIR)/%)

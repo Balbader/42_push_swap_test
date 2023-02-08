@@ -48,7 +48,6 @@ static int	*ft_init_rand_arr(int start, int end, int *arr)
 	return (arr);
 }
 
-
 t_list	*ft_init_rand_stack(int *rand_arr, int start, int end)
 {
 	t_list	*current;
@@ -65,7 +64,7 @@ t_list	*ft_init_rand_stack(int *rand_arr, int start, int end)
 	index = 1;
 	current = ft_create_node(rand_arr[i], index);
 	rand_list = current;
-	while (index < size)
+	while (index <= size)
 	{
 		++i;
 		++index;

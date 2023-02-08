@@ -49,12 +49,14 @@ SORTING				:=	$(addprefix $(SORTING_DIR), $(SORTING_FILES))
 # Stack
 STACK_DIR			:=	stack/
 STACK_FILES			:=	\
+						ft_create_node.c \
 						ft_find_smallest_node_pos.c \
 						ft_find_biggest_node_pos.c \
 						ft_free_stack.c \
 						ft_get_before_last_node.c \
 						ft_get_last_node.c \
 						ft_get_stack_size.c \
+						ft_init_rand_stack.c \
 						ft_init_stack_a.c \
 						ft_is_biggest_node.c \
 						ft_push_node.c \

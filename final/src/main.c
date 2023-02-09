@@ -56,56 +56,35 @@
 int	main(void)
 {
 	t_list	*stack_a;
-	// t_list	*middle_node;
-	t_list	*stack_b;
-	// t_list	*head_b;
-	// int		*entries;
+
+	t_list	*stack_b = NULL;
+
 	int		*rand_arr;
 	int		size;
 
-	// if (ac < 2)
-	// 	return (0);
-	stack_a = NULL;
-	// middle_node = NULL;
-	stack_b = (t_list *)malloc(sizeof(t_list));
-	if (!stack_b)
-		return (0);
-
-	// ft_check_av(ac, av);
-
-	// entries = ft_init_entries_arr(ac, av);
-	// stack_a = ft_init_stack_a(stack_a, entries, ac - 1);
-	//
-	size = 100;
+	size = 20;
 	rand_arr = (int *)malloc(sizeof(int) * size);
 	if (!rand_arr)
 		return (0);
 	stack_a = ft_init_rand_stack(rand_arr, 1, size);
-	printf("\ninitial stack:\n\n");
-	ft_print_stack(&stack_a, "rand_stack");
-	printf("\n\n");
-	// middle_node = ft_find_middle_node(stack_a);
-	// printf("middle_node->data: %d\n", middle_node->data);
-	// printf("middle_node->index: %d\n", middle_node->index);
-	// printf("\n\n");
-	ft_split_stack(stack_a, stack_b);
-	printf("\n\n");
-	printf("After Split:\n\n");
+	// stack_a = ft_pre_sort_stack(stack_a);
+	// stack_a = ft_re_init_index(stack_a);
+
+	printf("Before Operation:\n");
 	ft_print_stack(&stack_a, "stack_a");
 	printf("\n\n");
-	printf("stack b:\n\n");
-	ft_print_stack(&stack_b, "stack_b");
-	printf("\n\n");
 
-	if (ft_stack_is_sorted(stack_a))
-		return (0);
-	// else if (ac - 1 == 2)
-	// 	ft_sa(&stack_a);
-	// else if (ac - 1 == 3)
-	// 	stack_a = ft_sort_case_3(rand_arr, stack_a);
-	// else if (ac - 1 == 4)
-	// 	stack_a = ft_sort_case_4(stack_a, stack_b);
-	// else if (ac - 1 == 5)
-	// 	stack_a = ft_sort_case_5(stack_a, stack_b);
+	// for (int i = 0; i < 10; ++ i) {
+	// 	ft_pb(&stack_a, &stack_b);
+	// }
+	// ft_rra(&stack_a);
+	// ft_ra(&stack_a);
+	// ft_sa(stack_a);
+
+	ft_sort_stack(stack_a, stack_b);
+	printf("\n\n");
+	ft_print_stack(&stack_a, "stack_a");
+	printf("\n\n");
+	ft_print_stack(&stack_b, "stack_b");
 	return (0);
 }

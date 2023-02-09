@@ -1,21 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_pb.c                                            :+:      :+:    :+:   */
+/*   ft_sort_case_5.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: baalbade <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/01/18 14:00:32 by baalbade          #+#    #+#             */
-/*   Updated: 2023/01/18 14:00:47 by baalbade         ###   ########.fr       */
+/*   Created: 2023/02/01 16:09:30 by baalbade          #+#    #+#             */
+/*   Updated: 2023/02/01 16:09:32 by baalbade         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "sort.h"
 
-void	ft_pb(t_list *stack_a, t_list *stack_b)
+t_list	*ft_sort_case_5(t_list *stack_a, t_list *stack_b)
 {
-	ft_push_node(stack_b, stack_a);
-	ft_del_head_node(stack_a);
-	// ft_putstr_fd("pb\n", 1);
-	printf("pb\n");
+	int		stack_size;
+	int		*arr;
+
+	stack_size = ft_get_stack_size(stack_a);
+	ft_start_sorting(&stack_a, &stack_b, stack_size);
+	arr = ft_init_arr_3(stack_a);
+	stack_a = ft_sort_case_3(arr, stack_a);
+	ft_print_stack(&stack_a, "stack_a");
+	printf("\n");
+	ft_finish_sorting(&stack_a, &stack_b);
+	ft_print_stack(&stack_a, "stack_a");
+	return (stack_a);
 }

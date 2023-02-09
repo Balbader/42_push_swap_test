@@ -1,20 +1,20 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_rra.c                                           :+:      :+:    :+:   */
+/*   ft_rb.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: baalbade <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/01/18 14:03:03 by baalbade          #+#    #+#             */
-/*   Updated: 2023/01/18 14:03:21 by baalbade         ###   ########.fr       */
+/*   Created: 2023/01/18 14:02:07 by baalbade          #+#    #+#             */
+/*   Updated: 2023/01/18 14:02:23 by baalbade         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "sort.h"
 
-void	ft_rra(t_list *stack_a)
+void	ft_rb(t_list **stack_b)
 {
-	ft_reverse_rotate_stack(stack_a);
-	// ft_putstr_fd("rra\n", 1);
-	printf("rra\n");
+	ft_rotate_stack(stack_b);
+	// ft_putstr_fd("rb\n", 1);
+	printf("rb\n");
 }

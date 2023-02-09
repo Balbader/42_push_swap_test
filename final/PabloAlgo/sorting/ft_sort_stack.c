@@ -1,20 +1,16 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_ra.c                                            :+:      :+:    :+:   */
+/*   ft_sort_stack.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: baalbade <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/01/18 14:01:41 by baalbade          #+#    #+#             */
-/*   Updated: 2023/01/18 14:01:54 by baalbade         ###   ########.fr       */
+/*   Created: 2023/02/08 09:28:10 by baalbade          #+#    #+#             */
+/*   Updated: 2023/02/08 09:28:12 by baalbade         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "sort.h"
 
-void	ft_ra(t_list *stack_a)
-{
-	ft_rotate_stack(stack_a);
-	// ft_putstr_fd("ra\n", 1);
-	printf("ra\n");
-}
+t_list	*ft_sort_stack(t_list *stack_a, t_list *stack_b);
+

@@ -1,40 +1,46 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_del_head_node.c                                 :+:      :+:    :+:   */
+/*   ft_init_arr_3.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: baalbade <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/02/08 17:56:37 by baalbade          #+#    #+#             */
-/*   Updated: 2023/02/08 17:56:39 by baalbade         ###   ########.fr       */
+/*   Created: 2023/02/02 13:15:00 by baalbade          #+#    #+#             */
+/*   Updated: 2023/02/02 13:15:03 by baalbade         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "sort.h"
 
-t_list	*ft_del_head_node(t_list *stack)
+static int	ft_get_stack_size(t_list *stack)
 {
-	t_list	*tmp;
+	int	count;
 
-	if (!stack)
-		return ;
-	tmp = stack;
-	stack = stack->next;
-	free (tmp);
-	return (stack);
+	count = 0;
+	while (stack)
+	{
+		++count;
+		stack = stack->next;
+	}
+	return (count);
 }
 
-// void	ft_free_stack(t_list **stack)
-// {
-// 	t_list	*temp;
+int	*ft_init_arr_3(t_list *stack)
+{
+	int	*arr;
+	int	stack_size;
+	int	i;
 
-// 	if (!stack || !(*stack))
-// 		return ;
-// 	while (*stack)
-// 	{
-// 		temp = (*stack)->next;
-// 		free(*stack);
-// 		*stack = temp;
-// 	}
-// 	*stack = NULL;
-// }
+	stack_size = ft_get_stack_size(stack);
+	arr = (int *)malloc(sizeof(int) * (stack_size));
+	if (!arr)
+		return (0);
+	i = 0;
+	while (stack)
+	{
+		arr[i] = stack->data;
+		stack = stack->next;
+		++i;
+	}
+	return (arr);
+}

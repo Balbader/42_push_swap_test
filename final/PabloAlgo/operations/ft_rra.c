@@ -1,25 +1,20 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_rotate_stack.c                                  :+:      :+:    :+:   */
+/*   ft_rra.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: baalbade <baalbade@student.42.fr>          +#+  +:+       +#+        */
+/*   By: baalbade <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/01/30 16:47:23 by baalbade          #+#    #+#             */
-/*   Updated: 2023/01/30 16:47:25 by baalbade         ###   ########.fr       */
+/*   Created: 2023/01/18 14:03:03 by baalbade          #+#    #+#             */
+/*   Updated: 2023/01/18 14:03:21 by baalbade         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "sort.h"
 
-void	ft_rotate_stack(t_list *stack)
+void	ft_rra(t_list **stack_a)
 {
-	t_list	*temp;
-	t_list	*last_node;
-
-	temp = stack;
-	stack = stack->next;
-	last_node = ft_get_last_node(stack);
-	temp->next = NULL;
-	last_node->next = temp;
+	ft_reverse_rotate_stack(stack_a);
+	// ft_putstr_fd("rra\n", 1);
+	printf("rra\n");
 }

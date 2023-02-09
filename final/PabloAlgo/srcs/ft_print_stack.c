@@ -1,21 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_rr.c                                            :+:      :+:    :+:   */
+/*   ft_print_stack.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: baalbade <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/01/18 14:02:37 by baalbade          #+#    #+#             */
-/*   Updated: 2023/01/18 14:02:49 by baalbade         ###   ########.fr       */
+/*   Created: 2023/02/09 15:30:44 by baalbade          #+#    #+#             */
+/*   Updated: 2023/02/09 15:30:46 by baalbade         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "sort.h"
 
-void	ft_rr(t_list *stack_a, t_list *stack_b)
+void	ft_print_stack(t_list **stack, char *name)
 {
-	ft_rotate_stack(stack_a);
-	ft_rotate_stack(stack_b);
-	// ft_putstr_fd("rr\n", 1);
-	printf("rr\n");
+	t_list	*temp;
+
+	temp = *stack;
+	while (temp != NULL)
+	{
+		printf("%s[%d]: %d\n", name, temp->index, temp->data);
+		temp = temp->next;
+	}
 }

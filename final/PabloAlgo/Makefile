@@ -1,32 +1,41 @@
 NAME 				:= Pablo_Run
 
-INCS				:=	./
+INCS				:=	./include
 
 SRCS_DIR			:=	./
 SRCS				:=	\
-						ft_pa.c \
-						ft_pb.c \
-						ft_ra.c \
-						ft_rb.c \
-						ft_rr.c \
-						ft_sa.c \
-						ft_sb.c \
-						ft_ss.c \
-						ft_rra.c \
-						ft_rrb.c \
-						ft_rrr.c \
-						ft_get_last_node.c \
-						ft_get_before_last_node.c \
-						ft_push_node.c \
-						ft_swap_stack.c \
-						ft_reverse_rotate_stack.c \
-						ft_rotate_stack.c \
-						ft_create_node.c \
-						ft_find_mid_node.c \
-						ft_init_rand_stack.c \
-						ft_pre_sort_stack.c \
-						ft_del_head_node.c \
-						main.c
+						operations/ft_pa.c \
+						operations/ft_pb.c \
+						operations/ft_ra.c \
+						operations/ft_rb.c \
+						operations/ft_rr.c \
+						operations/ft_sa.c \
+						operations/ft_sb.c \
+						operations/ft_ss.c \
+						operations/ft_rra.c \
+						operations/ft_rrb.c \
+						operations/ft_rrr.c \
+						srcs/ft_get_last_node.c \
+						srcs/ft_get_before_last_node.c \
+						srcs/ft_create_node.c \
+						srcs/ft_find_mid_node.c \
+						srcs/ft_init_rand_stack.c \
+						srcs/ft_pre_sort_stack.c \
+						srcs/ft_del_head_node.c \
+						srcs/ft_add_front.c \
+						srcs/ft_add_back.c \
+						actions/ft_push_node.c \
+						actions/ft_swap_stack.c \
+						actions/ft_reverse_rotate_stack.c \
+						actions/ft_rotate_stack.c \
+						sorting/ft_init_arr_3.c \
+						sorting/ft_sort_case_3.c \
+						sorting/ft_sort_case_4.c \
+						sorting/ft_sort_case_5.c \
+						sorting/ft_sort_case_5_utils.c \
+						sorting/ft_sort_stack.c \
+						sorting/ft_print_stack.c \
+						srcs/main.c
 
 SRCS        		:=	$(SRCS:%=$(SRCS_DIR)/%)
 
@@ -35,7 +44,7 @@ OBJS        		:=	$(SRCS:$(SRCS_DIR)/%.c=$(BUILD_DIR)/%.o)
 DEPS        		:=	$(OBJS:.o=.d)
 
 CC					:=	gcc
-CFLAGS				:=	-Wall -Wextra -Werror
+CFLAGS				:=	-Wall -Wextra -Werror -g3
 IFLAGS				:=	$(addprefix -I, $(INCS))
 
 RM					:=	rm

@@ -12,16 +12,44 @@
 
 #include "sort.h"
 
-void	ft_reverse_rotate_stack(t_list *stack)
+static t_list	*ft_swap_head(t_list *stack, t_list *temp)
 {
-	t_list	*temp;
-	t_list	*last_node;
-	t_list	*before_last_node;
+	while (stack->next)
+		stack = stack->next;
+	temp->data = stack->data;
+	temp->index = stack->index;
+	temp->next = NULL;
+	return (temp);
+}
 
-	last_node = ft_get_last_node(stack);
-	before_last_node = ft_get_before_last_node(stack);
-	temp = stack;
-	stack = last_node;
-	stack->next = temp;
-	before_last_node->next = NULL;
+static void	ft_reverse_rotate_last(t_list **stack)
+{
+	while ((*stack))
+	{
+		if ((*stack)->next->next == NULL)
+			break ;
+		*stack = (*stack)->next;
+	}
+	free((*stack)->next);
+	(*stack)->next = NULL;
+}
+
+void	ft_reverse_rotate_stack(t_list **stack)
+{
+	t_list	*head;
+	t_list	*temp;
+
+	head = NULL;
+	temp = NULL;
+	if (*stack)
+	{
+		temp = (t_list *)malloc(sizeof(t_list));
+		if (!temp)
+			return ;
+		temp = ft_swap_head(*stack, temp);
+		head = *stack;
+		ft_reverse_rotate_last(stack);
+		*stack = head;
+		ft_add_front(stack, temp);
+	}
 }

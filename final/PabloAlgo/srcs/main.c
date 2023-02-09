@@ -12,22 +12,28 @@
 
 #include "sort.h"
 
-static void	ft_print_stack(t_list **stack, char *name)
-{
-	t_list	*temp;
+// static t_list	*ft_re_init_index(t_list *stack)
+// {
+// 	int		i;
+// 	t_list	*head;
 
-	temp = *stack;
-	while (temp)
-	{
-		printf("%s[%d]: %d\n", name, temp->index, temp->data);
-		temp = temp->next;
-	}
-}
+// 	head = stack;
+// 	i = 1;
+// 	while (stack)
+// 	{
+// 		stack->index = i;
+// 		stack = stack->next;
+// 		++i;
+// 	}
+// 	return (head);
+// }
 
 int	main(void)
 {
 	t_list	*stack_a;
-	t_list	*stack_b;
+
+	t_list	*stack_b = NULL;
+
 	int		*rand_arr;
 	int		size;
 
@@ -35,17 +41,25 @@ int	main(void)
 	rand_arr = (int *)malloc(sizeof(int) * size);
 	if (!rand_arr)
 		return (0);
-	stack_b = (t_list *)malloc(sizeof(t_list));
-	if (!stack_b)
-		return (0);
 	stack_a = ft_init_rand_stack(rand_arr, 0, size);
 	stack_a = ft_pre_sort_stack(stack_a);
+	// stack_a = ft_re_init_index(stack_a);
+
+	printf("Before Operation:\n");
 	ft_print_stack(&stack_a, "stack_a");
 	printf("\n\n");
-	ft_pb(stack_a, stack_b);
+
+	for (int i = 0; i < 10; ++ i) {
+		ft_pb(&stack_a, &stack_b);
+	}
+	// ft_rra(&stack_a);
+	// ft_ra(&stack_a);
+	// ft_sa(stack_a);
+
+	printf("After Operation:\n");
 	printf("\n\n");
 	ft_print_stack(&stack_b, "stack_b");
-	printf("\n");
+	printf("\n\n");
 	ft_print_stack(&stack_a, "stack_a");
 	return (0);
 }

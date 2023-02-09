@@ -60,6 +60,8 @@ SORTING				:=	$(addprefix $(SORTING_DIR), $(SORTING_FILES))
 # Stack
 STACK_DIR			:=	stack/
 STACK_FILES			:=	\
+						ft_add_new_head.c \
+						ft_add_new_tail.c \
 						ft_create_node.c \
 						ft_find_smallest_node_pos.c \
 						ft_find_mid_node.c \

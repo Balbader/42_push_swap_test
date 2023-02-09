@@ -27,6 +27,15 @@ ENTRY_FILES			:=	\
 						ft_look_for_doubles.c
 ENTRY				:=	$(addprefix $(ENTRY_DIR), $(ENTRY_FILES))
 
+# Actions
+ACTIONS_DIR			:=	actions/
+ACTIONS_FILES		:=	\
+						ft_push_node.c \
+						ft_reverse_rotate_stack.c \
+						ft_rotate_stack.c \
+						ft_swap_stack.c
+ACTIONS				:=	$(addprefix $(ACTIONS_DIR), $(ACTIONS_FILES))
+
 # Operations
 OPER_DIR			:=	operations/
 OPER_FILES			:=	\
@@ -62,13 +71,9 @@ STACK_FILES			:=	\
 						ft_init_rand_stack.c \
 						ft_init_stack_a.c \
 						ft_is_biggest_node.c \
-						ft_push_node.c \
 						ft_re_init_index.c \
-						ft_reverse_rotate_stack.c \
-						ft_rotate_stack.c \
 						ft_split_stack.c \
-						ft_stack_is_sorted.c \
-						ft_swap_stack.c
+						ft_stack_is_sorted.c
 STACK				:=	$(addprefix $(STACK_DIR), $(STACK_FILES))
 
 # Utils
@@ -90,6 +95,7 @@ INCS				:=	./include/
 SRCS_DIR			:=	./src/
 SRCS				:=	\
 						$(ENTRY) \
+						$(ACTIONS) \
 						$(OPER) \
 						$(SORTING) \
 						$(STACK) \

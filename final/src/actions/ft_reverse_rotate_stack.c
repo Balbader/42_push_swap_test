@@ -50,6 +50,6 @@ void	ft_reverse_rotate_stack(t_list **stack)
 		head = *stack;
 		ft_reverse_rotate_last(stack);
 		*stack = head;
-		ft_add_front(stack, temp);
+		ft_add_new_head(stack, temp);
 	}
 }

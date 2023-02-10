@@ -12,33 +12,57 @@
 
 #include "push_swap.h"
 
+static t_list	*ft_copy_stack(t_list *stack)
+{
+	t_list	*copy;
+	t_list	*head;
+	// int		stack_size;
+	// int		i;
+
+	copy = ft_create_node(stack->data, stack->index);
+	head = copy;
+	stack = stack->next;
+	while(stack)
+	{
+		copy->next = ft_create_node(stack->data, stack->index);
+		copy = copy->next;
+		stack = stack->next;
+	}
+	head = ft_pre_sort_stack(head);
+	head = ft_re_init_index(head);
+	return (head);
+}
+
 static int	ft_find_pivot(t_list *stack)
 {
 	t_list	*temp;
 	int		stack_size;
 	int		pivot;
 
-	temp = NULL;
-	temp = ft_pre_sort_stack(stack);
-	temp = ft_re_init_index(temp);
+	temp = ft_copy_stack(stack);
 	stack_size = ft_get_stack_size(temp);
 	while (temp)
-		{
-			if (temp->index == stack_size / 2)
-				pivot = temp->data;
-			temp = temp->next;
-		}
+	{
+		if (temp->index == (stack_size / 2))
+			pivot = temp->data;
+		temp = temp->next;
+	}
 	return (pivot);
 }
 
-void	ft_sort_stack(t_list *stack_a, t_list *stack_b)
+void	ft_sort_stack(t_list **stack_a, t_list **stack_b)
 {
-	int	pivot;
+	// t_list	*temp;
+	int		pivot;
 
-	pivot = ft_find_pivot(stack_a);
-	printf("pivot: %d\n\n", pivot);
-	if (stack_a->data > pivot)
-		ft_pb(&stack_a, &stack_b);
-	else
-		ft_ra(&stack_a);
+
+	pivot = ft_find_pivot(*stack_a);
+	while ((*stack_a)->next != NULL)
+	{
+		if ((*stack_a)->data >= pivot)
+			ft_pb(stack_a, stack_b);
+		else
+			ft_ra(stack_a);
+		(*stack_a) = (*stack_a)->next;
+	}
 }

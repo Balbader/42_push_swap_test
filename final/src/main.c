@@ -62,29 +62,31 @@ int	main(void)
 	int		*rand_arr;
 	int		size;
 
-	size = 20;
+	size = 12;
 	rand_arr = (int *)malloc(sizeof(int) * size);
 	if (!rand_arr)
 		return (0);
 	stack_a = ft_init_rand_stack(rand_arr, 1, size);
+	stack_b = stack_a;
+
+	printf("\nBefore Sort:\n");
+	ft_print_stack(&stack_a, "main_stack_a");
+	printf("\n\n");
+
 	// stack_a = ft_pre_sort_stack(stack_a);
+	// printf("\nAfter pre Sort:\n");
+	// ft_print_stack(&stack_a, "pre_sorted_stack_a");
+
 	// stack_a = ft_re_init_index(stack_a);
+	// printf("\nAfter pre Sort:\n");
+	// ft_print_stack(&stack_a, "re_init_idx_stack_a");
 
-	printf("Before Operation:\n");
+	ft_sort_stack(&stack_a, &stack_b);
+
+	printf("\n\n");
+	printf("After Sort:\n\n");
 	ft_print_stack(&stack_a, "stack_a");
-	printf("\n\n");
-
-	// for (int i = 0; i < 10; ++ i) {
-	// 	ft_pb(&stack_a, &stack_b);
-	// }
-	// ft_rra(&stack_a);
-	// ft_ra(&stack_a);
-	// ft_sa(stack_a);
-
-	ft_sort_stack(stack_a, stack_b);
-	printf("\n\n");
-	ft_print_stack(&stack_a, "stack_a");
-	printf("\n\n");
+	printf("\n");
 	ft_print_stack(&stack_b, "stack_b");
 	return (0);
 }

@@ -40,7 +40,7 @@ t_list		*ft_sort_case_3(int arr[3], t_list *stack_a);
 t_list		*ft_sort_case_4(t_list *stack_a, t_list *stack_b);
 t_list		*ft_sort_case_5(t_list *stack_a, t_list *stack_b);
 t_list		*ft_pre_sort_stack(t_list *rand_stack);
-void		ft_sort_stack(t_list *stack_a, t_list *stack_b);
+void		ft_sort_stack(t_list **stack_a, t_list **stack_b);
 void		ft_push_big_nodes_5(t_list **stack_a,
 					t_list **stack_b, int big_node_index);
 void		ft_push_big_nodes_4(t_list **stack_a,

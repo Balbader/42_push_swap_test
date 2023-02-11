@@ -35,8 +35,8 @@ void		ft_look_for_doubles(int *arr, int arr_size);
 long int	ft_convert_entry(const char *av);
 
 /* Sorting */
-int			*ft_init_arr_3(t_list *stack);
-t_list		*ft_sort_case_3(int arr[3], t_list *stack_a);
+int			*ft_init_arr_3(t_list *stack, int *arr);
+t_list		*ft_sort_case_3(t_list *stack_a);
 t_list		*ft_sort_case_4(t_list *stack_a, t_list *stack_b);
 t_list		*ft_sort_case_5(t_list *stack_a, t_list *stack_b);
 t_list		*ft_pre_sort_stack(t_list *rand_stack);

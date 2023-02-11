@@ -53,6 +53,7 @@
 // }
 
 // int	main(int ac, char **av)
+
 int	main(void)
 {
 	t_list	*stack_a;

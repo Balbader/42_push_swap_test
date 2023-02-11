@@ -27,29 +27,29 @@ static int	ft_find_case_3(int arr[3])
 	return (0);
 }
 
-t_list	*ft_sort_case_3(int arr[3], t_list *stack_a)
+t_list	*ft_sort_case_3(t_list *stack_a)
 {
+	int	*arr;
+
+	arr = (int *)malloc(sizeof(int) * 3);
+	if (!arr)
+		return (0);
+	arr = ft_init_arr_3(stack_a, arr);
 	if (ft_find_case_3(arr) == 1)
-	{
 		ft_sa(&stack_a);
-	}
 	else if (ft_find_case_3(arr) == 2)
 	{
 		ft_sa(&stack_a);
 		ft_rra(&stack_a);
 	}
 	else if (ft_find_case_3(arr) == 3)
-	{
 		ft_ra(&stack_a);
-	}
 	else if (ft_find_case_3(arr) == 4)
 	{
 		ft_sa(&stack_a);
 		ft_ra(&stack_a);
 	}
 	else if (ft_find_case_3(arr) == 5)
-	{
 		ft_rra(&stack_a);
-	}
 	return (stack_a);
 }

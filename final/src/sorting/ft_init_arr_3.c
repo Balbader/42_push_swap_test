@@ -12,16 +12,10 @@
 
 #include "push_swap.h"
 
-int	*ft_init_arr_3(t_list *stack)
+int	*ft_init_arr_3(t_list *stack, int *arr)
 {
-	int	*arr;
-	int	stack_size;
 	int	i;
 
-	stack_size = ft_get_stack_size(stack);
-	arr = (int *)malloc(sizeof(int) * (stack_size));
-	if (!arr)
-		return (0);
 	i = 0;
 	while (stack)
 	{

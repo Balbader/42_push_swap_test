@@ -57,7 +57,6 @@
 int	main(void)
 {
 	t_list	*stack_a;
-
 	t_list	*stack_b = NULL;
 
 	int		*rand_arr;
@@ -68,7 +67,6 @@ int	main(void)
 	if (!rand_arr)
 		return (0);
 	stack_a = ft_init_rand_stack(rand_arr, 1, size);
-	stack_b = stack_a;
 
 	printf("\nBefore Sort:\n");
 	ft_print_stack(&stack_a, "main_stack_a");
@@ -86,7 +84,7 @@ int	main(void)
 
 	printf("\n\n");
 	printf("After Sort:\n\n");
-	ft_print_stack(&stack_a, "stack_a");
+	ft_print_stack(&stack_a, "main_stack_a");
 	printf("\n");
 	ft_print_stack(&stack_b, "stack_b");
 	return (0);

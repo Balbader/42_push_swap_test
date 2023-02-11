@@ -57,37 +57,37 @@
 int	main(void)
 {
 	t_list	*stack_a;
-	t_list	*stack_b = NULL;
-
+	t_list	*stack_b;
+	int		hit_count;
 	int		*rand_arr;
 	int		size;
 
+	hit_count = 0;
 	size = 12;
 	rand_arr = (int *)malloc(sizeof(int) * size);
 	if (!rand_arr)
 		return (0);
 	stack_a = ft_init_rand_stack(rand_arr, 1, size);
+	stack_b = NULL;
 
 	printf("\nBefore Sort:\n");
 	ft_print_stack(&stack_a, "main_stack_a");
+
 	printf("\n\n");
-
-	// stack_a = ft_pre_sort_stack(stack_a);
-	// printf("\nAfter pre Sort:\n");
-	// ft_print_stack(&stack_a, "pre_sorted_stack_a");
-
-	// stack_a = ft_re_init_index(stack_a);
-	// printf("\nAfter pre Sort:\n");
-	// ft_print_stack(&stack_a, "re_init_idx_stack_a");
 
 	ft_sort_stack(&stack_a, &stack_b);
 	ft_sort_stack(&stack_a, &stack_b);
 	stack_a = ft_sort_case_3(stack_a);
 
 	printf("\n\n");
+
 	printf("After Sort:\n\n");
 	ft_print_stack(&stack_a, "main_stack_a");
+
 	printf("\n");
 	ft_print_stack(&stack_b, "stack_b");
+
+	printf("After Sort:\n\n");
+	printf("hit_count: %d\n", hit_count);
 	return (0);
 }

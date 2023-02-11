@@ -52,17 +52,23 @@ static int	ft_find_pivot(t_list *stack)
 
 void	ft_sort_stack(t_list **stack_a, t_list **stack_b)
 {
-	// t_list	*temp;
 	int		pivot;
+	int		stack_size;
+	int		i;
 
-
+	stack_size = ft_get_stack_size(*stack_a);
 	pivot = ft_find_pivot(*stack_a);
-	while ((*stack_a)->next != NULL)
+	i = 0;
+	while (i < stack_size)
 	{
-		if ((*stack_a)->data >= pivot)
+		if ((*stack_a)->data > pivot)
+		{
 			ft_pb(stack_a, stack_b);
+		}
 		else
+		{
 			ft_ra(stack_a);
-		(*stack_a) = (*stack_a)->next;
+		}
+		++i;
 	}
 }

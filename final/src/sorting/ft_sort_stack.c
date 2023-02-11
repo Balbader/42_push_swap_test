@@ -16,13 +16,11 @@ static t_list	*ft_copy_stack(t_list *stack)
 {
 	t_list	*copy;
 	t_list	*head;
-	// int		stack_size;
-	// int		i;
 
 	copy = ft_create_node(stack->data, stack->index);
 	head = copy;
 	stack = stack->next;
-	while(stack)
+	while (stack)
 	{
 		copy->next = ft_create_node(stack->data, stack->index);
 		copy = copy->next;

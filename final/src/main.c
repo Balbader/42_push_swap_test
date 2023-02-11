@@ -81,6 +81,8 @@ int	main(void)
 	// ft_print_stack(&stack_a, "re_init_idx_stack_a");
 
 	ft_sort_stack(&stack_a, &stack_b);
+	ft_sort_stack(&stack_a, &stack_b);
+	stack_a = ft_sort_case_3(stack_a);
 
 	printf("\n\n");
 	printf("After Sort:\n\n");

@@ -12,8 +12,9 @@
 
 #include "push_swap.h"
 
-void	ft_ra(t_list **stack_a)
+void	ft_ra(t_list **stack_a, int hit_count)
 {
 	ft_rotate_stack(stack_a);
+	hit_count += 1;
 	ft_putstr_fd("ra\n", 1);
 }

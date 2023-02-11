@@ -12,8 +12,9 @@
 
 #include "push_swap.h"
 
-void	ft_sa(t_list **stack_a)
+void	ft_sa(t_list **stack_a, int hit_count)
 {
 	ft_swap_stack(*stack_a);
+	hit_count += 1;
 	ft_putstr_fd("sa\n", 1);
 }

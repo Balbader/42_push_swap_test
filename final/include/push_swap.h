@@ -41,13 +41,14 @@ void		ft_sort_case_3(t_list *stack_a);
 void		ft_sort_case_4(t_list *stack_a, t_list *stack_b);
 void		ft_sort_case_5(t_list *stack_a, t_list *stack_b);
 void		ft_sort_stack(t_list **stack_a, t_list **stack_b);
-void		ft_push_big_nodes_5(t_list **stack_a,
-				t_list **stack_b, int big_node_index);
-void		ft_push_big_nodes_4(t_list **stack_a,
-				t_list **stack_b, int big_node_index);
+void		ft_push_smallest_nodes_5(t_list **stack_a,
+				t_list **stack_b, int smallest_node_index);
+void		ft_push_smallest_nodes_4(t_list **stack_a,
+				t_list **stack_b, int smallest_node_index);
 void		ft_start_sorting(t_list **stack_a,
 				t_list **stack_b, int stack_size);
-void		ft_finish_sorting(t_list **stack_a, t_list **stack_b);
+void		ft_finish_sorting_5(t_list **stack_a, t_list **stack_b);
+void		ft_finish_sorting_4(t_list **stack_a, t_list **stack_b);
 
 /* Stack */
 int			ft_find_smallest_node_pos(t_list *stack);
@@ -55,6 +56,7 @@ int			ft_find_biggest_node_pos(t_list *stack);
 int			ft_stack_is_sorted(t_list *stack);
 int			ft_get_stack_size(t_list *stack);
 
+void		ft_def_stack_case(t_list *stack_a, t_list *stack_b);
 void		ft_add_new_head(t_list **lst, t_list *node);
 void		ft_add_new_tail(t_list **lst, t_list *node);
 void		ft_free_stack(t_list **stack);

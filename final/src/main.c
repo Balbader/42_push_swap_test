@@ -67,19 +67,23 @@ int	main(void)
 	stack_a = ft_init_rand_stack(rand_arr, 1, size);
 	stack_b = NULL;
 	if (ft_stack_is_sorted(stack_a) == 1)
+	{
+		printf("%d\n", ft_stack_is_sorted(stack_a));
 		exit(1);
+		return (0);
+	}
 
-	printf("\nMAIN - Stack A before:\n");
-	ft_print_stack(&stack_a, "stack_a");
-	printf("\n\n");
+	// printf("\nMAIN - Stack A before:\n");
+	// ft_print_stack(&stack_a, "stack_a");
+	// printf("\n\n");
 
 
 	// // ft_sort_case_3(stack_a);
 	// ft_sort_case_4(stack_a, stack_b);
 	ft_sort_case_5(stack_a, stack_b);
 
-	// printf("\nMAIN - Stack A after Sort:\n");
-	// ft_print_stack(&stack_a, "stack_a");
+	printf("\nMAIN - Stack A after Sort:\n");
+	ft_print_stack(&stack_a, "stack_a");
 
 	return (0);
 }

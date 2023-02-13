@@ -51,6 +51,7 @@ SORTING_FILES		:=	\
 						ft_init_arr_3.c \
 						ft_sort_case_3.c \
 						ft_sort_case_4.c \
+						ft_sort_case_4_utils.c \
 						ft_sort_case_5.c \
 						ft_sort_case_5_utils.c \
 						ft_pre_sort_stack.c \
@@ -63,6 +64,7 @@ STACK_FILES			:=	\
 						ft_add_new_head.c \
 						ft_add_new_tail.c \
 						ft_create_node.c \
+						ft_def_stack_case.c \
 						ft_find_smallest_node_pos.c \
 						ft_find_mid_node.c \
 						ft_find_biggest_node_pos.c \

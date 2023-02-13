@@ -58,11 +58,9 @@ int	main(void)
 {
 	t_list	*stack_a;
 	t_list	*stack_b;
-	int		hit_count;
 	int		*rand_arr;
 	int		size;
 
-	hit_count = 0;
 	size = 12;
 	rand_arr = (int *)malloc(sizeof(int) * size);
 	if (!rand_arr)
@@ -77,7 +75,7 @@ int	main(void)
 
 	ft_sort_stack(&stack_a, &stack_b);
 	ft_sort_stack(&stack_a, &stack_b);
-	stack_a = ft_sort_case_3(stack_a);
+	ft_sort_case_3(stack_a);
 
 	printf("\n\n");
 
@@ -86,8 +84,5 @@ int	main(void)
 
 	printf("\n");
 	ft_print_stack(&stack_b, "stack_b");
-
-	printf("After Sort:\n\n");
-	printf("hit_count: %d\n", hit_count);
 	return (0);
 }

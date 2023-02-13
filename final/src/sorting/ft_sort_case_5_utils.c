@@ -69,8 +69,6 @@ void	ft_start_sorting(t_list **stack_a,
 {
 	int		big_node_index;
 
-	ft_print_stack(stack_a, "stack_a");
-	printf("\n");
 	while (stack_size > 3)
 	{
 		big_node_index = ft_find_biggest_node_pos(*stack_a);
@@ -79,8 +77,6 @@ void	ft_start_sorting(t_list **stack_a,
 		else
 			ft_push_big_nodes_4(stack_a, stack_b, big_node_index);
 		*stack_a = ft_re_init_index(*stack_a);
-		ft_print_stack(stack_a, "stack_a");
-		printf("\n");
 		--stack_size;
 	}
 }

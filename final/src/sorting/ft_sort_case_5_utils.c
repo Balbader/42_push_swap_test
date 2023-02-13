@@ -54,12 +54,14 @@ void	ft_start_sorting(t_list **stack_a,
 	int		smallest_node_index;
 	int		i;
 
+	// smallest_node_index = 1;
 	i = stack_size;
 	while (i > 3)
 	{
 		smallest_node_index = ft_find_smallest_node_pos(*stack_a);
 		printf("smallest_node_index: %d\n", smallest_node_index);
 		ft_print_stack(stack_a, "st_a");
+		printf("\n");
 		if (i == 5)
 		{
 			ft_push_smallest_nodes_5(stack_a, stack_b, smallest_node_index);
@@ -76,8 +78,12 @@ void	ft_start_sorting(t_list **stack_a,
 
 void	ft_finish_sorting_5(t_list **stack_a, t_list **stack_b)
 {
+	ft_print_stack(stack_a, "stack_a");
+	printf("\n");
 	ft_pa(stack_a, stack_b);
 	*stack_a = ft_re_init_index(*stack_a);
+	ft_print_stack(stack_a, "stack_a");
+	printf("\n");
 	ft_pa(stack_a, stack_b);
 	*stack_a = ft_re_init_index(*stack_a);
 

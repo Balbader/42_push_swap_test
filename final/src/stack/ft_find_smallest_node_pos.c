@@ -17,8 +17,9 @@ int	ft_find_smallest_node_pos(t_list *stack)
 	int		data;
 	int		index;
 
+	index = 1;
 	data = stack->data;
-	while (stack)
+	while (stack != NULL)
 	{
 		if (stack->data < data)
 		{

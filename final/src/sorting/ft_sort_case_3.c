@@ -36,19 +36,35 @@ void	ft_sort_case_3(t_list *stack_a)
 		return ;
 	arr = ft_init_arr_3(stack_a, arr);
 	if (ft_find_case_3(arr) == 1)
+	{
 		ft_sa(&stack_a);
+		ft_print_stack(&stack_a, "stack_a");
+		printf("\n");
+	}
 	else if (ft_find_case_3(arr) == 2)
 	{
 		ft_sa(&stack_a);
 		ft_rra(&stack_a);
+		ft_print_stack(&stack_a, "stack_a");
+		printf("\n");
 	}
 	else if (ft_find_case_3(arr) == 3)
+	{
 		ft_ra(&stack_a);
+		ft_print_stack(&stack_a, "stack_a");
+		printf("\n");
+	}
 	else if (ft_find_case_3(arr) == 4)
 	{
 		ft_sa(&stack_a);
 		ft_ra(&stack_a);
+		ft_print_stack(&stack_a, "stack_a");
+		printf("\n");
 	}
 	else if (ft_find_case_3(arr) == 5)
+	{
 		ft_rra(&stack_a);
+		ft_print_stack(&stack_a, "stack_a");
+		printf("\n");
+	}
 }

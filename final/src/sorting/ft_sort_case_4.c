@@ -15,17 +15,23 @@
 void	ft_sort_case_4(t_list *stack_a, t_list *stack_b)
 {
 	int		stack_size;
-	int		*arr;
 
-	arr = (int *)malloc(sizeof(int) * 3);
-	if (!arr)
-		return ;
 	stack_size = ft_get_stack_size(stack_a);
+	printf("ft_start_sorting:\n");
 	ft_start_sorting(&stack_a, &stack_b, stack_size);
-	arr = ft_init_arr_3(stack_a, arr);
-	ft_sort_case_3(stack_a);
-	ft_print_stack(&stack_a, "stack_a");
+
 	printf("\n");
-	ft_finish_sorting(&stack_a, &stack_b);
-	ft_print_stack(&stack_a, "stack_a");
+
+	printf("ft_sort_case_3:\n");
+	ft_sort_case_3(stack_a);
+
+	printf("\n");
+
+	printf("stack_b:\n");
+	ft_print_stack(&stack_b, "stack_b");
+
+	printf("\n");
+
+	printf("ft_finish_sorting:\n");
+	ft_finish_sorting_4(&stack_a, &stack_b);
 }

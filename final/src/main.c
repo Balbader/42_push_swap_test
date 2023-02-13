@@ -53,7 +53,6 @@
 // }
 
 // int	main(int ac, char **av)
-
 int	main(void)
 {
 	t_list	*stack_a;
@@ -61,28 +60,26 @@ int	main(void)
 	int		*rand_arr;
 	int		size;
 
-	size = 12;
+	size = 5;
 	rand_arr = (int *)malloc(sizeof(int) * size);
 	if (!rand_arr)
 		return (0);
 	stack_a = ft_init_rand_stack(rand_arr, 1, size);
 	stack_b = NULL;
+	if (ft_stack_is_sorted(stack_a) == 1)
+		exit(1);
 
-	printf("\nBefore Sort:\n");
-	ft_print_stack(&stack_a, "main_stack_a");
-
+	printf("\nMAIN - Stack A before:\n");
+	ft_print_stack(&stack_a, "stack_a");
 	printf("\n\n");
 
-	ft_sort_stack(&stack_a, &stack_b);
-	ft_sort_stack(&stack_a, &stack_b);
-	ft_sort_case_3(stack_a);
 
-	printf("\n\n");
+	// // ft_sort_case_3(stack_a);
+	// ft_sort_case_4(stack_a, stack_b);
+	ft_sort_case_5(stack_a, stack_b);
 
-	printf("After Sort:\n\n");
-	ft_print_stack(&stack_a, "main_stack_a");
+	// printf("\nMAIN - Stack A after Sort:\n");
+	// ft_print_stack(&stack_a, "stack_a");
 
-	printf("\n");
-	ft_print_stack(&stack_b, "stack_b");
 	return (0);
 }

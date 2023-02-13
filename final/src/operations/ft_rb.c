@@ -12,9 +12,8 @@
 
 #include "push_swap.h"
 
-void	ft_rb(t_list **stack_b, int hit_count)
+void	ft_rb(t_list **stack_b)
 {
 	ft_rotate_stack(stack_b);
-	hit_count += 1;
 	ft_putstr_fd("rb\n", 1);
 }

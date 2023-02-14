@@ -12,99 +12,81 @@
 
 #include "push_swap.h"
 
-static void	ft_print(t_list **stack, char *name)
+void	ft_push_smallest_nodes_5(t_list **stack_a,
+						t_list **stack_b, int smallest_node_index)
 {
-	t_list	*temp;
-
-	temp = *stack;
-	while (temp)
+	if (smallest_node_index == 1)
 	{
-		printf("%s[%d]: %d\n", name, temp->index, temp->data);
-		temp = temp->next;
-	}
-}
-
-void	ft_push_big_nodes_5(t_list **stack_a,
-						t_list **stack_b, int big_node_index)
-{
-	if (big_node_index == 1)
 		ft_pb(stack_a, stack_b);
-	if (big_node_index == 2)
+		printf("\n");
+	}
+	if (smallest_node_index == 2)
 	{
 		ft_ra(stack_a);
 		ft_pb(stack_a, stack_b);
+		printf("\n");
 	}
-	if (big_node_index == 3)
+	if (smallest_node_index == 3)
 	{
 		ft_ra(stack_a);
 		ft_ra(stack_a);
 		ft_pb(stack_a, stack_b);
+		printf("\n");
 	}
-	if (big_node_index == 4)
+	if (smallest_node_index == 4)
 	{
 		ft_rra(stack_a);
 		ft_rra(stack_a);
 		ft_pb(stack_a, stack_b);
+		printf("\n");
 	}
-	if (big_node_index == 5)
+	if (smallest_node_index == 5)
 	{
 		ft_rra(stack_a);
 		ft_pb(stack_a, stack_b);
-	}
-}
-
-void	ft_push_big_nodes_4(t_list **stack_a,
-						t_list **stack_b, int big_node_index)
-{
-	if (big_node_index == 1)
-		ft_pb(stack_a, stack_b);
-	if (big_node_index == 2)
-	{
-		ft_ra(stack_a);
-		ft_pb(stack_a, stack_b);
-	}
-	if (big_node_index == 3)
-	{
-		ft_ra(stack_a);
-		ft_ra(stack_a);
-		ft_pb(stack_a, stack_b);
-	}
-	if (big_node_index == 4)
-	{
-		ft_rra(stack_a);
-		ft_pb(stack_a, stack_b);
+		printf("\n");
 	}
 }
 
 void	ft_start_sorting(t_list **stack_a,
-					t_list **stack_b, int stack_size)
+					  t_list **stack_b, int stack_size)
 {
-	int		big_node_index;
+	int		smallest_node_index;
+	int		i;
 
-	ft_print(stack_a, "stack_a");
-	printf("\n");
-	while (stack_size > 3)
+	// smallest_node_index = 1;
+	i = stack_size;
+	while (i > 3)
 	{
-		big_node_index = ft_find_biggest_node_pos(*stack_a);
-		if (stack_size == 5)
-			ft_push_big_nodes_5(stack_a, stack_b, big_node_index);
-		else
-			ft_push_big_nodes_4(stack_a, stack_b, big_node_index);
-		*stack_a = ft_re_init_index(*stack_a);
-		ft_print(stack_a, "stack_a");
+		smallest_node_index = ft_find_smallest_node_pos(*stack_a);
+		printf("smallest_node_index: %d\n", smallest_node_index);
+		ft_print_stack(stack_a, "st_a");
 		printf("\n");
-		--stack_size;
+		if (i == 5)
+		{
+			ft_push_smallest_nodes_5(stack_a, stack_b, smallest_node_index);
+			*stack_a = ft_re_init_index(*stack_a);
+		}
+		if (i == 4)
+		{
+			ft_push_smallest_nodes_4(stack_a, stack_b, smallest_node_index);
+			*stack_a = ft_re_init_index(*stack_a);
+		}
+		--i;
 	}
 }
 
-void	ft_finish_sorting(t_list **stack_a, t_list **stack_b)
+void	ft_finish_sorting_5(t_list **stack_a, t_list **stack_b)
 {
+	ft_print_stack(stack_a, "stack_a");
+	printf("\n");
 	ft_pa(stack_a, stack_b);
 	*stack_a = ft_re_init_index(*stack_a);
-	ft_ra(stack_a);
-	*stack_a = ft_re_init_index(*stack_a);
+	ft_print_stack(stack_a, "stack_a");
+	printf("\n");
 	ft_pa(stack_a, stack_b);
 	*stack_a = ft_re_init_index(*stack_a);
-	ft_ra(stack_a);
-	*stack_a = ft_re_init_index(*stack_a);
+
+	ft_print_stack(stack_a, "stack_a");
+	printf("\n");
 }

@@ -1,24 +1,21 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_swap_stack.c                                    :+:      :+:    :+:   */
+/*   ft_rr.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: baalbade <baalbade@student.42.fr>          +#+  +:+       +#+        */
+/*   By: baalbade <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/01/30 16:32:25 by baalbade          #+#    #+#             */
-/*   Updated: 2023/01/30 16:32:26 by baalbade         ###   ########.fr       */
+/*   Created: 2023/01/18 14:02:37 by baalbade          #+#    #+#             */
+/*   Updated: 2023/01/18 14:02:49 by baalbade         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "push_swap.h"
+#include "sort.h"
 
-void	ft_swap_stack(t_list *stack)
+void	ft_rr(t_list **stack_a, t_list **stack_b)
 {
-	int	temp;
-
-	if (stack == NULL || stack->next == NULL)
-		return ;
-	temp = stack->data;
-	stack->data = stack->next->data;
-	stack->next->data = temp;
+	ft_rotate_stack(stack_a);
+	ft_rotate_stack(stack_b);
+	// ft_putstr_fd("rr\n", 1);
+	printf("rr\n");
 }

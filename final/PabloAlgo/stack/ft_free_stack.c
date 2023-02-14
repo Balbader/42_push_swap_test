@@ -1,27 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_reverse_rotate_stack.c                          :+:      :+:    :+:   */
+/*   ft_free_stack.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: baalbade <baalbade@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/01/30 17:15:20 by baalbade          #+#    #+#             */
-/*   Updated: 2023/01/30 17:15:23 by baalbade         ###   ########.fr       */
+/*   Created: 2023/01/29 18:52:32 by baalbade          #+#    #+#             */
+/*   Updated: 2023/01/29 18:52:34 by baalbade         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-void	ft_reverse_rotate_stack(t_list **stack)
+void	ft_free_stack(t_list **stack)
 {
 	t_list	*temp;
-	t_list	*last_node;
-	t_list	*before_last_node;
 
-	last_node = ft_get_last_node(*stack);
-	before_last_node = ft_get_before_last_node(*stack);
-	temp = *stack;
-	*stack = last_node;
-	(*stack)->next = temp;
-	before_last_node->next = NULL;
+	if (!stack || !(*stack))
+		return ;
+	while (*stack)
+	{
+		temp = (*stack)->next;
+		free(*stack);
+		*stack = temp;
+	}
+	*stack = NULL;
 }

@@ -14,7 +14,7 @@
 
 int	ft_stack_is_sorted(t_list *stack)
 {
-	while (stack->next != NULL)
+	while (stack)
 	{
 		if (stack->data > stack->next->data)
 			return (0);

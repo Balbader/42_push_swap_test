@@ -27,6 +27,15 @@ ENTRY_FILES			:=	\
 						ft_look_for_doubles.c
 ENTRY				:=	$(addprefix $(ENTRY_DIR), $(ENTRY_FILES))
 
+# Actions
+ACTIONS_DIR			:=	actions/
+ACTIONS_FILES		:=	\
+						ft_push_node.c \
+						ft_reverse_rotate_stack.c \
+						ft_rotate_stack.c \
+						ft_swap_stack.c
+ACTIONS				:=	$(addprefix $(ACTIONS_DIR), $(ACTIONS_FILES))
+
 # Operations
 OPER_DIR			:=	operations/
 OPER_FILES			:=	\
@@ -41,27 +50,34 @@ SORTING_DIR			:=	sorting/
 SORTING_FILES		:=	\
 						ft_init_arr_3.c \
 						ft_sort_case_3.c \
+						ft_sort_case_4.c \
+						ft_sort_case_4_utils.c \
 						ft_sort_case_5.c \
-						ft_sort_case_5_utils.c
+						ft_sort_case_5_utils.c \
+						ft_pre_sort_stack.c \
+						ft_sort_stack.c
 SORTING				:=	$(addprefix $(SORTING_DIR), $(SORTING_FILES))
 
 # Stack
 STACK_DIR			:=	stack/
 STACK_FILES			:=	\
+						ft_add_new_head.c \
+						ft_add_new_tail.c \
+						ft_create_node.c \
+						ft_def_stack_case.c \
 						ft_find_smallest_node_pos.c \
+						ft_find_mid_node.c \
 						ft_find_biggest_node_pos.c \
 						ft_free_stack.c \
 						ft_get_before_last_node.c \
 						ft_get_last_node.c \
 						ft_get_stack_size.c \
+						ft_init_rand_stack.c \
 						ft_init_stack_a.c \
 						ft_is_biggest_node.c \
-						ft_push_node.c \
 						ft_re_init_index.c \
-						ft_reverse_rotate_stack.c \
-						ft_rotate_stack.c \
-						ft_stack_is_sorted.c \
-						ft_swap_stack.c
+						ft_split_stack.c \
+						ft_stack_is_sorted.c
 STACK				:=	$(addprefix $(STACK_DIR), $(STACK_FILES))
 
 # Utils
@@ -70,6 +86,7 @@ UTILS_FILES			:=	\
 						ft_calloc.c \
 						ft_isdigit.c \
 						ft_print_err.c \
+						ft_print_stack.c \
 						ft_putstr_fd.c \
 						ft_strlen.c
 UTILS				:=	$(addprefix $(UTILS_DIR), $(UTILS_FILES))
@@ -82,6 +99,7 @@ INCS				:=	./include/
 SRCS_DIR			:=	./src/
 SRCS				:=	\
 						$(ENTRY) \
+						$(ACTIONS) \
 						$(OPER) \
 						$(SORTING) \
 						$(STACK) \
@@ -94,7 +112,7 @@ OBJS        		:=	$(SRCS:$(SRCS_DIR)/%.c=$(BUILD_DIR)/%.o)
 DEPS        		:=	$(OBJS:.o=.d)
 
 CC					:=	gcc
-CFLAGS				:=	-Wall -Wextra -Werror
+CFLAGS				:=	-Wall -Wextra -Werror -g3
 IFLAGS				:=	$(addprefix -I, $(INCS))
 
 ################

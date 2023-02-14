@@ -74,8 +74,6 @@ int	main(int ac, char **av)
 		ft_sa(&stack_a);
 	else if (ac - 1 == 3)
 		stack_a = ft_sort_case_3(entries, stack_a);
-	// else if (ac - 1 == 4)
-	// 	stack_a = ft_sort_case_H(entries, stack_a);
 	else if (ac - 1 == 5)
 		stack_a = ft_sort_case_5(stack_a, stack_b);
 

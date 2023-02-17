@@ -14,11 +14,15 @@
 
 int	ft_stack_is_sorted(t_list *stack)
 {
+	int	data;
+
+	data = stack->data;
 	while (stack)
 	{
-		if (stack->data > stack->next->data)
-			return (1);
+		if (data >= stack->data)
+			return (0);
+		data = stack->data;
 		stack = stack->next;
 	}
-	return (0);
+	return (1);
 }

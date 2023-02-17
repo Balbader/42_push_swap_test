@@ -52,9 +52,9 @@ long int	ft_convert_entry(const char *av);
 
 /* UTILS */
 int			ft_isdigit(char c);
+int			ft_strlen(const char *str);
 void		ft_print_err(t_list **stack_a, t_list **stack_b);
 void		ft_print_stack(t_list **stack, char *name);
 void		ft_putstr_fd(char *str, int fd);
-int			ft_strlen(const char *str);
 
 #endif

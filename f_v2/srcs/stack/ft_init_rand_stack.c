@@ -11,7 +11,7 @@
 /* ************************************************************************** */
 
 #include "push_swap.h"
-# include <time.h>
+#include <time.h>
 
 static void	ft_shuffle(int *arr, size_t n)
 {
@@ -50,7 +50,6 @@ static int	*ft_init_rand_arr(int start, int end, int *arr)
 	ft_shuffle(arr, (end - start));
 	return (arr);
 }
-
 
 t_list	*ft_init_rand_stack(int *rand_arr, int start, int end)
 {

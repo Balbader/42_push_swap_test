@@ -12,14 +12,14 @@
 
 #include "push_swap.h"
 
-void	ft_rotate_stack(t_list *stack)
+void	ft_rotate_stack(t_list **stack)
 {
 	t_list	*temp;
 	t_list	*last_node;
 
-	temp = stack;
-	stack = stack->next;
-	last_node = ft_get_last_node(stack);
+	temp = *stack;
+	*stack = (*stack)->next;
+	last_node = ft_get_last_node(*stack);
 	temp->next = NULL;
 	last_node->next = temp;
 }

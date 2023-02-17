@@ -41,10 +41,10 @@ t_list	*ft_find_middle_node(t_list *stack)
 		return (NULL);
 	to_find = ft_node_to_find(stack);
 	while (stack)
-		{
-			if (stack->data == to_find->data)
-				middle_node = stack;
-			stack = stack->next;
-		}
+	{
+		if (stack->data == to_find->data)
+			middle_node = stack;
+		stack = stack->next;
+	}
 	return (middle_node);
 }

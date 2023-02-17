@@ -10,4 +10,10 @@
 /*                                                                            */
 /* ************************************************************************** */
 
+#include "push_swap.h"
 
+int	main(void)
+{
+	printf("Hello from main.c");
+	return (0);
+}

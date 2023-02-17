@@ -36,7 +36,7 @@ void	ft_push_node(t_list **src, t_list **dest)
 		tmp->data = (*src)->data;
 		tmp->index = (*src)->index;
 		tmp->next = NULL;
-		ft_add_front(dest, tmp);
+		ft_add_new_head(dest, tmp);
 		(*src) = (*src)->next;
 	}
 }

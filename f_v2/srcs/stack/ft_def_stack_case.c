@@ -18,15 +18,15 @@ void	ft_def_stack_case(t_list *stack_a, t_list *stack_b)
 
 	stack_size = ft_get_stack_size(stack_a);
 	if (stack_size <= 3 )
-		ft_sort_case_3(stack_a);
-	else if (stack_size == 4)
-		ft_sort_case_4(stack_a, stack_b);
-	else if (stack_size == 5)
-		ft_sort_case_5(stack_a, stack_b);
+		ft_sort_3(stack_a);
+	if (stack_size == 4)
+		ft_sort_4(stack_a, stack_b);
+	// if (stack_size == 5)
+	// 	ft_sort_5(stack_a, stack_b);
 	// else if (stack_size == 100)
 	// 	ft_sort_case_100(stack_a, stack_b);
 	// else if (stack_size == 500)
 	// 	ft_sort_case_500(stack_a, stack_b);
-	else
-		ft_sort_stack(&stack_a, &stack_b);
+	// else
+	// 	ft_sort_stack(&stack_a, &stack_b);
 }

@@ -84,7 +84,7 @@ t_list		*ft_pre_sort_stack(t_list *rand_stack);
 
 int			*ft_init_arr_3(t_list *stack, int *arr);
 
-void		ft_sort_3(t_list *stack);
+void		ft_sort_3(t_list *stack, int arr[3]);
 void		ft_sort_4(t_list *stack_a, t_list *stack_b);
 void		ft_push_smallest_node_5(t_list **stack_a,
 				t_list **stack_b, int smallest_node_index);

@@ -41,7 +41,7 @@ static int	*ft_init_rand_arr(int start, int end, int *arr)
 
 	j = start;
 	i = 0;
-	while (i <= end)
+	while (i < end)
 	{
 		arr[i] = j;
 		++i;

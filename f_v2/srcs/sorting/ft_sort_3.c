@@ -28,13 +28,6 @@ static int	ft_find_case_3(int arr[3])
 		return (0);
 }
 
-static void	ft_alloc_arr(int *arr)
-{
-	arr = (int *)malloc(sizeof(int) * 3);
-	if (!arr)
-		return ;
-}
-
 static void	ft_check_case_3(int *arr, t_list *stack)
 {
 	if (ft_find_case_3(arr) == 1)
@@ -56,12 +49,18 @@ static void	ft_check_case_3(int *arr, t_list *stack)
 	stack = ft_re_init_index(stack);
 }
 
-void	ft_sort_3(t_list *stack)
+void	ft_sort_3(t_list *stack, int arr[3])
 {
-	int		*arr;
+	// int		*arr;
 
-	arr = NULL;
-	ft_alloc_arr(arr);
-	arr = ft_init_arr_3(stack, arr);
+	if (ft_stack_is_sorted(stack) == 1)
+	{
+		printf("is sorted!");
+		return ;
+	}
+	// arr = (int *)malloc(sizeof(int) * 3);
+	// if (!arr)
+	// 	return ;
+	// arr = ft_init_arr_3(stack, arr);
 	ft_check_case_3(arr, stack);
 }
